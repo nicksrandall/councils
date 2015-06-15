@@ -1,0 +1,76 @@
+APIs needed for church data:
+
+
+
+APIs needed for misc data:
+--------------------------
+AssignmentById (assignment,)
+  Tx:
+  { assignmentId: 3221 }
+
+  Rx:
+  {
+    creatorId: 123,
+    dueAt:
+  }
+
+AssignmentsByUser (home,)
+  Tx:
+  { userId: 123 }
+
+  Rx:
+  [
+    {
+      assignmentId: 34,
+      content: "Visit the Family History Center",
+      dueAt: 12/13/2014 08:00:00,
+      comments: [
+        {
+          userId: 89,
+          full_name: "Adelle Smith", ?
+          user_avatar: "avatar2.jpg", ?
+          content: "I'll come too",
+          createdAt: 12/12/2014 06:23:43
+        },
+        {
+          userId: 67,
+          full_name: "Franklin Smith", ?
+          user_avatar: "avatar4.jpg", ?
+          content: "Cool. Have fun.",
+          createdAt: 12/12/2014 06:34:43
+        }
+      ]
+
+    }
+  ]
+
+DiscussionsByUser (home,)
+  Tx:
+  { userId: 123 }
+
+  Rx:
+  [
+    {
+      creatorId: 123,
+      full_name: "david ricardo",
+      user_avatar: "avatar.jpg", ?
+      createdAt: 12/12/2014 05:23:43, ?
+      content: "Do we have any volunteers",
+      comments: [
+        {
+          userId: 32,
+          full_name: "Adelle Smith", ?
+          user_avatar: "avatar2.jpg", ?
+          content: "I can help out",
+          createdAt: 12/12/2014 06:23:43
+        },
+        {
+          userId: 53,
+          full_name: "Franklin Smith", ?
+          user_avatar: "avatar4.jpg", ?
+          content: "I'll be there, too.",
+          createdAt: 12/12/2014 06:34:43
+        }
+      ]
+    }
+  ]
