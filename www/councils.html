@@ -1,0 +1,69 @@
+
+<ion-pane class="councils">
+  <ion-header-bar ui-sref="home">
+    <div class="title icon ion-ios-people ">Councils</div>
+  </ion-header-bar>
+  <ion-content class="pad20lr pad20t">
+
+    <hr />
+    <h2>Ward Councils</h2>
+    <hr />
+    <ion-list ng-controller="CouncilsController">
+      <ion-item ng-repeat="organization in ward">
+
+        {{organization.title}}
+
+        <div ng-show="organization.access && organization.comments.length" class="fr">
+          <i class="icon ion-ios-chatbubble-outline f30"></i>
+          <span class="f12 lh34 sans fr pad10lr">{{organization.comments.length}}</span>
+        </div>
+
+        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r">
+          <i class="icon ion-ios-list-outline f30"></i>
+          <span class="f12 lh34 sans fr pad10lr">{{organization.assignments.length}}</span>
+        </div>
+
+        <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r">
+          <i class="icon ion-ios-list-outline f30 greyD"></i>
+          <span class="f12 lh34 sans fr pad10lr greyD">{{organization.assignments.length}}</span>
+        </div>
+
+        <div ng-hide="organization.access" class="fr pad10r">
+          <i class="icon ion-ios-locked-outline f30 greyD"></i>
+        </div>
+
+      </ion-item>
+    </ion-list>
+
+    <hr />
+    <h2>Stake Councils</h2>
+    <hr />
+    <ion-list ng-controller="CouncilsController">
+      <ion-item ng-repeat="organization in stake">
+
+        {{organization.title}}
+
+        <div ng-show="organization.access && organization.comments.length" class="fr">
+          <i class="icon ion-ios-chatbubble-outline f30"></i>
+          <span class="f12 lh34 sans fr pad10lr">{{organization.comments.length}}</span>
+        </div>
+
+        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r">
+          <i class="icon ion-ios-list-outline f30"></i>
+          <span class="f12 lh34 sans fr pad10lr">{{organization.assignments.length}}</span>
+        </div>
+
+        <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r">
+          <i class="icon ion-ios-list-outline f30 greyD"></i>
+          <span class="f12 lh34 sans fr pad10lr greyD">{{organization.assignments.length}}</span>
+        </div>
+
+        <div ng-hide="organization.access" class="fr pad10r">
+          <i class="icon ion-ios-locked-outline f30 greyD"></i>
+        </div>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-pane>

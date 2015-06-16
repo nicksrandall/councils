@@ -1,0 +1,48 @@
+ion-pane
+
+  *[ui-sref]
+    cursor: pointer
+    
+  // Page headers
+  > ion-header-bar
+    @extend .serif
+    text-transform: uppercase
+    letter-spacing: 2px
+
+    // Icons by page titles in headers
+    .title:before
+      @extend .f24
+      position: relative
+      top: 2px
+      padding-right: 6px
+
+  // Default List View styling
+  .list
+    >.item
+      @extend .pad0lr
+      @extend .pad10tb
+      @extend .f16
+      @extend .serif
+      border: none
+      border-top: 1px solid #EEE
+
+      &:first-child
+        border: none
+
+  h1, h2, h3, h4, h5, h6
+    color: #666
+
+  h2
+    @extend .sans
+    @extend .f12
+    @extend .tac
+    @extend .mar10
+    text-transform: uppercase
+    letter-spacing: 2px
+
+  hr
+    border-top: 4px double #EEE
+    border-right: none
+    border-bottom: 1px solid #EEE
+    height: 2px
+    border-left: none
