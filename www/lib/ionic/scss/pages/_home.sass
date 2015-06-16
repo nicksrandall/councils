@@ -1,6 +1,34 @@
 .pane
   &.home
     .scroll
-      height: 100%
-    .button
-      background-color: #F00
+      @extend .full-height
+
+    .row
+      .col
+        border-bottom: 2px solid #EEE
+
+        &:last-child
+          border-bottom: none
+
+    button
+      max-height: none
+
+      .icon
+        position: relative
+        top: 5px
+
+      span
+        text-transform: uppercase
+        letter-spacing: 2px
+        @extend .f12
+        position: relative
+        top: -5px
+
+    .bar-footer
+      height: auto
+
+      button
+        text-transform: uppercase
+        letter-spacing: 2px
+        @extend .f12
+        color: #69E

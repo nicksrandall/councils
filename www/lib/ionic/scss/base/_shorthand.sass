@@ -1,0 +1,66 @@
+// General layout classes
+.full-height
+  height: 100% !important
+.db
+  display: block !important
+.di
+  display: inline !important
+.dib
+  display: inline-block !important
+
+// Text positioning
+.vac
+  @include vertical-align
+.tac
+  text-align: center !important
+.tal
+  text-align: left !important
+.tar
+  text-align: right !important
+
+
+// Font sizes
+$font-sizes: 10 12 14 16 18 20 22 24 30 36
+@each $v in $font-sizes
+  .f#{$v}, .f#{$v}.icon:before
+    font-size: #{$v}px !important
+
+
+// Padding
+@for $i from 0 through 8
+  .pad#{$i*10}
+    padding: #{$i*10}px !important
+  .pad#{$i*10}t
+    padding-top: #{$i*10}px !important
+  .pad#{$i*10}b
+    padding-bottom: #{$i*10}px !important
+  .pad#{$i*10}tb
+    padding-bottom: #{$i*10}px !important
+    padding-top: #{$i*10}px !important
+  .pad#{$i*10}l
+    padding-left: #{$i*10}px !important
+  .pad#{$i*10}r
+    padding-right: #{$i*10}px !important
+  .pad#{$i*10}lr
+    padding-left: #{$i*10}px !important
+    padding-right: #{$i*10}px !important
+
+
+// Margin
+@for $i from 0 through 8
+  .mar#{$i*10}
+    margin: #{$i*10}px !important
+  .mar#{$i*10}t
+    margin-top: #{$i*10}px !important
+  .mar#{$i*10}b
+    margin-bottom: #{$i*10}px !important
+  .mar#{$i*10}tb
+    margin-bottom: #{$i*10}px !important
+    margin-top: #{$i*10}px !important
+  .mar#{$i*10}l
+    margin-left: #{$i*10}px !important
+  .mar#{$i*10}r
+    margin-right: #{$i*10}px !important
+  .mar#{$i*10}lr
+    margin-left: #{$i*10}px !important
+    margin-right: #{$i*10}px !important
