@@ -764,35 +764,43 @@
 
 /* line 7, ../lib/ionic/scss/pages/_home.sass */
 .pane.home .row .col {
+  margin-left: 20px;
+  margin-right: 20px;
   border-bottom: 2px solid #EEE;
 }
-/* line 10, ../lib/ionic/scss/pages/_home.sass */
-.pane.home .row .col:last-child {
-  border-bottom: none;
-}
-/* line 13, ../lib/ionic/scss/pages/_home.sass */
+/* line 12, ../lib/ionic/scss/pages/_home.sass */
 .pane.home button {
   max-height: none;
 }
-/* line 16, ../lib/ionic/scss/pages/_home.sass */
+/* line 15, ../lib/ionic/scss/pages/_home.sass */
 .pane.home button .icon {
   position: relative;
   top: 5px;
 }
-/* line 20, ../lib/ionic/scss/pages/_home.sass */
+/* line 19, ../lib/ionic/scss/pages/_home.sass */
 .pane.home button span {
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
   top: -5px;
 }
-/* line 27, ../lib/ionic/scss/pages/_home.sass */
+/* line 26, ../lib/ionic/scss/pages/_home.sass */
 .pane.home .bar-footer {
   height: auto;
 }
-/* line 30, ../lib/ionic/scss/pages/_home.sass */
+/* line 29, ../lib/ionic/scss/pages/_home.sass */
 .pane.home .bar-footer button {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #69E;
+}
+@media (max-width: 567px) {
+  /* line 37, ../lib/ionic/scss/pages/_home.sass */
+  .pane.home .row .col {
+    border-bottom: 2px solid #EEE;
+  }
+  /* line 40, ../lib/ionic/scss/pages/_home.sass */
+  .pane.home .row .col:last-child {
+    border-bottom: none;
+  }
 }

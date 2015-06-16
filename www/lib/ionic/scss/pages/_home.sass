@@ -5,10 +5,9 @@
 
     .row
       .col
+        margin-left: 20px
+        margin-right: 20px
         border-bottom: 2px solid #EEE
-
-        &:last-child
-          border-bottom: none
 
     button
       max-height: none
@@ -32,3 +31,11 @@
         letter-spacing: 2px
         @extend .f12
         color: #69E
+
+    @include sm
+      .row
+        .col
+          border-bottom: 2px solid #EEE
+
+          &:last-child
+            border-bottom: none
