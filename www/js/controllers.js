@@ -1,8 +1,30 @@
 // Controllers for the CouncilsApp
 angular.module('councilsApp')
 
-.controller("HomeController", ['$scope', function() {
-
+.controller("HomeController", ['$scope', function($scope) {
+  $scope.assignments = [
+    {
+      id: 1,
+      content: "Visit Juliet Schumpeter who just moved into the ward.",
+      comments: [],
+      dueDate: '2015-06-18 11:30:00',
+      completed: false
+    },
+    {
+      id: 2,
+      content: "Fiona Hayek just had a baby. Assign sister to bring Dinner.",
+      comments: [],
+      dueDate: '2015-06-17 11:30:00',
+      completed: false
+    },
+    {
+      id: 3,
+      content: "Fill the Family History Consultant calling.",
+      comments: [{},{}],
+      dueDate: '2015-06-16 11:30:00',
+      completed: false
+    }
+  ]
 }])
 
 .controller("LandingController", [ function() {

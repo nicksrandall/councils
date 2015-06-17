@@ -6,9 +6,65 @@
     <div class="title icon ion-ios-home-outline ">Home</div>
   </ion-header-bar>
 
-  <ion-content>
-  </ion-content>
+  <ion-content class="pad20">
+    <div class="row">
+      <div class="col tar">
+        <div class="icon">
+          <i class="icon ion-ios-list-outline f30"></i>
+          <span class="f12 lh34 sans pad10l">3</span>
+        </div>
+      </div>
+      <div class="col tac">
+        <div id="user-avatar" class="placeholder round" style="background-image: url('img/headshot.png')"></div>
+      </div>
+      <div class="col tal">
+        <div class="icon">
+          <i class="icon ion-ios-chatbubble-outline f30"></i>
+          <span class="f12 lh34 sans pad10l">4</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1 class="f22 tac serif mar0">David Ricardo</h1>
+      </div>
+    </div>
 
-  <div class="bar bar-footer">
-  </div>
+    <hr />
+    <h2>Personal Assignments</h2>
+    <hr />
+
+    <ion-list id="personal-assignments" ng-controller="HomeController">
+
+      <ion-item ng-repeat="assignment in assignments" class="row pad0">
+
+        <div class="col pad0">
+          <div class="row pad0">
+            <div class="col col-10 pad0lr">
+              <label class="checkbox pad0">
+                <input type="checkbox">
+              </label>
+            </div>
+            <div class="col">{{assignment.content}}</div>
+          </div>
+          <div class="row pad0lr">
+            <div class="col col-10"></div>
+            <div class="col tar pad0">
+              <div class="fl ion-ios-chatbubble-outline pad10r blue f16">
+                <span class="pad10l f12 blue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+              </div>
+              <span class="blue sans f12">{{assignment.dueDate | wordOrDate}}</span>
+            </div>
+          </div>
+        </div>
+
+
+      </ion-item>
+    </ion-list>
+
+    <hr />
+    <h2>Discussions</h2>
+    <hr />
+
+  </ion-content>
 </ion-pane>

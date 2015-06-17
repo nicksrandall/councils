@@ -97,6 +97,11 @@
   color: #EEEEEE;
 }
 
+/* line 32, ../lib/ionic/scss/base/_shorthand.sass */
+.blue {
+  color: #387491;
+}
+
 /* line 36, ../lib/ionic/scss/base/_shorthand.sass */
 .vac {
   position: relative;
@@ -1001,6 +1006,28 @@ ion-pane hr {
   .pane.landing .row .col:last-child {
     border-bottom: none;
   }
+}
+
+/* line 3, ../lib/ionic/scss/pages/_home.sass */
+.pane.home #user-avatar {
+  border-radius: 50%;
+  max-width: 200px;
+  width: 25vw;
+  height: 25vw;
+  max-height: 200px;
+  margin: 0 auto;
+  background-position: center center;
+  background-size: cover;
+  border: 2px solid #EEE;
+}
+/* line 14, ../lib/ionic/scss/pages/_home.sass */
+.pane.home #personal-assignments .item {
+  white-space: normal;
+}
+/* line 17, ../lib/ionic/scss/pages/_home.sass */
+.pane.home #personal-assignments .item span {
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* line 2, ../lib/ionic/scss/pages/_councils.sass */
