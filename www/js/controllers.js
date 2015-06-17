@@ -1,13 +1,36 @@
-// Routes for the App
-angular.module('councils')
+// Controllers for the CouncilsApp
+angular.module('councilsApp')
 
 .controller("HomeController", ['$scope', function() {
 
 }])
 
+.controller("LandingController", [ function() {
+
+}])
+
+.controller("AgendasController", ['$scope', '$stateParams', function($scope, $stateParams) {
+  $scope.agendaId = $stateParams.agendaId;
+
+  $scope.ward = [
+    {title:"Bishopric",id:1,access:true},
+    {title:"PEC",id:2,access:true},
+    {title:"Ward Council",id:3,access:false}
+  ];
+
+  $scope.stake = [
+    {title:"Presidency",id:4,access:false},
+    {title:"High Council",id:5,access:false},
+    {title:"Bishops",id:6,access:false},
+    {title:"Stake Council",id:7,access:false},
+    {title:"Bishops Welfare",id:8,access:false}
+  ];
+}])
+
 .controller("CouncilsController", ['$scope', function($scope) {
   $scope.ward = [
     {
+      id: 23,
       title: "Bishopric",
       access: true,
       assignments: [
@@ -18,6 +41,7 @@ angular.module('councils')
       ]
     },
     {
+      id: 24,
       title: "Ward Council",
       access: true,
       assignments: [

@@ -2,7 +2,7 @@ ion-pane
 
   *[ui-sref]
     cursor: pointer
-    
+
   // Page headers
   > ion-header-bar
     @extend .serif
@@ -28,6 +28,16 @@ ion-pane
 
       &:first-child
         border: none
+
+      .icon
+        margin: -7px 0
+
+      a
+        padding: 0
+        overflow: visible
+
+      &.disabled
+        @extend .grey9
 
   h1, h2, h3, h4, h5, h6
     color: #666

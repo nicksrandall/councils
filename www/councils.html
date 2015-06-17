@@ -1,34 +1,35 @@
 
 <ion-pane class="councils">
-  <ion-header-bar ui-sref="home">
+  <ion-header-bar ui-sref="landing">
+    <button class="button button-clear icon ion-ios-arrow-thin-left"></button>
     <div class="title icon ion-ios-people ">Councils</div>
   </ion-header-bar>
   <ion-content class="pad20lr pad20t">
 
     <hr />
-    <h2>Ward Councils</h2>
+    <h2>Stake Councils</h2>
     <hr />
     <ion-list ng-controller="CouncilsController">
-      <ion-item ng-repeat="organization in ward">
+      <ion-item ng-repeat="organization in stake" ng-class="{disabled: !organization.access}">
 
         {{organization.title}}
 
-        <div ng-show="organization.access && organization.comments.length" class="fr">
+        <div ng-show="organization.access && organization.comments.length" class="fr icon" ui-sref="council_detail({tab:'discussions',id: organization.id})">
           <i class="icon ion-ios-chatbubble-outline f30"></i>
           <span class="f12 lh34 sans fr pad10lr">{{organization.comments.length}}</span>
         </div>
 
-        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r">
+        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r icon" ui-sref="council_detail({tab:'assignments',id: organization.id})">
           <i class="icon ion-ios-list-outline f30"></i>
           <span class="f12 lh34 sans fr pad10lr">{{organization.assignments.length}}</span>
         </div>
 
-        <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r">
+        <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r icon">
           <i class="icon ion-ios-list-outline f30 greyD"></i>
           <span class="f12 lh34 sans fr pad10lr greyD">{{organization.assignments.length}}</span>
         </div>
 
-        <div ng-hide="organization.access" class="fr pad10r">
+        <div ng-hide="organization.access" class="fr pad10r icon">
           <i class="icon ion-ios-locked-outline f30 greyD"></i>
         </div>
 
@@ -36,29 +37,29 @@
     </ion-list>
 
     <hr />
-    <h2>Stake Councils</h2>
+    <h2>Ward Councils</h2>
     <hr />
     <ion-list ng-controller="CouncilsController">
-      <ion-item ng-repeat="organization in stake">
+      <ion-item ng-repeat="organization in ward" ng-class="{disabled: !organization.access}">
 
         {{organization.title}}
 
-        <div ng-show="organization.access && organization.comments.length" class="fr">
+        <div ng-show="organization.access && organization.comments.length" class="fr icon" ui-sref="council_detail({tab:'discussions',id: organization.id})">
           <i class="icon ion-ios-chatbubble-outline f30"></i>
           <span class="f12 lh34 sans fr pad10lr">{{organization.comments.length}}</span>
         </div>
 
-        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r">
+        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r icon" ui-sref="council_detail({tab:'assignments',id: organization.id})">
           <i class="icon ion-ios-list-outline f30"></i>
           <span class="f12 lh34 sans fr pad10lr">{{organization.assignments.length}}</span>
         </div>
 
-        <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r">
+        <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r icon">
           <i class="icon ion-ios-list-outline f30 greyD"></i>
           <span class="f12 lh34 sans fr pad10lr greyD">{{organization.assignments.length}}</span>
         </div>
 
-        <div ng-hide="organization.access" class="fr pad10r">
+        <div ng-hide="organization.access" class="fr pad10r icon">
           <i class="icon ion-ios-locked-outline f30 greyD"></i>
         </div>
 

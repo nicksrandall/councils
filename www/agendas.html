@@ -1,0 +1,40 @@
+
+<ion-pane class="councils">
+  <ion-header-bar ui-sref="landing">
+    <button class="button button-clear icon ion-ios-arrow-thin-left"></button>
+    <div class="title icon ion-ios-list-outline ">Agendas</div>
+  </ion-header-bar>
+  <ion-content class="pad20lr pad20t">
+
+    <hr />
+    <h2>Stake Agendas</h2>
+    <hr />
+    <ion-list ng-controller="AgendasController">
+      <ion-item ng-repeat="organization in stake" ng-class="{disabled: !organization.access}" ui-sref="{{ organization.access ? 'agendas_detail' : '.'}}">
+
+        {{organization.title}}
+
+        <div ng-hide="organization.access" class="fr pad10r icon">
+          <i class="icon ion-ios-locked-outline f30 greyD"></i>
+        </div>
+
+      </ion-item>
+    </ion-list>
+
+    <hr />
+    <h2>Ward Agendas</h2>
+    <hr />
+    <ion-list ng-controller="AgendasController">
+      <ion-item ng-repeat="organization in ward" ng-class="{disabled: !organization.access}" ui-sref="{{ organization.access ? 'agenda_detail({agendaId:organization.id})' : '.'}}">
+
+        {{organization.title}}
+
+        <div ng-hide="organization.access" class="fr pad10r icon">
+          <i class="icon ion-ios-locked-outline f30 greyD"></i>
+        </div>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-pane>

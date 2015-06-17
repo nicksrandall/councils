@@ -13,7 +13,7 @@
 }
 
 /* line 8, ../lib/ionic/scss/base/_shorthand.sass */
-.full-height, .pane.home ion-content {
+.full-height, .pane.landing ion-content {
   height: 100% !important;
 }
 
@@ -73,7 +73,7 @@
 }
 
 /* line 32, ../lib/ionic/scss/base/_shorthand.sass */
-.grey9 {
+.grey9, ion-pane .list > .item.disabled {
   color: #999999;
 }
 
@@ -127,7 +127,7 @@
 }
 
 /* line 49, ../lib/ionic/scss/base/_shorthand.sass */
-.f12, ion-pane h2, .pane.home button span, .pane.home .bar-footer button, .f12.icon:before, ion-pane h2.icon:before, .pane.home button span.icon:before, .pane.home .bar-footer button.icon:before {
+.f12, ion-pane h2, .pane.landing button span, .pane.landing .bar-footer button, .f12.icon:before, ion-pane h2.icon:before, .pane.landing button span.icon:before, .pane.landing .bar-footer button.icon:before {
   font-size: 12px !important;
 }
 
@@ -932,15 +932,24 @@ ion-pane .list > .item:first-child {
   border: none;
 }
 /* line 32, ../lib/ionic/scss/base/_common.sass */
+ion-pane .list > .item .icon {
+  margin: -7px 0;
+}
+/* line 35, ../lib/ionic/scss/base/_common.sass */
+ion-pane .list > .item a {
+  padding: 0;
+  overflow: visible;
+}
+/* line 42, ../lib/ionic/scss/base/_common.sass */
 ion-pane h1, ion-pane h2, ion-pane h3, ion-pane h4, ion-pane h5, ion-pane h6 {
   color: #666;
 }
-/* line 35, ../lib/ionic/scss/base/_common.sass */
+/* line 45, ../lib/ionic/scss/base/_common.sass */
 ion-pane h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-/* line 43, ../lib/ionic/scss/base/_common.sass */
+/* line 53, ../lib/ionic/scss/base/_common.sass */
 ion-pane hr {
   border-top: 4px double #EEE;
   border-right: none;
@@ -949,52 +958,52 @@ ion-pane hr {
   border-left: none;
 }
 
-/* line 7, ../lib/ionic/scss/pages/_home.sass */
-.pane.home .row .col {
+/* line 7, ../lib/ionic/scss/pages/_landing.sass */
+.pane.landing .row .col {
   margin-left: 20px;
   margin-right: 20px;
   border-bottom: 2px solid #EEE;
 }
-/* line 12, ../lib/ionic/scss/pages/_home.sass */
-.pane.home button {
+/* line 12, ../lib/ionic/scss/pages/_landing.sass */
+.pane.landing button {
   max-height: none;
 }
-/* line 15, ../lib/ionic/scss/pages/_home.sass */
-.pane.home button .icon {
+/* line 15, ../lib/ionic/scss/pages/_landing.sass */
+.pane.landing button .icon {
   position: relative;
   top: 5px;
 }
-/* line 19, ../lib/ionic/scss/pages/_home.sass */
-.pane.home button span {
+/* line 19, ../lib/ionic/scss/pages/_landing.sass */
+.pane.landing button span {
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
   top: -5px;
 }
-/* line 26, ../lib/ionic/scss/pages/_home.sass */
-.pane.home .bar-footer {
+/* line 26, ../lib/ionic/scss/pages/_landing.sass */
+.pane.landing .bar-footer {
   height: auto;
 }
-/* line 29, ../lib/ionic/scss/pages/_home.sass */
-.pane.home .bar-footer button {
+/* line 29, ../lib/ionic/scss/pages/_landing.sass */
+.pane.landing .bar-footer button {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #69E;
 }
 @media (max-width: 567px) {
-  /* line 37, ../lib/ionic/scss/pages/_home.sass */
-  .pane.home .row .col {
+  /* line 37, ../lib/ionic/scss/pages/_landing.sass */
+  .pane.landing .row .col {
     border-bottom: 2px solid #EEE;
     margin-left: 0px;
     margin-right: 0px;
   }
-  /* line 42, ../lib/ionic/scss/pages/_home.sass */
-  .pane.home .row .col:last-child {
+  /* line 42, ../lib/ionic/scss/pages/_landing.sass */
+  .pane.landing .row .col:last-child {
     border-bottom: none;
   }
 }
 
-/* line 4, ../lib/ionic/scss/pages/_councils.sass */
-.pane.councils ion-item > div {
-  margin: -7px 0;
+/* line 2, ../lib/ionic/scss/pages/_councils.sass */
+.pane.councils {
+  display: block;
 }
