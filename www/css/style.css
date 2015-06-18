@@ -1025,12 +1025,24 @@ ion-pane hr {
   background-size: cover;
   border: 2px solid #EEE;
 }
-/* line 14, ../../scss/pages/_home.sass */
-.pane.home #personal-assignments .item {
+/* line 15, ../../scss/pages/_home.sass */
+.pane.home #personal-assignments .item, .pane.home #discussions .item {
   white-space: normal;
 }
-/* line 17, ../../scss/pages/_home.sass */
-.pane.home #personal-assignments .item span {
+/* line 18, ../../scss/pages/_home.sass */
+.pane.home #personal-assignments .item span, .pane.home #discussions .item span {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* line 22, ../../scss/pages/_home.sass */
+.pane.home #personal-assignments .item img, .pane.home #discussions .item img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #EEE;
+}
+/* line 28, ../../scss/pages/_home.sass */
+.pane.home #personal-assignments .item .username, .pane.home #personal-assignments .item .date, .pane.home #discussions .item .username, .pane.home #discussions .item .date {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
