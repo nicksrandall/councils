@@ -5,7 +5,7 @@ angular.module('councilsApp')
   return function() {}
 }])
 
-.factory("HymnService", ['$scope', function( $scope ) {
+.factory("HymnService", function( ) {
   var hymns = [
     "The Morning Breaks",
     "The Spirit of God",
@@ -356,8 +356,8 @@ angular.module('councilsApp')
     },
     getHymn: function(id) {
       if(id > 341 || id < 1)
-        return "Invalid Hymn Number (id)";
+        return "Invalid Hymn Number (" + id + ")";
       return hymns[id-1];
     }
   }
-}])
+})
