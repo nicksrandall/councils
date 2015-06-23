@@ -1,76 +1,161 @@
 APIs needed for church data:
+----------------------------
+lds.io is down as of June 1, 2015. According to
+https://groups.google.com/forum/#!topic/lds-io/NA96Bz1zIkM
+it might be a while until it's back up, but it does sound
+like it's going to happen.
 
 
 
-APIs needed for misc data:
+Firebase Data Structure:
 --------------------------
-AssignmentById (assignment,)
-  Tx:
-  { assignmentId: 3221 }
 
-  Rx:
-  {
-    creatorId: 123,
-    dueAt:
+Recommended Indices marked with **
+
+Assignments will be used on the home page, the assignments tab of councils, and
+in the assignment view. Though this is nested pretty deep, all the information
+is necessary for each of the three views (except participants). Since comments
+will never be shared across assignments, it makes sense to nest them also. The
+participants are indexed as they're only needed on the assignment view.
+
+{
+  "assignments" : {
+    "0" : {
+      "content" : "Visit the Family History Center",
+      "dueAt" : "2015-06-20 11:00:00", **
+      "createdBy" : "123",
+      "assignedTo_id" : "123", **
+      "assignedTo_avatar" : "avatar.jpg",
+      "assignedTo_name" : "David Ricardo",
+      "participants" : {
+        "123" : true,
+        "24" : true,
+        "22" : true
+      },
+      "comments" : {
+        "0" : {
+          "content" : "I'll come too",
+          "createdAt" : "2015-06-21 10:34:23", **
+          "user_avatar" : "avatar2.jpg",
+          "user_name" : "Adelle Smith",
+          "user_id" : "24"
+        },
+        "1" : {
+          "content" : "I'll be there",
+          "createdAt" : "2015-06-21 10:32:24",
+          "user_avatar" : "avatar1.jpg",
+          "user_name" : "Thomas Compton",
+          "user_id" : "22"
+        }
+      }
+    },
+    "1" : {
+      "content" : "Fill Ward Mission Leader position",
+      "dueAt" : "2015-06-23 12:00:00",
+      "createdBy" : "123",
+      "participants" : {
+        "123" : true,
+        "24" : true,
+        "23" : true
+      },
+      "comments" :
+        "0" : {
+          "content" : "I feel Jim would be a good fit.",
+          "createdAt" : "2015-06-21 10:34:23",
+          "user_avatar" : "avatar3.jpg",
+          "user_name" : "Spencer Atkins",
+          "user_id" : "23"
+        },
+        "1" : {
+          "content" : "Any thoughts?",
+          "createdAt" : "2015-06-21 10:34:23",
+          "user_avatar" : "avatar2.jpg",
+          "user_name" : "Adelle Smith",
+          "user_id" : "24"
+        }
+      }
+    },
+    {...},
+    {...}
+  ],
+
+
+Discussions will be used on the Home page, the discussions tab, and the
+discussion view. Basically the same as an Assignment. Participants are indexed,
+as well as the createdBy user Id, since
+
+  "discussions" : {
+    "0" : {
+      "content" : "Do we have any volunteers for refreshments?",
+      "dueAt" : "2015-06-20 11:00:00",
+      "createdBy" : "123",
+      "participants" : {
+        "123" : true,
+        "24" : true,
+        "22" : true
+      },
+      "comments" : {
+        "0" : {
+          "content" : "I can bring chips",
+          "createdAt" : "2015-06-21 10:34:23",
+          "user_avatar" : "avatar2.jpg",
+          "user_name" : "Adelle Smith",
+          "user_id" : "24"
+        },
+        "1" : {
+          "content" : "I'll bring some cheese and crackers.",
+          "createdAt" : "2015-06-21 10:32:24",
+          "user_avatar" : "avatar1.jpg",
+          "user_name" : "Thomas Compton",
+          "user_id" : "22"
+        }
+      }
+    },
+    "1" : {
+      "content" : "Could somebody go on splits with the missionaries on Tuesday?",
+      "dueAt" : "2015-06-24 18:00:00",
+      "createdBy" : "123",
+      "participants" : {
+        "123" : true,
+        "24" : true,
+        "23" : true
+      },
+      "comments" : {
+        "0" : {
+          "content" : "I can make it.",
+          "createdAt" : "2015-06-23 10:34:23",
+          "user_avatar" : "avatar3.jpg",
+          "user_name" : "Spencer Atkins",
+          "user_id" : "23"
+        },
+        "1" : {
+          "content" : "I work late on Tuesday this week.",
+          "createdAt" : "2015-06-23 10:34:23",
+          "user_avatar" : "avatar2.jpg",
+          "user_name" : "Adelle Smith",
+          "user_id" : "24"
+        }
+      }
+    },
+    {...},
+    {...}
+  },
+
+
+Users will be used on many views. To maintain quick lookups, we also need to
+keep an index of the discussions and assignments of which they are a part (this
+is in addition to the index stored on each discussion/assignment object).
+
+  "users" : {
+    "24" : {
+      "user_name" : "Adelle Smith",
+      "user_avatar" : "avatar2.jpg",
+      "discussions" : {
+        "0" : true,
+        "1" : true
+      },
+      "assignments" : {
+        "0" : true
+      }
+    }
   }
-
-AssignmentsByUser (home,)
-  Tx:
-  { userId: 123 }
-
-  Rx:
-  [
-    {
-      assignmentId: 34,
-      content: "Visit the Family History Center",
-      dueAt: 12/13/2014 08:00:00,
-      comments: [
-        {
-          userId: 89,
-          full_name: "Adelle Smith", ?
-          user_avatar: "avatar2.jpg", ?
-          content: "I'll come too",
-          createdAt: 12/12/2014 06:23:43
-        },
-        {
-          userId: 67,
-          full_name: "Franklin Smith", ?
-          user_avatar: "avatar4.jpg", ?
-          content: "Cool. Have fun.",
-          createdAt: 12/12/2014 06:34:43
-        }
-      ]
-
-    }
-  ]
-
-DiscussionsByUser (home,)
-  Tx:
-  { userId: 123 }
-
-  Rx:
-  [
-    {
-      creatorId: 123,
-      full_name: "david ricardo",
-      user_avatar: "avatar.jpg", ?
-      createdAt: 12/12/2014 05:23:43, ?
-      content: "Do we have any volunteers",
-      comments: [
-        {
-          userId: 32,
-          full_name: "Adelle Smith", ?
-          user_avatar: "avatar2.jpg", ?
-          content: "I can help out",
-          createdAt: 12/12/2014 06:23:43
-        },
-        {
-          userId: 53,
-          full_name: "Franklin Smith", ?
-          user_avatar: "avatar4.jpg", ?
-          content: "I'll be there, too.",
-          createdAt: 12/12/2014 06:34:43
-        }
-      ]
-    }
-  ]
