@@ -16,7 +16,7 @@ angular.module('councilsApp')
     controller: "LandingController"
   })
 
-  $stateProvider.state('council_list', {
+  $stateProvider.state('councils', {
     url: "/councils/list",
     templateUrl: "councils.html",
     controller: "CouncilsController"
@@ -24,8 +24,25 @@ angular.module('councilsApp')
 
   $stateProvider.state('council_detail', {
     url: "/councils/detail",
-    templateUrl: "councils_detail.html",
-    controller: "CouncilsController"
+    templateUrl: "councils_layout.html"
+  })
+
+  $stateProvider.state('council_detail.discussions', {
+    url: '/councils/detail/discussions',
+    views: {
+      infoPane: {
+        templateUrl: 'councils_discussions.html'
+      }
+    }
+  })
+
+  $stateProvider.state('council_detail.assignments', {
+    url: '/councils/detail/assignments',
+    views: {
+      infoPane: {
+        templateUrl: 'councils_assignments.html'
+      }
+    }
   })
 
   $stateProvider.state('agenda_list', {

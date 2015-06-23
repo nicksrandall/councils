@@ -1,7 +1,16 @@
 
 <ion-pane class="councils_detail">
-  <ion-header-bar ui-sref="council_list">
+  <ion-header-bar ui-sref="councils">
     <button class="button button-clear icon ion-ios-arrow-thin-left"></button>
     <div class="title icon ion-ios-people ">Bishopric</div>
+    <div>
+      <a href="#">Discussions</a>
+      <a href="#">Assignments</a>
+    </div>
   </ion-header-bar>
+
+  <ion-content>
+    <div ui-view name="infoPane"></div>
+  </ion-content>
+
 </ion-pane>
