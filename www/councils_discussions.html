@@ -1,2 +1,35 @@
 
-  <h1>Council Discussions</h1>
+<button class="button button-block button-outline mar0 mar20b">
+  <i class="icon ion-ios-chatbubble-outline"></i>
+  <span>Create New Discussion</span>
+</button>
+
+<hr class="plain" />
+
+<ion-list id="discussions">
+
+  <ion-item ng-repeat="discussion in discussions" class="row pad0">
+
+    <div class="col pad0">
+      <div class="row pad0">
+        <div class="col col-10 pad0lr">
+          <img src="img/{{discussion.userAvatar}}" />
+        </div>
+        <div class="col">
+          <div class="date fr greyC sans f12">{{discussion.createdDate | wordOrDate}}</div>
+          <div class="username f12 sans greyC">{{discussion.userName}}</div>
+          <div class="content">{{discussion.content}}</div>
+        </div>
+      </div>
+      <div class="row pad0lr">
+        <div class="col col-10"></div>
+        <div class="col tar pad0">
+          <div class="fl ion-ios-chatbubble-outline pad10r cBlue f16">
+            <span class="pad10l f12 cBlue sans" ng-show="discussion.comments.length">{{assignment.comments.length}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ion-item>
+</ion-list>

@@ -1,16 +1,29 @@
 
-<ion-pane class="councils_detail">
+<ion-pane class="councils_detail" ng-controller="CouncilsController">
+
   <ion-header-bar ui-sref="councils">
     <button class="button button-clear icon ion-ios-arrow-thin-left"></button>
     <div class="title icon ion-ios-people ">Bishopric</div>
-    <div>
-      <a href="#">Discussions</a>
-      <a href="#">Assignments</a>
-    </div>
   </ion-header-bar>
 
-  <ion-content>
-    <div ui-view name="infoPane"></div>
+  <div class="tab-menu tac">
+    <a ui-sref="council_detail.discussions" ng-class={'selected':($root.currentTab=='discussions')}>Discussions</a>
+    <a ui-sref="council_detail.assignments" ng-class={'selected':($root.currentTab=='assignments')}>Assignments</a>
+  </div>
+<!--
+  <ion-nav-bar class="bar-energized tab-menu tac db">
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button>
+    <a ui-sref="council_detail.discussions">Discussions</a>
+    <a ui-sref="council_detail.assignments">Assignments</a>
+  </ion-nav-bar>
+-->
+
+  <ion-content class="pad30t">
+    <div ui-view name="infoPane" class="pad20">
+
+    </div>
   </ion-content>
 
 </ion-pane>

@@ -28,18 +28,24 @@ angular.module('councilsApp')
   })
 
   $stateProvider.state('council_detail.discussions', {
-    url: '/councils/detail/discussions',
+    url: '/discussions',
     views: {
       infoPane: {
+        controller: function($rootScope) {
+          $rootScope.currentTab = "discussions";
+        },
         templateUrl: 'councils_discussions.html'
       }
     }
   })
 
   $stateProvider.state('council_detail.assignments', {
-    url: '/councils/detail/assignments',
+    url: '/assignments',
     views: {
       infoPane: {
+        controller: function($rootScope) {
+          $rootScope.currentTab = "assignments";
+        },
         templateUrl: 'councils_assignments.html'
       }
     }
