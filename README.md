@@ -56,3 +56,16 @@ npm install -g ios-sim
 ionic emulate ios
 ```
 
+#### Automated Testing: ####
+
+Run the Ionic mini-server with:
+
+```
+ionic serve
+```
+
+Then remove ```#/``` from the url and add ```/test``` to the end so the url looks like:
+
+```
+http://{{domain}}:{{port}}/test
+```
