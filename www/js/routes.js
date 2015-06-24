@@ -39,6 +39,11 @@ angular.module('councilsApp')
     }
   })
 
+  $stateProvider.state('new_discussion', {
+    url: "/discussion/new",
+    templateUrl: "councils_discussions_new.html"
+  })
+
   $stateProvider.state('council_detail.assignments', {
     url: '/assignments',
     views: {

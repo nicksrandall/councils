@@ -10,16 +10,7 @@
     <a ui-sref="council_detail.discussions" ng-class={'selected':($root.currentTab=='discussions')}>Discussions</a>
     <a ui-sref="council_detail.assignments" ng-class={'selected':($root.currentTab=='assignments')}>Assignments</a>
   </div>
-<!--
-  <ion-nav-bar class="bar-energized tab-menu tac db">
-    <ion-nav-back-button class="button-clear">
-      <i class="ion-arrow-left-c"></i> Back
-    </ion-nav-back-button>
-    <a ui-sref="council_detail.discussions">Discussions</a>
-    <a ui-sref="council_detail.assignments">Assignments</a>
-  </ion-nav-bar>
--->
-
+  
   <ion-content class="pad30t">
     <div ui-view name="infoPane" class="pad20">
 
