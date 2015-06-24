@@ -153,4 +153,31 @@ angular.module('councilsApp')
       createdDate: '2015-06-16T11:30:00'
     }
   ]
+
+  $scope.assignments = [
+    {
+      id: 1,
+      userName: "John Say",
+      content: "Visit Juliet Schumpeter who just moved into the ward.",
+      comments: [],
+      dueDate: '2015-06-18T11:30:00',
+      completed: false
+    },
+    {
+      id: 2,
+      userName: "Adelle Smith",
+      content: "Fiona Hayek just had a baby. Assign sister to bring Dinner.",
+      comments: [],
+      dueDate: '2015-06-17T11:30:00',
+      completed: false
+    },
+    {
+      id: 3,
+      userName: "David Ricardo",
+      content: "Fill the Family History Consultant calling.",
+      comments: [{},{}],
+      dueDate: '2015-06-16T11:30:00',
+      completed: false
+    }
+  ]
 }])
