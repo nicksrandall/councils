@@ -30,9 +30,9 @@
 $colors: grey3 #333333, grey6 #666666, grey9 #999999, greyA #AAAAAA, greyC #CCCCCC, greyD #DDDDDD, greyE #EEEEEE, cBlue #387491
 @each $kvp in $colors
   .#{nth($kvp, 1)}
-    color: nth($kvp, 2)
+    color: nth($kvp, 2) !important
   .#{nth($kvp, 1)}-border
-    border-color: nth($kvp, 2)
+    border-color: nth($kvp, 2) !important
 
 // Text positioning
 .vac

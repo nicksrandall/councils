@@ -6,10 +6,21 @@
     <button class="button button-outline cBlue-border cBlue">Create</button>
   </ion-header-bar>
 
-  <ion-content class="pad30t">
-    <div ui-view name="infoPane" class="pad20">
+  <hr class="plain mar60t mar10lr" />
 
+  <ion-content class="pad10 pad20t">
+
+    <textarea name="content" placeholder="Start new discussion" auto-resize></textarea>
+
+    <hr class="plain" />
+
+    <div class="cBlue">
+      <i class="icon ion-ios-people f24"></i>
+      <span class="modal-trigger">Add Participants</span>
     </div>
+
+    <hr class="plain" />
+
   </ion-content>
 
 </ion-pane>

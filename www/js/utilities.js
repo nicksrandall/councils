@@ -1,10 +1,15 @@
 // Utilities for CouncilsApp
+
+// Add or subtract (with - numbers) the specified number of days
+// from the current date object
 Date.prototype.addDays = function(days) {
   //Get current date from date object
   var newDate = new Date(this.valueOf());
   newDate.setDate(newDate.getDate() + days);
   return newDate;
-}
+};
+
+// Get the Full english month string of the current date object
 Date.prototype.getMonthString = function() {
   var englishMonths = [
     "January",
@@ -21,7 +26,9 @@ Date.prototype.getMonthString = function() {
     "December"
   ];
   return englishMonths[ this.getMonth() ]
-}
+};
+
+// Get suffix for the date of the current date object
 Date.prototype.getOrdinalSuffix = function() {
   switch( this.getDate() ) {
     case 1:
@@ -44,4 +51,55 @@ Date.prototype.getOrdinalSuffix = function() {
       suffix = "th";
   }
   return suffix;
-}
+};
+
+// Set textareas to shrink/expand with amount of content
+(function() {
+  HTMLTextAreaElement.prototype.autoResize = function() {
+    // Create an object that will be for size reference
+    var clone = document.createElement("div");
+
+    var clonable_attributes = [
+      "padding",
+      "padding-top",
+      "padding-bottom",
+      "padding-left",
+      "padding-right",
+      "font-family",
+      "font-size",
+      "line-height",
+      "font",
+      "width",
+      "min-height",
+      "word-wrap",
+      "white-space"
+    ]
+
+    // Copy size/layout specific styles to clone
+    var styles = window.getComputedStyle(this,null);
+    for ( var attr in clonable_attributes) {
+      var val = styles.getPropertyValue([clonable_attributes[attr]]);
+      clone.style[clonable_attributes[attr]] = val;
+    }
+
+    // Place the clone div right behind the textarea
+    clone.style.display = "block";
+    clone.style.position = "absolute";
+    clone.style.zIndex = "-10";
+    clone.style.top = "0";
+
+    // Add clone to same parent as the textarea
+    this.parentNode.appendChild(clone);
+
+    var adjustTextareaToFitContent = function() {
+      clone.innerText = this.value;
+      var cloneHeight = parseInt(window.getComputedStyle(clone,null).getPropertyValue('height'));
+      cloneHeight += parseInt(clone.style.lineHeight);
+      this.style.height = cloneHeight + "px";
+    }
+
+    // bind to keyup event for resizing
+    this.addEventListener("keyup", adjustTextareaToFitContent);
+    adjustTextareaToFitContent.apply(this);
+  }
+})();

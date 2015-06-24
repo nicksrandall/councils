@@ -1,6 +1,30 @@
 .pane
   &.new_discussion
-    
+    .modal-trigger
+      text-transform: uppercase
+      letter-spacing: 1px
+      position: relative
+      top: -3px
+      padding-left: 5px
+
+    ion-header-bar
+      padding: 10px
+      height: auto
+      border-bottom: none
+
+      button
+        padding: 5px 10px
+        text-transform: uppercase
+        letter-spacing: 1px
+        border-radius: 5px
+        max-height: 40px
+
+        &.button:last-child //extra specific for override default button
+          top: 10px
+          right: 10px
+
+          &.activated
+            background-color: #BFE1F2
 
   &.councils_detail
     ion-header-bar

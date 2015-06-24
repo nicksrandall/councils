@@ -4,3 +4,4 @@
 //@prepros-append controllers.js
 //@prepros-append services.js
 //@prepros-append filters.js
+//@prepros-append directives.js
