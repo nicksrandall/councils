@@ -28,7 +28,7 @@
 }
 
 /* line 14, ../../scss/base/_shorthand.sass */
-.dib {
+.dib, .pane.councils_detail .tab-menu a {
   display: inline-block !important;
 }
 
@@ -67,14 +67,29 @@
   color: #333333;
 }
 
+/* line 34, ../../scss/base/_shorthand.sass */
+.grey3-border {
+  border-color: #333333;
+}
+
 /* line 32, ../../scss/base/_shorthand.sass */
 .grey6 {
   color: #666666;
 }
 
+/* line 34, ../../scss/base/_shorthand.sass */
+.grey6-border {
+  border-color: #666666;
+}
+
 /* line 32, ../../scss/base/_shorthand.sass */
-.grey9, ion-pane .list > .item.disabled {
+.grey9, ion-pane .list > .item.disabled, .pane.councils_detail .tab-menu a {
   color: #999999;
+}
+
+/* line 34, ../../scss/base/_shorthand.sass */
+.grey9-border {
+  border-color: #999999;
 }
 
 /* line 32, ../../scss/base/_shorthand.sass */
@@ -82,9 +97,19 @@
   color: #AAAAAA;
 }
 
+/* line 34, ../../scss/base/_shorthand.sass */
+.greyA-border {
+  border-color: #AAAAAA;
+}
+
 /* line 32, ../../scss/base/_shorthand.sass */
 .greyC {
   color: #CCCCCC;
+}
+
+/* line 34, ../../scss/base/_shorthand.sass */
+.greyC-border {
+  border-color: #CCCCCC;
 }
 
 /* line 32, ../../scss/base/_shorthand.sass */
@@ -92,17 +117,32 @@
   color: #DDDDDD;
 }
 
+/* line 34, ../../scss/base/_shorthand.sass */
+.greyD-border {
+  border-color: #DDDDDD;
+}
+
 /* line 32, ../../scss/base/_shorthand.sass */
 .greyE {
   color: #EEEEEE;
 }
 
+/* line 34, ../../scss/base/_shorthand.sass */
+.greyE-border {
+  border-color: #EEEEEE;
+}
+
 /* line 32, ../../scss/base/_shorthand.sass */
-.cBlue {
+.cBlue, .pane.councils_detail ion-content button i, .pane.councils_detail ion-content button span {
   color: #387491;
 }
 
-/* line 36, ../../scss/base/_shorthand.sass */
+/* line 34, ../../scss/base/_shorthand.sass */
+.cBlue-border, .pane.councils_detail ion-content button {
+  border-color: #387491;
+}
+
+/* line 38, ../../scss/base/_shorthand.sass */
 .vac {
   position: relative;
   top: 50%;
@@ -111,802 +151,802 @@
   transform: translate(0px -50%);
 }
 
-/* line 38, ../../scss/base/_shorthand.sass */
+/* line 40, ../../scss/base/_shorthand.sass */
 .tac, ion-pane h2 {
   text-align: center !important;
 }
 
-/* line 40, ../../scss/base/_shorthand.sass */
+/* line 42, ../../scss/base/_shorthand.sass */
 .tal {
   text-align: left !important;
 }
 
-/* line 42, ../../scss/base/_shorthand.sass */
+/* line 44, ../../scss/base/_shorthand.sass */
 .tar {
   text-align: right !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f10, .f10.icon:before {
   font-size: 10px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
-.f12, ion-pane h2, .pane.landing button span, .pane.landing .bar-footer button, .f12.icon:before, ion-pane h2.icon:before, .pane.landing button span.icon:before, .pane.landing .bar-footer button.icon:before {
+/* line 51, ../../scss/base/_shorthand.sass */
+.f12, ion-pane h2, .pane.landing button span, .pane.landing .bar-footer button, .pane.councils_detail .tab-menu a, .pane.councils_detail ion-content button span, .f12.icon:before, ion-pane h2.icon:before, .pane.landing button span.icon:before, .pane.landing .bar-footer button.icon:before, .pane.councils_detail .tab-menu a.icon:before, .pane.councils_detail ion-content button span.icon:before {
   font-size: 12px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f14, .f14.icon:before {
   font-size: 14px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f16, ion-pane .list > .item, .f16.icon:before, ion-pane .list > .icon.item:before {
   font-size: 16px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f18, .f18.icon:before {
   font-size: 18px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f20, .f20.icon:before {
   font-size: 20px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f22, .f22.icon:before {
   font-size: 22px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f24, ion-pane > ion-header-bar .title:before, .f24.icon:before, ion-pane > ion-header-bar .icon.title:before {
   font-size: 24px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
-.f30, .f30.icon:before {
+/* line 51, ../../scss/base/_shorthand.sass */
+.f30, .pane.councils_detail ion-content button i, .f30.icon:before, .pane.councils_detail ion-content button i.icon:before {
   font-size: 30px !important;
 }
 
-/* line 49, ../../scss/base/_shorthand.sass */
+/* line 51, ../../scss/base/_shorthand.sass */
 .f36, .f36.icon:before {
   font-size: 36px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh10 {
   line-height: 10px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh12 {
   line-height: 12px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh14 {
   line-height: 14px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh16 {
   line-height: 16px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh18 {
   line-height: 18px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh20 {
   line-height: 20px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh22 {
   line-height: 22px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh24 {
   line-height: 24px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh26 {
   line-height: 26px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh28 {
   line-height: 28px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh30 {
   line-height: 30px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh32 {
   line-height: 32px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh34 {
   line-height: 34px !important;
 }
 
-/* line 54, ../../scss/base/_shorthand.sass */
+/* line 56, ../../scss/base/_shorthand.sass */
 .lh36 {
   line-height: 36px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad0 {
   padding: 0px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad0t {
   padding-top: 0px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad0b {
   padding-bottom: 0px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad0tb {
   padding-bottom: 0px !important;
   padding-top: 0px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad0l {
   padding-left: 0px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad0r {
   padding-right: 0px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad0lr, ion-pane .list > .item {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad10 {
   padding: 10px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad10t {
   padding-top: 10px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad10b {
   padding-bottom: 10px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad10tb, ion-pane .list > .item {
   padding-bottom: 10px !important;
   padding-top: 10px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad10l {
   padding-left: 10px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad10r {
   padding-right: 10px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad10lr {
   padding-left: 10px !important;
   padding-right: 10px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad20 {
   padding: 20px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad20t {
   padding-top: 20px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad20b {
   padding-bottom: 20px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad20tb {
   padding-bottom: 20px !important;
   padding-top: 20px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad20l {
   padding-left: 20px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad20r {
   padding-right: 20px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad20lr {
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad30 {
   padding: 30px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad30t {
   padding-top: 30px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad30b {
   padding-bottom: 30px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad30tb {
   padding-bottom: 30px !important;
   padding-top: 30px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad30l {
   padding-left: 30px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad30r {
   padding-right: 30px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad30lr {
   padding-left: 30px !important;
   padding-right: 30px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad40 {
   padding: 40px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad40t {
   padding-top: 40px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad40b {
   padding-bottom: 40px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad40tb {
   padding-bottom: 40px !important;
   padding-top: 40px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad40l {
   padding-left: 40px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad40r {
   padding-right: 40px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad40lr {
   padding-left: 40px !important;
   padding-right: 40px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad50 {
   padding: 50px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad50t {
   padding-top: 50px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad50b {
   padding-bottom: 50px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad50tb {
   padding-bottom: 50px !important;
   padding-top: 50px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad50l {
   padding-left: 50px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad50r {
   padding-right: 50px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad50lr {
   padding-left: 50px !important;
   padding-right: 50px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad60 {
   padding: 60px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad60t {
   padding-top: 60px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad60b {
   padding-bottom: 60px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad60tb {
   padding-bottom: 60px !important;
   padding-top: 60px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad60l {
   padding-left: 60px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad60r {
   padding-right: 60px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad60lr {
   padding-left: 60px !important;
   padding-right: 60px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad70 {
   padding: 70px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad70t {
   padding-top: 70px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad70b {
   padding-bottom: 70px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad70tb {
   padding-bottom: 70px !important;
   padding-top: 70px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad70l {
   padding-left: 70px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad70r {
   padding-right: 70px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad70lr {
   padding-left: 70px !important;
   padding-right: 70px !important;
 }
 
-/* line 60, ../../scss/base/_shorthand.sass */
+/* line 62, ../../scss/base/_shorthand.sass */
 .pad80 {
   padding: 80px !important;
 }
 
-/* line 62, ../../scss/base/_shorthand.sass */
+/* line 64, ../../scss/base/_shorthand.sass */
 .pad80t {
   padding-top: 80px !important;
 }
 
-/* line 64, ../../scss/base/_shorthand.sass */
+/* line 66, ../../scss/base/_shorthand.sass */
 .pad80b {
   padding-bottom: 80px !important;
 }
 
-/* line 66, ../../scss/base/_shorthand.sass */
+/* line 68, ../../scss/base/_shorthand.sass */
 .pad80tb {
   padding-bottom: 80px !important;
   padding-top: 80px !important;
 }
 
-/* line 69, ../../scss/base/_shorthand.sass */
+/* line 71, ../../scss/base/_shorthand.sass */
 .pad80l {
   padding-left: 80px !important;
 }
 
-/* line 71, ../../scss/base/_shorthand.sass */
+/* line 73, ../../scss/base/_shorthand.sass */
 .pad80r {
   padding-right: 80px !important;
 }
 
-/* line 73, ../../scss/base/_shorthand.sass */
+/* line 75, ../../scss/base/_shorthand.sass */
 .pad80lr {
   padding-left: 80px !important;
   padding-right: 80px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar0 {
   margin: 0px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar0t {
   margin-top: 0px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar0b {
   margin-bottom: 0px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar0tb {
   margin-bottom: 0px !important;
   margin-top: 0px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar0l {
   margin-left: 0px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar0r {
   margin-right: 0px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar0lr {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar10, ion-pane h2 {
   margin: 10px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar10t {
   margin-top: 10px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar10b {
   margin-bottom: 10px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar10tb {
   margin-bottom: 10px !important;
   margin-top: 10px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar10l {
   margin-left: 10px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar10r {
   margin-right: 10px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar10lr {
   margin-left: 10px !important;
   margin-right: 10px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar20 {
   margin: 20px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar20t {
   margin-top: 20px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar20b {
   margin-bottom: 20px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar20tb {
   margin-bottom: 20px !important;
   margin-top: 20px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar20l {
   margin-left: 20px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar20r {
   margin-right: 20px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar20lr {
   margin-left: 20px !important;
   margin-right: 20px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar30 {
   margin: 30px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar30t {
   margin-top: 30px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar30b {
   margin-bottom: 30px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar30tb {
   margin-bottom: 30px !important;
   margin-top: 30px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar30l {
   margin-left: 30px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar30r {
   margin-right: 30px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar30lr {
   margin-left: 30px !important;
   margin-right: 30px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar40 {
   margin: 40px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar40t {
   margin-top: 40px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar40b {
   margin-bottom: 40px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar40tb {
   margin-bottom: 40px !important;
   margin-top: 40px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar40l {
   margin-left: 40px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar40r {
   margin-right: 40px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar40lr {
   margin-left: 40px !important;
   margin-right: 40px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar50 {
   margin: 50px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar50t {
   margin-top: 50px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar50b {
   margin-bottom: 50px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar50tb {
   margin-bottom: 50px !important;
   margin-top: 50px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar50l {
   margin-left: 50px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar50r {
   margin-right: 50px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar50lr {
   margin-left: 50px !important;
   margin-right: 50px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar60 {
   margin: 60px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar60t {
   margin-top: 60px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar60b {
   margin-bottom: 60px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar60tb {
   margin-bottom: 60px !important;
   margin-top: 60px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar60l {
   margin-left: 60px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar60r {
   margin-right: 60px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar60lr {
   margin-left: 60px !important;
   margin-right: 60px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar70 {
   margin: 70px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar70t {
   margin-top: 70px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar70b {
   margin-bottom: 70px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar70tb {
   margin-bottom: 70px !important;
   margin-top: 70px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar70l {
   margin-left: 70px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar70r {
   margin-right: 70px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar70lr {
   margin-left: 70px !important;
   margin-right: 70px !important;
 }
 
-/* line 80, ../../scss/base/_shorthand.sass */
+/* line 82, ../../scss/base/_shorthand.sass */
 .mar80 {
   margin: 80px !important;
 }
 
-/* line 82, ../../scss/base/_shorthand.sass */
+/* line 84, ../../scss/base/_shorthand.sass */
 .mar80t {
   margin-top: 80px !important;
 }
 
-/* line 84, ../../scss/base/_shorthand.sass */
+/* line 86, ../../scss/base/_shorthand.sass */
 .mar80b {
   margin-bottom: 80px !important;
 }
 
-/* line 86, ../../scss/base/_shorthand.sass */
+/* line 88, ../../scss/base/_shorthand.sass */
 .mar80tb {
   margin-bottom: 80px !important;
   margin-top: 80px !important;
 }
 
-/* line 89, ../../scss/base/_shorthand.sass */
+/* line 91, ../../scss/base/_shorthand.sass */
 .mar80l {
   margin-left: 80px !important;
 }
 
-/* line 91, ../../scss/base/_shorthand.sass */
+/* line 93, ../../scss/base/_shorthand.sass */
 .mar80r {
   margin-right: 80px !important;
 }
 
-/* line 93, ../../scss/base/_shorthand.sass */
+/* line 95, ../../scss/base/_shorthand.sass */
 .mar80lr {
   margin-left: 80px !important;
   margin-right: 80px !important;
@@ -962,6 +1002,38 @@ ion-pane hr {
   height: 2px;
   border-left: none;
 }
+/* line 60, ../../scss/base/_common.sass */
+ion-pane hr.plain {
+  border: none;
+  border-top: 1px solid #EEE;
+}
+
+/* line 3, ../../scss/components/_discussions.sass */
+#personal-assignments .item, #discussions .item {
+  white-space: normal;
+}
+/* line 6, ../../scss/components/_discussions.sass */
+#personal-assignments .item span, #discussions .item span {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* line 10, ../../scss/components/_discussions.sass */
+#personal-assignments .item .content, #discussions .item .content {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* line 14, ../../scss/components/_discussions.sass */
+#personal-assignments .item img, #discussions .item img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #EEE;
+}
+/* line 20, ../../scss/components/_discussions.sass */
+#personal-assignments .item .username, #personal-assignments .item .date, #discussions .item .username, #discussions .item .date {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 /* line 7, ../../scss/pages/_landing.sass */
 .pane.landing .row .col {
@@ -1008,9 +1080,49 @@ ion-pane hr {
   }
 }
 
-/* line 2, ../../scss/pages/_councils.sass */
-.pane.councils {
-  display: block;
+/* line 3, ../../scss/pages/_councils.sass */
+.pane.councils_detail ion-header-bar {
+  border-bottom: none;
+}
+/* line 6, ../../scss/pages/_councils.sass */
+.pane.councils_detail .tab-menu {
+  padding-top: 44px;
+  border-bottom: 1px solid #DDD;
+  position: relative;
+  z-index: 5;
+  background-color: #FFF;
+}
+/* line 13, ../../scss/pages/_councils.sass */
+.pane.councils_detail .tab-menu a {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 0;
+  margin: 0 10px;
+  position: relative;
+  top: 1px;
+}
+/* line 25, ../../scss/pages/_councils.sass */
+.pane.councils_detail .tab-menu a.selected {
+  border-bottom: 1px solid #000;
+  color: #000;
+}
+/* line 29, ../../scss/pages/_councils.sass */
+.pane.councils_detail ion-content {
+  margin-top: 10px;
+}
+/* line 32, ../../scss/pages/_councils.sass */
+.pane.councils_detail ion-content button {
+  border-radius: 5px;
+}
+/* line 36, ../../scss/pages/_councils.sass */
+.pane.councils_detail ion-content button.activated {
+  background-color: #BFE1F2;
+}
+/* line 43, ../../scss/pages/_councils.sass */
+.pane.councils_detail ion-content button span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* line 3, ../../scss/pages/_home.sass */
@@ -1024,25 +1136,4 @@ ion-pane hr {
   background-position: center center;
   background-size: cover;
   border: 2px solid #EEE;
-}
-/* line 15, ../../scss/pages/_home.sass */
-.pane.home #personal-assignments .item, .pane.home #discussions .item {
-  white-space: normal;
-}
-/* line 18, ../../scss/pages/_home.sass */
-.pane.home #personal-assignments .item span, .pane.home #discussions .item span {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-/* line 22, ../../scss/pages/_home.sass */
-.pane.home #personal-assignments .item img, .pane.home #discussions .item img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid #EEE;
-}
-/* line 28, ../../scss/pages/_home.sass */
-.pane.home #personal-assignments .item .username, .pane.home #personal-assignments .item .date, .pane.home #discussions .item .username, .pane.home #discussions .item .date {
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }

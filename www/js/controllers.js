@@ -76,7 +76,8 @@ angular.module('councilsApp')
   ];
 }])
 
-.controller("CouncilsController", ['$scope', function($scope) {
+.controller("CouncilsController", ['$scope', '$stateParams', '$rootScope', function($scope, $stateParams, $rootScope) {
+
   $scope.ward = [
     {
       id: 23,
@@ -124,5 +125,59 @@ angular.module('councilsApp')
     { title: "Primary", access: false },
     { title: "Missionary", access: false },
     { title: "Auditing", access: false }
+  ]
+
+  $scope.discussions = [
+    {
+      id: 1,
+      userAvatar: "headshot.png",
+      userName: "David Ricardo",
+      content: "Do we have any volunteers to provide refreshments for the Jack Welch fireside?",
+      comments: [{},{},{},{}],
+      createdDate: '2015-06-18T11:30:00'
+    },
+    {
+      id: 2,
+      userAvatar: "headshot.png",
+      userName: "David Ricardo",
+      content: "Do we have any volunteers to provide refreshments for the Jack Welch fireside?",
+      comments: [],
+      createdDate: '2015-06-17T11:30:00'
+    },
+    {
+      id: 3,
+      userAvatar: "headshot.png",
+      userName: "David Ricardo",
+      content: "Do we have any volunteers to provide refreshments for the Jack Welch fireside?",
+      comments: [],
+      createdDate: '2015-06-16T11:30:00'
+    }
+  ]
+
+  $scope.assignments = [
+    {
+      id: 1,
+      userName: "John Say",
+      content: "Visit Juliet Schumpeter who just moved into the ward.",
+      comments: [],
+      dueDate: '2015-06-18T11:30:00',
+      completed: false
+    },
+    {
+      id: 2,
+      userName: "Adelle Smith",
+      content: "Fiona Hayek just had a baby. Assign sister to bring Dinner.",
+      comments: [],
+      dueDate: '2015-06-17T11:30:00',
+      completed: false
+    },
+    {
+      id: 3,
+      userName: "David Ricardo",
+      content: "Fill the Family History Consultant calling.",
+      comments: [{},{}],
+      dueDate: '2015-06-16T11:30:00',
+      completed: false
+    }
   ]
 }])
