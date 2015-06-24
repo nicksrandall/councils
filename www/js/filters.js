@@ -6,12 +6,7 @@ angular.module('councilsApp')
     var date = new Date(input);
     var now = new Date();
     var prefix = null;
-
-    console.log("input " + input);
-    console.log("date " + date);
-    console.log("now " + now);
-    console.log("");
-
+    
     // Check if yesterday
     var step = now.addDays(-1);
     if(step.getYear() == date.getYear() && step.getMonth() == date.getMonth() && step.getDate() == date.getDate())
