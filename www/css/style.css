@@ -1045,7 +1045,8 @@ textarea, input {
 /* line 6, ../../scss/components/_inputs.sass */
 textarea {
   resize: none;
-  min-height: 50px;
+  min-height: 36px;
+  line-height: 24px;
 }
 
 /* line 7, ../../scss/pages/_landing.sass */
@@ -1093,42 +1094,47 @@ textarea {
   }
 }
 
-/* line 3, ../../scss/pages/_councils.sass */
-.pane.new_discussion .modal-trigger {
+/* line 5, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-content i.icon:before, .pane.new_assignment ion-content i.icon:before {
+  width: 20px;
+  text-align: center;
+}
+/* line 10, ../../scss/pages/_councils.sass */
+.pane.new_discussion .modal-trigger, .pane.new_assignment .modal-trigger {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   position: relative;
   top: -3px;
   padding-left: 5px;
 }
-/* line 10, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar {
+/* line 17, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar, .pane.new_assignment ion-header-bar {
   padding: 10px;
   height: auto;
   border-bottom: none;
 }
-/* line 15, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar button {
+/* line 22, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar button, .pane.new_assignment ion-header-bar button {
   padding: 5px 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 5px;
   max-height: 40px;
 }
-/* line 22, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar button.button:last-child {
+/* line 29, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar button.button:last-child, .pane.new_assignment ion-header-bar button.button:last-child {
   top: 10px;
   right: 10px;
 }
-/* line 26, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar button.button:last-child.activated {
+/* line 33, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar button.button:last-child.activated, .pane.new_assignment ion-header-bar button.button:last-child.activated {
   background-color: #BFE1F2;
 }
-/* line 30, ../../scss/pages/_councils.sass */
+/* line 37, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-header-bar {
   border-bottom: none;
 }
-/* line 33, ../../scss/pages/_councils.sass */
+/* line 40, ../../scss/pages/_councils.sass */
 .pane.councils_detail .tab-menu {
   padding-top: 44px;
   border-bottom: 1px solid #DDD;
@@ -1136,7 +1142,7 @@ textarea {
   z-index: 5;
   background-color: #FFF;
 }
-/* line 40, ../../scss/pages/_councils.sass */
+/* line 47, ../../scss/pages/_councils.sass */
 .pane.councils_detail .tab-menu a {
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1146,24 +1152,24 @@ textarea {
   position: relative;
   top: 1px;
 }
-/* line 52, ../../scss/pages/_councils.sass */
+/* line 59, ../../scss/pages/_councils.sass */
 .pane.councils_detail .tab-menu a.selected {
   border-bottom: 1px solid #000;
   color: #000;
 }
-/* line 56, ../../scss/pages/_councils.sass */
+/* line 63, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content {
   margin-top: 10px;
 }
-/* line 59, ../../scss/pages/_councils.sass */
+/* line 66, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content button {
   border-radius: 5px;
 }
-/* line 63, ../../scss/pages/_councils.sass */
+/* line 70, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content button.activated {
   background-color: #BFE1F2;
 }
-/* line 70, ../../scss/pages/_councils.sass */
+/* line 77, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content button span {
   text-transform: uppercase;
   letter-spacing: 2px;

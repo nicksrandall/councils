@@ -43,6 +43,11 @@ angular.module('councilsApp')
     url: "/discussion/new",
     templateUrl: "councils_discussions_new.html"
   })
+  
+  $stateProvider.state('new_assignment', {
+    url: "/assignment/new",
+    templateUrl: "councils_assignments_new.html"
+  })
 
   $stateProvider.state('council_detail.assignments', {
     url: '/assignments',
