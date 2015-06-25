@@ -77,7 +77,7 @@ angular.module('councilsApp')
 }])
 
 .controller("CouncilsController", ['$scope', '$stateParams', '$rootScope', function($scope, $stateParams, $rootScope) {
-  console.log($stateParams)
+  console.log("Initializing CouncilsController")
   $scope.councilId = $stateParams.id;
   $scope.wardMembers = [
       {

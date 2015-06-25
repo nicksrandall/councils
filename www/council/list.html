@@ -44,12 +44,12 @@
 
         {{organization.title}}
 
-        <div ng-show="organization.access && organization.comments.length" class="fr icon" ui-sref="council_detail.discussions({id: organization.id})">
+        <div ng-show="organization.access && organization.comments.length" class="fr icon" ui-sref="council.tab.discussion({id: organization.id})">
           <i class="icon ion-ios-chatbubble-outline f30"></i>
           <span class="f12 lh34 sans fr pad10lr">{{organization.comments.length}}</span>
         </div>
 
-        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r icon" ui-sref="council_detail.assignments({id: organization.id})">
+        <div ng-show="organization.access && organization.assignments.length" class="fr pad10r icon" ui-sref="council.tab.assignment({id: organization.id})">
           <i class="icon ion-ios-list-outline f30"></i>
           <span class="f12 lh34 sans fr pad10lr">{{organization.assignments.length}}</span>
         </div>

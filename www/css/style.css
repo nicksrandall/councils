@@ -1008,6 +1008,11 @@ ion-pane hr.plain {
   border-top: 1px solid #EEE;
 }
 
+/* line 70, ../../scss/base/_common.sass */
+.scroll {
+  min-height: 100%;
+}
+
 /* line 3, ../../scss/components/_discussions.sass */
 #personal-assignments .item, #discussions .item {
   white-space: normal;

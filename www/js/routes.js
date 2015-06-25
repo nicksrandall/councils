@@ -16,64 +16,52 @@ angular.module('councilsApp')
     controller: "LandingController"
   })
 
-  $stateProvider.state('councils', {
-    url: "/councils/list",
-    templateUrl: "councils.html",
+  $stateProvider.state('council', {
+    // abstract: true, // would love to keep this, but causes black flicker
+    url: "/council",
+    templateUrl: "/council/wrapper.html",
     controller: "CouncilsController"
   })
 
-  $stateProvider.state('council_detail', {
-    url: "/councils/detail",
-    templateUrl: "councils_layout.html"
+  $stateProvider.state('council.list', {
+    url: "/list",
+    templateUrl: "/council/list.html"
   })
 
-  $stateProvider.state('council_edit', {
-    url: '/edit',
-    templateUrl: 'councils_edit.html'
+  $stateProvider.state('council.tab', {
+    // abstract: true, // would love to keep this, but causes black flicker
+    url: "/tab",
+    templateUrl: "/council/tabbed_layout.html"
   })
 
-  $stateProvider.state('council_detail.discussions', {
-    url: '/discussions',
-    params: {
-      id: {
-        value: 0
-      }
-    },
-    views: {
-      infoPane: {
-        controller: function($rootScope) {
-          $rootScope.currentTab = "discussions";
-        },
-        templateUrl: 'councils_discussions.html'
-      }
+  $stateProvider.state('council.tab.discussion', {
+    url: "/discussion",
+    templateUrl: "/council/discussion_list.html"
+  })
+
+  $stateProvider.state('council.tab.assignment', {
+    url: "/assignment",
+    templateUrl: "/council/assignment_list.html",
+    controller: function($scope, $stateParams){
+      console.log($stateParams)
+      console.log($scope)
+      $scope.councilId = $stateParams.id;
     }
   })
 
-  $stateProvider.state('new_discussion', {
+  $stateProvider.state('council.discussion_new', {
     url: "/discussion/new",
-    templateUrl: "councils_discussions_new.html"
+    templateUrl: "/council/discussion_new.html"
   })
 
-  $stateProvider.state('new_assignment', {
+  $stateProvider.state('council.assignment_new', {
     url: "/assignment/new",
-    templateUrl: "councils_assignments_new.html"
+    templateUrl: "/council/assignment_new.html"
   })
 
-  $stateProvider.state('council_detail.assignments', {
-    url: '/assignments',
-    params: {
-      id: {
-        value: 0
-      }
-    },
-    views: {
-      infoPane: {
-        controller: function($rootScope) {
-          $rootScope.currentTab = "assignments";
-        },
-        templateUrl: 'councils_assignments.html'
-      }
-    }
+  $stateProvider.state('council.edit', {
+    url: 'edit',
+    templateUrl: '/council/edit.html'
   })
 
   $stateProvider.state('agenda_list', {
