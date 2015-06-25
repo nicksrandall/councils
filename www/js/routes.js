@@ -2,7 +2,7 @@
 angular.module('councilsApp')
 
 .config( function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/home')
 
   $stateProvider.state('home', {
     url: "/home",
@@ -27,8 +27,18 @@ angular.module('councilsApp')
     templateUrl: "councils_layout.html"
   })
 
+  $stateProvider.state('council_edit', {
+    url: '/edit',
+    templateUrl: 'councils_edit.html'
+  })
+
   $stateProvider.state('council_detail.discussions', {
     url: '/discussions',
+    params: {
+      id: {
+        value: 0
+      }
+    },
     views: {
       infoPane: {
         controller: function($rootScope) {
@@ -43,7 +53,7 @@ angular.module('councilsApp')
     url: "/discussion/new",
     templateUrl: "councils_discussions_new.html"
   })
-  
+
   $stateProvider.state('new_assignment', {
     url: "/assignment/new",
     templateUrl: "councils_assignments_new.html"
@@ -51,6 +61,11 @@ angular.module('councilsApp')
 
   $stateProvider.state('council_detail.assignments', {
     url: '/assignments',
+    params: {
+      id: {
+        value: 0
+      }
+    },
     views: {
       infoPane: {
         controller: function($rootScope) {

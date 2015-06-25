@@ -1,0 +1,37 @@
+
+<ion-pane class="council_edit" ng-controller="CouncilsController">
+
+  <ion-header-bar>
+    <button class="button button-outline cBlue-border cBlue">Done</button>
+  </ion-header-bar>
+
+  <hr class="plain mar60t mar10lr" />
+
+  <ion-content class="pad10 pad20t">
+
+    <h1>Bishopric Council</h1>
+
+    <hr class="plain" />
+
+    <div class="cBlue">
+      <i class="icon ion-ios-people f24"></i>
+      Council Id: {{councilId}}
+      <span class="modal-trigger f12" ng-show="{{wardMembers.length}}">
+        {{wardMembers.length}} Participant{{(wardMembers.length == 1) ? "" : "s"}}
+      </span>
+      <span class="modal-trigger f12" ng-hide="{{wardMembers.length}}">
+        Add Participants
+      </span>
+    </div>
+
+    <hr class="plain" />
+
+    <ul id="participants">
+      <li class="dib" ng-repeat="member in wardMembers">
+        <img ng-src="img/{{member.avatar}}" />
+      </li>
+    </ul>
+
+  </ion-content>
+
+</ion-pane>

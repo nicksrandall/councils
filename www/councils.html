@@ -9,7 +9,7 @@
     <hr />
     <h2>Stake Councils</h2>
     <hr />
-    <ion-list ng-controller="CouncilsController">
+    <ion-list>
       <ion-item ng-repeat="organization in stake" ng-class="{disabled: !organization.access}">
 
         {{organization.title}}
@@ -39,7 +39,7 @@
     <hr />
     <h2>Ward Councils</h2>
     <hr />
-    <ion-list ng-controller="CouncilsController">
+    <ion-list>
       <ion-item ng-repeat="organization in ward" ng-class="{disabled: !organization.access}">
 
         {{organization.title}}

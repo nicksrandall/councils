@@ -8,7 +8,7 @@
 }
 
 /* line 4, ../../scss/base/_shorthand.sass */
-.serif, ion-pane > ion-header-bar, ion-pane .list > .item, textarea {
+.serif, ion-pane > ion-header-bar, ion-pane .list > .item, ion-pane h1, textarea {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
@@ -202,7 +202,7 @@
 }
 
 /* line 51, ../../scss/base/_shorthand.sass */
-.f24, ion-pane > ion-header-bar .title:before, .f24.icon:before, ion-pane > ion-header-bar .icon.title:before {
+.f24, ion-pane > ion-header-bar .title:before, ion-pane h1, .f24.icon:before, ion-pane > ion-header-bar .icon.title:before, ion-pane h1.icon:before {
   font-size: 24px !important;
 }
 
@@ -282,7 +282,7 @@
 }
 
 /* line 56, ../../scss/base/_shorthand.sass */
-.lh36 {
+.lh36, ion-pane h1 {
   line-height: 36px !important;
 }
 
@@ -662,7 +662,7 @@
 }
 
 /* line 84, ../../scss/base/_shorthand.sass */
-.mar10t {
+.mar10t, ion-pane h1 {
   margin-top: 10px !important;
 }
 
@@ -989,12 +989,12 @@ ion-pane .list > .item a {
 ion-pane h1, ion-pane h2, ion-pane h3, ion-pane h4, ion-pane h5, ion-pane h6 {
   color: #666;
 }
-/* line 45, ../../scss/base/_common.sass */
+/* line 51, ../../scss/base/_common.sass */
 ion-pane h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-/* line 53, ../../scss/base/_common.sass */
+/* line 59, ../../scss/base/_common.sass */
 ion-pane hr {
   border-top: 4px double #EEE;
   border-right: none;
@@ -1002,7 +1002,7 @@ ion-pane hr {
   height: 2px;
   border-left: none;
 }
-/* line 60, ../../scss/base/_common.sass */
+/* line 66, ../../scss/base/_common.sass */
 ion-pane hr.plain {
   border: none;
   border-top: 1px solid #EEE;
@@ -1095,46 +1095,58 @@ textarea {
 }
 
 /* line 5, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-content i.icon:before, .pane.new_assignment ion-content i.icon:before {
+.pane.new_discussion #participants li, .pane.new_assignment #participants li, .pane.council_edit #participants li {
+  margin-right: 5px;
+}
+/* line 7, ../../scss/pages/_councils.sass */
+.pane.new_discussion #participants img, .pane.new_assignment #participants img, .pane.council_edit #participants img {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #EEE;
+}
+/* line 15, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-content i.icon:before, .pane.new_assignment ion-content i.icon:before, .pane.council_edit ion-content i.icon:before {
   width: 20px;
   text-align: center;
 }
-/* line 10, ../../scss/pages/_councils.sass */
-.pane.new_discussion .modal-trigger, .pane.new_assignment .modal-trigger {
+/* line 20, ../../scss/pages/_councils.sass */
+.pane.new_discussion .modal-trigger, .pane.new_assignment .modal-trigger, .pane.council_edit .modal-trigger {
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
   top: -3px;
   padding-left: 5px;
 }
-/* line 17, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar, .pane.new_assignment ion-header-bar {
+/* line 27, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar, .pane.new_assignment ion-header-bar, .pane.council_edit ion-header-bar {
   padding: 10px;
   height: auto;
   border-bottom: none;
 }
-/* line 22, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar button, .pane.new_assignment ion-header-bar button {
-  padding: 5px 10px;
+/* line 32, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar button, .pane.new_assignment ion-header-bar button, .pane.council_edit ion-header-bar button {
+  padding: 5px 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 5px;
   max-height: 40px;
 }
-/* line 29, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar button.button:last-child, .pane.new_assignment ion-header-bar button.button:last-child {
+/* line 39, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar button.button:last-child, .pane.new_assignment ion-header-bar button.button:last-child, .pane.council_edit ion-header-bar button.button:last-child {
   top: 10px;
   right: 10px;
+  position: absolute;
 }
-/* line 33, ../../scss/pages/_councils.sass */
-.pane.new_discussion ion-header-bar button.button:last-child.activated, .pane.new_assignment ion-header-bar button.button:last-child.activated {
+/* line 44, ../../scss/pages/_councils.sass */
+.pane.new_discussion ion-header-bar button.button:last-child.activated, .pane.new_assignment ion-header-bar button.button:last-child.activated, .pane.council_edit ion-header-bar button.button:last-child.activated {
   background-color: #BFE1F2;
 }
-/* line 37, ../../scss/pages/_councils.sass */
+/* line 48, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-header-bar {
   border-bottom: none;
 }
-/* line 40, ../../scss/pages/_councils.sass */
+/* line 51, ../../scss/pages/_councils.sass */
 .pane.councils_detail .tab-menu {
   padding-top: 44px;
   border-bottom: 1px solid #DDD;
@@ -1142,7 +1154,7 @@ textarea {
   z-index: 5;
   background-color: #FFF;
 }
-/* line 47, ../../scss/pages/_councils.sass */
+/* line 58, ../../scss/pages/_councils.sass */
 .pane.councils_detail .tab-menu a {
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1152,24 +1164,24 @@ textarea {
   position: relative;
   top: 1px;
 }
-/* line 59, ../../scss/pages/_councils.sass */
+/* line 70, ../../scss/pages/_councils.sass */
 .pane.councils_detail .tab-menu a.selected {
   border-bottom: 1px solid #000;
   color: #000;
 }
-/* line 63, ../../scss/pages/_councils.sass */
+/* line 74, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content {
   margin-top: 10px;
 }
-/* line 66, ../../scss/pages/_councils.sass */
+/* line 77, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content button {
   border-radius: 5px;
 }
-/* line 70, ../../scss/pages/_councils.sass */
+/* line 81, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content button.activated {
   background-color: #BFE1F2;
 }
-/* line 77, ../../scss/pages/_councils.sass */
+/* line 88, ../../scss/pages/_councils.sass */
 .pane.councils_detail ion-content button span {
   text-transform: uppercase;
   letter-spacing: 2px;

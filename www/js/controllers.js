@@ -77,6 +77,25 @@ angular.module('councilsApp')
 }])
 
 .controller("CouncilsController", ['$scope', '$stateParams', '$rootScope', function($scope, $stateParams, $rootScope) {
+  console.log($stateParams)
+  $scope.councilId = $stateParams.id;
+  $scope.wardMembers = [
+      {
+        id: 0,
+        name: "Franklin Hughes",
+        avatar: "headshot.png"
+      },
+      {
+        id: 1,
+        name: "Franklin Hughes",
+        avatar: "headshot.png"
+      },
+      {
+        id: 2,
+        name: "Franklin Hughes",
+        avatar: "headshot.png"
+      }
+  ];
 
   $scope.ward = [
     {
@@ -88,6 +107,23 @@ angular.module('councilsApp')
       ],
       comments: [
         {},{},{},{}
+      ],
+      participants: [
+        {
+          id: 0,
+          name: "Franklin Hughes",
+          avatar: "headshot.png"
+        },
+        {
+          id: 1,
+          name: "Franklin Hughes",
+          avatar: "headshot.png"
+        },
+        {
+          id: 2,
+          name: "Franklin Hughes",
+          avatar: "headshot.png"
+        }
       ]
     },
     {
