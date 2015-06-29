@@ -13,40 +13,24 @@ Firebase Data Structure:
 Recommended Indices marked with **
 
 Assignments will be used on the home page, the assignments tab of councils, and
-in the assignment view. Though this is nested pretty deep, all the information
-is necessary for each of the three views (except participants). Since comments
-will never be shared across assignments, it makes sense to nest them also. The
-participants are indexed as they're only needed on the assignment view.
+in the assignment view. The participants and comments are indexed as all the
+content isn't required in all views.
 
 {
   "assignments" : {
     "0" : {
       "content" : "Visit the Family History Center",
       "dueAt" : "2015-06-20 11:00:00", **
-      "createdBy" : "123",
-      "assignedTo_id" : "123", **
-      "assignedTo_avatar" : "avatar.jpg",
-      "assignedTo_name" : "David Ricardo",
+      "createdBy" : "0",
+      "assignedTo_id" : "1",
       "participants" : {
         "123" : true,
         "24" : true,
         "22" : true
       },
       "comments" : {
-        "0" : {
-          "content" : "I'll come too",
-          "createdAt" : "2015-06-21 10:34:23", **
-          "user_avatar" : "avatar2.jpg",
-          "user_name" : "Adelle Smith",
-          "user_id" : "24"
-        },
-        "1" : {
-          "content" : "I'll be there",
-          "createdAt" : "2015-06-21 10:32:24",
-          "user_avatar" : "avatar1.jpg",
-          "user_name" : "Thomas Compton",
-          "user_id" : "22"
-        }
+        "0" : true,
+        "1" : true
       }
     },
     "1" : {
@@ -59,35 +43,20 @@ participants are indexed as they're only needed on the assignment view.
         "23" : true
       },
       "comments" :
-        "0" : {
-          "content" : "I feel Jim would be a good fit.",
-          "createdAt" : "2015-06-21 10:34:23",
-          "user_avatar" : "avatar3.jpg",
-          "user_name" : "Spencer Atkins",
-          "user_id" : "23"
-        },
-        "1" : {
-          "content" : "Any thoughts?",
-          "createdAt" : "2015-06-21 10:34:23",
-          "user_avatar" : "avatar2.jpg",
-          "user_name" : "Adelle Smith",
-          "user_id" : "24"
-        }
+        "0" : true,
+        "1" : true
       }
-    },
-    {...},
-    {...}
+    }
   ],
-
 
 Discussions will be used on the Home page, the discussions tab, and the
 discussion view. Basically the same as an Assignment. Participants are indexed,
-as well as the createdBy user Id, since
+as well as the createdBy user Id, and the comments in the discussion.
 
   "discussions" : {
     "0" : {
       "content" : "Do we have any volunteers for refreshments?",
-      "dueAt" : "2015-06-20 11:00:00",
+      "createdDate" : "2015-06-20 11:00:00",
       "createdBy" : "123",
       "participants" : {
         "123" : true,
@@ -95,25 +64,13 @@ as well as the createdBy user Id, since
         "22" : true
       },
       "comments" : {
-        "0" : {
-          "content" : "I can bring chips",
-          "createdAt" : "2015-06-21 10:34:23",
-          "user_avatar" : "avatar2.jpg",
-          "user_name" : "Adelle Smith",
-          "user_id" : "24"
-        },
-        "1" : {
-          "content" : "I'll bring some cheese and crackers.",
-          "createdAt" : "2015-06-21 10:32:24",
-          "user_avatar" : "avatar1.jpg",
-          "user_name" : "Thomas Compton",
-          "user_id" : "22"
-        }
+        "0" : true,
+        "1" : true
       }
     },
     "1" : {
       "content" : "Could somebody go on splits with the missionaries on Tuesday?",
-      "dueAt" : "2015-06-24 18:00:00",
+      "createdDate" : "2015-06-20 11:00:00",
       "createdBy" : "123",
       "participants" : {
         "123" : true,
@@ -121,34 +78,65 @@ as well as the createdBy user Id, since
         "23" : true
       },
       "comments" : {
-        "0" : {
-          "content" : "I can make it.",
-          "createdAt" : "2015-06-23 10:34:23",
-          "user_avatar" : "avatar3.jpg",
-          "user_name" : "Spencer Atkins",
-          "user_id" : "23"
-        },
-        "1" : {
-          "content" : "I work late on Tuesday this week.",
-          "createdAt" : "2015-06-23 10:34:23",
-          "user_avatar" : "avatar2.jpg",
-          "user_name" : "Adelle Smith",
-          "user_id" : "24"
-        }
+        "0" : true,
+        "1" : true
       }
-    },
-    {...},
-    {...}
+    }
   },
 
+
+Comments are stored all together, and are referenced by their ID. They should
+be sorted by createdDate when retrieved.
+
+  "comments" : {
+    "0" : {
+      "content" : "I can make it.",
+      "createdAt" : "2015-06-23 10:34:23",
+      "user_avatar" : "avatar3.jpg",
+      "user_name" : "Spencer Atkins",
+      "user_id" : "23"
+    },
+    "1" : {
+      "content" : "I work late on Tuesday this week.",
+      "createdAt" : "2015-06-23 10:34:23",
+      "user_avatar" : "avatar2.jpg",
+      "user_name" : "Adelle Smith",
+      "user_id" : "24"
+    }
+  }
 
 Users will be used on many views. To maintain quick lookups, we also need to
 keep an index of the discussions and assignments of which they are a part (this
 is in addition to the index stored on each discussion/assignment object).
 
   "users" : {
-    "24" : {
-      "user_name" : "Adelle Smith",
+    "0" : {
+      "login_count" : 12, // used for welcome/onboarding and usage stats
+      "user_name" : "(StkPres) David Ricardo",
+      "user_avatar" : "avatar2.jpg",
+      "discussions" : {
+        "0" : true,
+        "1" : true
+      },
+      "assignments" : {
+        "0" : true
+      }
+    },
+    "1" : {
+      "login_count" : 8,
+      "user_name" : "(StkCoun) Steve Smith",
+      "user_avatar" : "avatar2.jpg",
+      "discussions" : {
+        "0" : true,
+        "1" : true
+      },
+      "assignments" : {
+        "0" : true
+      }
+    },
+    "2" : {
+      "login_count" : 5,
+      "user_name" : "(StkLdr) Adelle Smith",
       "user_avatar" : "avatar2.jpg",
       "discussions" : {
         "0" : true,
@@ -158,4 +146,30 @@ is in addition to the index stored on each discussion/assignment object).
         "0" : true
       }
     }
+  }
+
+Account PINs are stored in a separate context from Users, so they aren't transmitted
+when user data is requested. pins.id == user.id
+
+  "pins" : {
+    "2" : "2100",
+    "4" : "4321"
+  }
+
+Access Levels are also stored separately from the user context. All access
+levels also have the permissions of all lower levels.
+  10: Stake President (1 person)
+  8 : Stake Presidency (4 people)
+  7 : Stake Leadership
+  6 : Ward Bishop (1 person)
+  4 : Ward Bishopric (4 people)
+  3 : Ward Leadership
+  1 : Member
+
+  "access" : {
+    "0" : 10,
+    "1" : 8,
+    "2" : 3,
+    "3" : 4,
+    "4" : 5,
   }
