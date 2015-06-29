@@ -172,7 +172,7 @@
 }
 
 /* line 51, ../../scss/base/_shorthand.sass */
-.f12, ion-pane h2, .pane.landing button span, .pane.landing .bar-footer button, .pane.councils_detail .tab-menu a, .pane.councils_detail ion-content button span, .f12.icon:before, ion-pane h2.icon:before, .pane.landing button span.icon:before, .pane.landing .bar-footer button.icon:before, .pane.councils_detail .tab-menu a.icon:before, .pane.councils_detail ion-content button span.icon:before {
+.f12, ion-pane h2, .pane.navigation button span, .pane.navigation .bar-footer button, .pane.councils_detail .tab-menu a, .pane.councils_detail ion-content button span, .f12.icon:before, ion-pane h2.icon:before, .pane.navigation button span.icon:before, .pane.navigation .bar-footer button.icon:before, .pane.councils_detail .tab-menu a.icon:before, .pane.councils_detail ion-content button span.icon:before {
   font-size: 12px !important;
 }
 
@@ -1013,6 +1013,11 @@ ion-pane hr.plain {
   min-height: 100%;
 }
 
+/* line 73, ../../scss/base/_common.sass */
+[nav-view-direction="forward"], [nav-view-direction="back"] {
+  background-color: #FFF !important;
+}
+
 /* line 3, ../../scss/components/_discussions.sass */
 #personal-assignments .item, #discussions .item {
   white-space: normal;
@@ -1054,47 +1059,47 @@ textarea {
   line-height: 24px;
 }
 
-/* line 8, ../../scss/pages/_landing.sass */
-.pane.landing .row .col {
+/* line 8, ../../scss/pages/_navigation.sass */
+.pane.navigation .row .col {
   margin-left: 20px;
   margin-right: 20px;
   border-bottom: 2px solid #EEE;
 }
-/* line 13, ../../scss/pages/_landing.sass */
-.pane.landing button {
+/* line 13, ../../scss/pages/_navigation.sass */
+.pane.navigation button {
   max-height: none;
 }
-/* line 16, ../../scss/pages/_landing.sass */
-.pane.landing button .icon {
+/* line 16, ../../scss/pages/_navigation.sass */
+.pane.navigation button .icon {
   position: relative;
   top: 5px;
 }
-/* line 20, ../../scss/pages/_landing.sass */
-.pane.landing button span {
+/* line 20, ../../scss/pages/_navigation.sass */
+.pane.navigation button span {
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
   top: -5px;
 }
-/* line 27, ../../scss/pages/_landing.sass */
-.pane.landing .bar-footer {
+/* line 27, ../../scss/pages/_navigation.sass */
+.pane.navigation .bar-footer {
   height: auto;
 }
-/* line 30, ../../scss/pages/_landing.sass */
-.pane.landing .bar-footer button {
+/* line 30, ../../scss/pages/_navigation.sass */
+.pane.navigation .bar-footer button {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #69E;
 }
 @media (max-width: 567px) {
-  /* line 38, ../../scss/pages/_landing.sass */
-  .pane.landing .row .col {
+  /* line 38, ../../scss/pages/_navigation.sass */
+  .pane.navigation .row .col {
     border-bottom: 2px solid #EEE;
     margin-left: 0px;
     margin-right: 0px;
   }
-  /* line 43, ../../scss/pages/_landing.sass */
-  .pane.landing .row .col:last-child {
+  /* line 43, ../../scss/pages/_navigation.sass */
+  .pane.navigation .row .col:last-child {
     border-bottom: none;
   }
 }

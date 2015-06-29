@@ -25,13 +25,18 @@ angular.module('councilsApp')
     templateUrl: "setup.html"
   })
 
+  $stateProvider.state('login', {
+    url: "/login",
+    templateUrl: "login.html"
+  })
+
   $stateProvider.state('navigation', {
     url: "/navigation",
     templateUrl: "navigation.html",
   })
 
   $stateProvider.state('council', {
-    // abstract: true, // would love to keep this, but causes black flicker
+    abstract: true,
     url: "/council",
     templateUrl: "/council/wrapper.html",
     controller: "CouncilsController"
@@ -43,7 +48,7 @@ angular.module('councilsApp')
   })
 
   $stateProvider.state('council.tab', {
-    // abstract: true, // would love to keep this, but causes black flicker
+    abstract: true,
     url: "/tab",
     templateUrl: "/council/tabbed_layout.html"
   })
