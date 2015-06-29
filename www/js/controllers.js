@@ -76,9 +76,12 @@ angular.module('councilsApp')
   ];
 }])
 
-.controller("CouncilsController", ['$scope', '$stateParams', '$rootScope', function($scope, $stateParams, $rootScope) {
+.controller("CouncilsController",
+  ['CouncilService', '$scope', '$stateParams', '$rootScope',
+  function(CouncilService, $scope, $stateParams, $rootScope) {
   console.log("Initializing CouncilsController")
   $scope.councilId = $stateParams.id;
+
   $scope.wardMembers = [
       {
         id: 0,
@@ -97,71 +100,17 @@ angular.module('councilsApp')
       }
   ];
 
-  $scope.ward = [
-    {
-      id: 23,
-      title: "Bishopric",
-      access: true,
-      assignments: [
-        {},{},{}
-      ],
-      comments: [
-        {},{},{},{}
-      ],
-      participants: [
-        {
-          id: 0,
-          name: "Franklin Hughes",
-          avatar: "headshot.png"
-        },
-        {
-          id: 1,
-          name: "Franklin Hughes",
-          avatar: "headshot.png"
-        },
-        {
-          id: 2,
-          name: "Franklin Hughes",
-          avatar: "headshot.png"
-        }
-      ]
+  $scope.councilList = CouncilService.councils;
+  $scope.councilAccess = {
+    "1" : {
+      assignment_count: 3,
+      comments_count: 4
     },
-    {
-      id: 24,
-      title: "Ward Council",
-      access: true,
-      assignments: [
-
-      ],
-      comments: [
-        {},{}
-      ]
-    },
-    { title: "Sacrament", access: false },
-    { title: "Interviews", access: false },
-    { title: "PEC", access: false },
-    { title: "High Priest", access: false },
-    { title: "Elders", access: false },
-    { title: "Relief Society", access: false },
-    { title: "Young Men", access: false },
-    { title: "Young Women", access: false },
-    { title: "Sunday School", access: false },
-    { title: "Primary", access: false }
-  ]
-
-  $scope.stake = [
-    { title: "Presidency", access: false },
-    { title: "High Council", access: false },
-    { title: "Patriarch", access: false },
-    { title: "Bishops", access: false },
-    { title: "Relief Society", access: false },
-    { title: "Young Men", access: false },
-    { title: "Young Women", access: false },
-    { title: "Sunday School", access: false },
-    { title: "Primary", access: false },
-    { title: "Missionary", access: false },
-    { title: "Auditing", access: false }
-  ]
+    "2" : {
+      assignments_count: 0,
+      comments_count: 2
+    }
+  }
 
   $scope.discussions = [
     {
