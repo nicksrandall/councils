@@ -13,7 +13,7 @@
 }
 
 /* line 8, ../../scss/base/_shorthand.sass */
-.full-height, .pane.landing ion-content {
+.full-height, .pane.full-height ion-content {
   height: 100% !important;
 }
 
@@ -1054,46 +1054,46 @@ textarea {
   line-height: 24px;
 }
 
-/* line 7, ../../scss/pages/_landing.sass */
+/* line 8, ../../scss/pages/_landing.sass */
 .pane.landing .row .col {
   margin-left: 20px;
   margin-right: 20px;
   border-bottom: 2px solid #EEE;
 }
-/* line 12, ../../scss/pages/_landing.sass */
+/* line 13, ../../scss/pages/_landing.sass */
 .pane.landing button {
   max-height: none;
 }
-/* line 15, ../../scss/pages/_landing.sass */
+/* line 16, ../../scss/pages/_landing.sass */
 .pane.landing button .icon {
   position: relative;
   top: 5px;
 }
-/* line 19, ../../scss/pages/_landing.sass */
+/* line 20, ../../scss/pages/_landing.sass */
 .pane.landing button span {
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
   top: -5px;
 }
-/* line 26, ../../scss/pages/_landing.sass */
+/* line 27, ../../scss/pages/_landing.sass */
 .pane.landing .bar-footer {
   height: auto;
 }
-/* line 29, ../../scss/pages/_landing.sass */
+/* line 30, ../../scss/pages/_landing.sass */
 .pane.landing .bar-footer button {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #69E;
 }
 @media (max-width: 567px) {
-  /* line 37, ../../scss/pages/_landing.sass */
+  /* line 38, ../../scss/pages/_landing.sass */
   .pane.landing .row .col {
     border-bottom: 2px solid #EEE;
     margin-left: 0px;
     margin-right: 0px;
   }
-  /* line 42, ../../scss/pages/_landing.sass */
+  /* line 43, ../../scss/pages/_landing.sass */
   .pane.landing .row .col:last-child {
     border-bottom: none;
   }

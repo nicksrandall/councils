@@ -2,18 +2,32 @@
 angular.module('councilsApp')
 
 .config( function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home')
+  $urlRouterProvider.otherwise('/welcome')
 
   $stateProvider.state('home', {
-    url: "/home",
+    url: "/",
     templateUrl: "home.html",
     controller: "HomeController"
   })
 
-  $stateProvider.state('landing', {
-    url: "/",
-    templateUrl: "landing.html",
-    controller: "LandingController"
+  $stateProvider.state('welcome', {
+    url: "/welcome",
+    templateUrl: "welcome.html"
+  })
+
+  $stateProvider.state('onboarding', {
+    url: "/onboarding",
+    templateUrl: "onboarding.html"
+  })
+
+  $stateProvider.state('setup', {
+    url: "/setup",
+    templateUrl: "setup.html"
+  })
+
+  $stateProvider.state('navigation', {
+    url: "/navigation",
+    templateUrl: "navigation.html",
   })
 
   $stateProvider.state('council', {
