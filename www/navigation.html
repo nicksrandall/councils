@@ -1,21 +1,21 @@
 
-<ion-pane class="landing full-height">
+<ion-pane class="navigation full-height">
   <ion-content scroll="false">
     <div class="row responsive-sm vac pad50lr">
       <div class="col mar0tb pad0">
-        <button class="button button-clear button-dark button-block" ui-sref="home">
+        <button class="button button-clear button-dark button-block" nav-direction="forward" ui-sref="home">
           <i class="icon ion-ios-home-outline db f36"></i>
           <span>Home</span>
         </button>
       </div>
       <div class="col mar0tb pad0">
-        <button class="button button-clear button-dark button-block" ui-sref="council.list">
+        <button class="button button-clear button-dark button-block" nav-direction="forward" ui-sref="council.list">
           <i class="icon ion-ios-people db f36"></i>
           <span>Councils</span>
         </button>
       </div>
       <div class="col mar0tb pad0">
-        <button class="button button-clear button-dark button-block" ui-sref="agenda_list">
+        <button class="button button-clear button-dark button-block" nav-direction="forward" ui-sref="agenda_list">
           <i class="icon ion-ios-list-outline db f36"></i>
           <span>Agendas</span>
         </button>
@@ -27,7 +27,7 @@
     <button class="button button-clear pad20lr pad10tb">
       Feedback
     </button>
-    <button class="button button-clear pad20lr pad10tb">
+    <button class="button button-clear pad20lr pad10tb" nav-direction="back" ui-sref="login">
       Log Out
     </button>
   </div>

@@ -1,0 +1,38 @@
+
+<ion-pane class="login full-height">
+  <ion-content scroll="false">
+    <div class="row responsive-sm vac pad50lr">
+
+      <form name="loginForm"
+        ng-submit="login(credentials)"
+        novalidate>
+        <div class="col mar0tb pad0 tac">
+          Councils App<br />
+          Login with your LDS account<br /><br />
+        </div>
+        <div class="col mar0tb pad0">
+          <label class="item item-input">
+            <span class="input-label">Username:</span>
+            <input type="text" placeholder="Username" id="username" ng-model="credentials.username">
+          </label>
+        </div>
+        <div class="col mar0tb pad0">
+          <label class="item item-input">
+            <span class="input-label">Password:</span>
+            <input type="password" id="password" placeholder="Password" ng-model="credentials.password">
+          </label>
+        </div>
+        <div class="col mar0tb pad0">
+          <button type="submit" class="button button-block button-positive" ui-sref="home">Login</button>
+        </div>
+
+        <!-- Demo link to Welcome screen -->
+        <div class="col mar0tb pad0 tac">
+          <span ui-sref="welcome">(simulate first time path)</span>
+        </div>
+        <!-- End of Demo Link -->
+        
+      </form>
+    </div>
+  </ion-content>
+</ion-pane>

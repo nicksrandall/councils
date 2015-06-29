@@ -3,16 +3,35 @@
   <ion-content scroll="false">
     <div class="row responsive-sm vac pad50lr">
       <div class="col mar0tb pad0">
-        <h2 class="tac">Onboarding</h2>
-        <p>Here's how you use the app:</p>
-        <ul>
-          <li>Tap on things</li>
-          <li>Type things</li>
-          <li>Read things</li>
-        </ul>
-      </div>
-      <div class="col mar0tb pad0">
-        <button class="button button-block" ui-sref="setup">Got it!</button>
+        <hr />
+        <h2 class="tac">Setup</h2>
+        <hr />
+        <p>Please enter your LDS Account username and password:</p>
+        <form name="loginForm" novalidate>
+          <div class="col mar0tb pad0">
+            <label class="item item-input">
+              <span class="input-label">Username:</span>
+              <input type="text" placeholder="Username" id="username" ng-model="credentials.username">
+            </label>
+          </div>
+          <div class="col mar0tb pad0">
+            <label class="item item-input">
+              <span class="input-label">Password:</span>
+              <input type="password" id="password" placeholder="Password" ng-model="credentials.password">
+            </label>
+          </div>
+
+          <hr class="mar20t"/>
+          <h2>Pin</h2>
+          <hr />
+          <div class="col mar0tb pad0">
+            <label class="item item-input">
+              <span class="input-label">Security Pin:</span>
+              <input type="number" placeholder="PIN" id="pin" ng-model="credentials.pin">
+            </label>
+          </div>
+          <button class="button button-block" ui-sref="home" nav-direction="forward">Use the App!</button>
+        </form>
       </div>
     </div>
   </ion-content>
