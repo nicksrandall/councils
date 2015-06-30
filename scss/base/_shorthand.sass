@@ -7,6 +7,10 @@
 // General layout classes
 .full-height
   height: 100% !important
+
+  &.has-header
+    height: calc(100% - 44px) !important
+
 .db
   display: block !important
 .di
@@ -46,7 +50,7 @@ $colors: grey3 #333333, grey6 #666666, grey9 #999999, greyA #AAAAAA, greyC #CCCC
 
 
 // Font sizes
-$font-sizes: 10 12 14 16 18 20 22 24 30 36
+$font-sizes: 10 12 14 16 18 20 22 24 30 36 72
 @each $v in $font-sizes
   .f#{$v}, .f#{$v}.icon:before
     font-size: #{$v}px !important
@@ -78,6 +82,8 @@ $font-sizes: 10 12 14 16 18 20 22 24 30 36
 
 
 // Margin
+.mar0a
+  margin: 0 auto !important
 @for $i from 0 through 8
   .mar#{$i*10}
     margin: #{$i*10}px !important

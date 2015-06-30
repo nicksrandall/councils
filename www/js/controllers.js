@@ -1,6 +1,29 @@
 // Controllers for the CouncilsApp
 angular.module('councilsApp')
 
+.controller("ApplicationController", ['MODALS', '$scope', '$ionicModal', '$ionicSideMenuDelegate', function(MODALS, $scope, $ionicModal, $ionicSideMenuDelegate) {
+  $scope.modal = {};
+
+  $scope.$on("showModal", function(event, type) {
+    $ionicModal.fromTemplateUrl(MODALS[type], {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  })
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  }
+  // 
+  // $scope.toggleLeft = function() {
+  //   $ionicSideMenuDelegate.toggleLeft();
+  // };
+
+}])
+
 .controller("HomeController", ['$scope', function($scope) {
   $scope.assignments = [
     {
@@ -79,25 +102,28 @@ angular.module('councilsApp')
 .controller("CouncilsController",
   ['CouncilService', '$scope', '$stateParams', '$rootScope',
   function(CouncilService, $scope, $stateParams, $rootScope) {
-  console.log("Initializing CouncilsController")
   $scope.councilId = $stateParams.id;
 
+  $scope.openModal = function( type ) {
+    $scope.$emit('showModal', type);
+  }
+
   $scope.wardMembers = [
-      {
-        id: 0,
-        name: "Franklin Hughes",
-        avatar: "headshot.png"
-      },
-      {
-        id: 1,
-        name: "Franklin Hughes",
-        avatar: "headshot.png"
-      },
-      {
-        id: 2,
-        name: "Franklin Hughes",
-        avatar: "headshot.png"
-      }
+    {
+      id: 0,
+      name: "Franklin Hughes",
+      avatar: "headshot.png"
+    },
+    {
+      id: 1,
+      name: "Franklin Hughes",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Franklin Hughes",
+      avatar: "headshot.png"
+    }
   ];
 
   $scope.councilList = CouncilService.councils;

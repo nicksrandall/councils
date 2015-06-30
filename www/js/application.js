@@ -5,3 +5,4 @@
 //@prepros-append services.js
 //@prepros-append filters.js
 //@prepros-append directives.js
+//@prepros-append constants.js
