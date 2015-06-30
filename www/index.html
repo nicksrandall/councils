@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="councilsApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -21,8 +21,9 @@
     <!-- your app's js -->
     <script src="js/app-min.js"></script>
   </head>
-  <body ng-app="councilsApp">
-    <ion-nav-view></ion-nav-view>
+  <body ng-controller="ApplicationController">
+
+    <ion-nav-view name="mainContent"></ion-nav-view>
 
     <!-- Page Caching -->
   </body>

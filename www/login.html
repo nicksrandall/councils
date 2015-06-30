@@ -3,7 +3,7 @@
   <ion-content scroll="false">
     <div class="row responsive-sm vac pad50lr">
 
-      <form name="loginForm"
+      <form name="loginForm" class="mar0a"
         ng-submit="login(credentials)"
         novalidate>
         <div class="col mar0tb pad0 tac">
@@ -23,15 +23,15 @@
           </label>
         </div>
         <div class="col mar0tb pad0">
-          <button type="submit" class="button button-block button-positive" ui-sref="home">Login</button>
+          <button type="submit" class="button button-block button-positive" ui-sref="menu.home">Login</button>
         </div>
 
         <!-- Demo link to Welcome screen -->
         <div class="col mar0tb pad0 tac">
-          <span ui-sref="welcome">(simulate first time path)</span>
+          <span ui-sref="simple.welcome">(simulate first time path)</span>
         </div>
         <!-- End of Demo Link -->
-        
+
       </form>
     </div>
   </ion-content>

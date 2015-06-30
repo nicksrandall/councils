@@ -4,11 +4,13 @@
       @extend .full-height
 
   &.navigation
-    .row
-      .col
-        margin-left: 20px
-        margin-right: 20px
-        border-bottom: 2px solid #EEE
+    ion-content
+      .row:last-child
+        button
+          border-bottom: none !important
+      button
+        border-bottom: 2px solid #EEE !important
+        margin: 0px 30px
 
     button
       max-height: none
@@ -26,6 +28,8 @@
 
     .bar-footer
       height: auto
+      border-top: 1px solid #DDD
+      z-index: 12
 
       button
         text-transform: uppercase
@@ -33,6 +37,7 @@
         @extend .f12
         color: #69E
 
+/*
     @include sm
       .row
         .col

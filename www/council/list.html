@@ -1,8 +1,10 @@
 
 <ion-pane class="councils">
-  <ion-header-bar ui-sref="navigation" nav-direction="back">
+
+  <ion-header-bar>
     <div class="title icon ion-ios-people ">Councils</div>
   </ion-header-bar>
+
   <ion-content class="pad20lr pad20t">
 
     <div ng-repeat="(key,value) in councilList">
@@ -10,7 +12,7 @@
       <h2>{{key}} Councils</h2>
       <hr />
       <ion-list>
-        <ion-item ng-repeat="(id,title) in value" ng-class="{disabled: !councilAccess[id]}" ui-sref="council.tab.discussion({id:id})" ui-sref-disable="!councilAccess[id]">
+        <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !councilAccess[id]}" ui-sref="menu.council.tab.discussion({id:id})" ui-sref-disable="!councilAccess[id]">
 
           {{title}}
 

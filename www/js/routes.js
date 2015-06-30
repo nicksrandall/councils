@@ -2,63 +2,103 @@
 angular.module('councilsApp')
 
 .config( function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/welcome')
+  $urlRouterProvider.otherwise('/simple/welcome')
 
-  $stateProvider.state('home', {
-    url: "/",
-    templateUrl: "home.html",
-    controller: "HomeController"
+  $stateProvider.state('menu.home', {
+    url: "/home",
+    views: {
+      "menuContent" : {
+        templateUrl: "home.html",
+        controller: "HomeController"
+      }
+    }
   })
 
-  $stateProvider.state('welcome', {
+  $stateProvider.state('simple', {
+    abstract: true,
+    url: "/simple",
+    views: {
+      "mainContent" : {
+        templateUrl: "/layouts/no_sidebar.html"
+      }
+    }
+  })
+
+  $stateProvider.state('menu', {
+    abstract: true,
+    url: "/menu",
+    views: {
+      'mainContent': {
+        templateUrl: "/layouts/sidebar.html"
+      }
+    }
+  })
+
+  $stateProvider.state('simple.welcome', {
     url: "/welcome",
     templateUrl: "welcome.html"
   })
 
-  $stateProvider.state('onboarding', {
+  $stateProvider.state('simple.onboarding', {
     url: "/onboarding",
     templateUrl: "onboarding.html"
   })
 
-  $stateProvider.state('setup', {
+  $stateProvider.state('simple.setup', {
     url: "/setup",
     templateUrl: "setup.html"
   })
 
-  $stateProvider.state('login', {
+  $stateProvider.state('simple.login', {
     url: "/login",
     templateUrl: "login.html"
   })
 
-  $stateProvider.state('navigation', {
+  $stateProvider.state('navigations', {
     url: "/navigation",
     templateUrl: "navigation.html",
   })
 
-  $stateProvider.state('council', {
+  $stateProvider.state('menu.council', {
     abstract: true,
     url: "/council",
-    templateUrl: "/council/wrapper.html",
-    controller: "CouncilsController"
+    views: {
+      'menuContent': {
+        templateUrl: "/council/wrapper.html",
+        controller: "CouncilsController"
+      }
+    }
   })
 
-  $stateProvider.state('council.list', {
+  $stateProvider.state('menu.council.list', {
     url: "/list",
-    templateUrl: "/council/list.html"
+    views: {
+      'councilContent' : {
+        templateUrl: "/council/list.html"
+      }
+    }
   })
 
-  $stateProvider.state('council.tab', {
+  $stateProvider.state('menu.council.tab', {
     abstract: true,
     url: "/tab",
-    templateUrl: "/council/tabbed_layout.html"
+    views: {
+      'councilContent' : {
+        templateUrl: "/council/tabbed_layout.html"
+      }
+    }
   })
 
-  $stateProvider.state('council.tab.discussion', {
+  $stateProvider.state('menu.council.tab.discussion', {
     url: "/discussion",
-    templateUrl: "/council/discussion_list.html"
+    views: {
+      'tab' : {
+        templateUrl: "/council/discussion_list.html"
+      }
+    }
   })
 
-  $stateProvider.state('council.tab.assignment', {
+  $stateProvider.state('menu.council.tab.assignment', {
     url: "/assignment",
     templateUrl: "/council/assignment_list.html",
     controller: function($scope, $stateParams){
@@ -68,28 +108,32 @@ angular.module('councilsApp')
     }
   })
 
-  $stateProvider.state('council.discussion_new', {
+  $stateProvider.state('menu.council.discussion_new', {
     url: "/discussion/new",
-    templateUrl: "/council/discussion_new.html"
+    views: {
+      'councilContent' : {
+        templateUrl: "/council/discussion_new.html"
+      }
+    }
   })
 
-  $stateProvider.state('council.assignment_new', {
+  $stateProvider.state('menu.council.assignment_new', {
     url: "/assignment/new",
     templateUrl: "/council/assignment_new.html"
   })
 
-  $stateProvider.state('council.edit', {
+  $stateProvider.state('menu.council.edit', {
     url: 'edit',
     templateUrl: '/council/edit.html'
   })
 
-  $stateProvider.state('agenda_list', {
+  $stateProvider.state('menu.agenda_list', {
     url: "/agendas/list",
     templateUrl: "agendas.html",
     controller: "AgendasController"
   })
 
-  $stateProvider.state('agenda_detail', {
+  $stateProvider.state('menu.agenda_detail', {
     url: "/agendas/detail",
     params: {
       agendaId: {

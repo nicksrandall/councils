@@ -13,12 +13,12 @@
 
     <hr class="plain" />
 
-    <div class="cBlue">
+    <div class="cBlue" ng-click="openModal('permissionError')">
       <i class="icon ion-ios-people f24"></i>
       <span class="modal-trigger f12" ng-show="{{wardMembers.length}}">
         {{wardMembers.length}} Participant{{(wardMembers.length == 1) ? "" : "s"}}
       </span>
-      <span class="modal-trigger f12" ng-hide="{{wardMembers.length}}">
+      <span class="modal-trigger f12" ng-hide="{{wardMembers.length}}" >
         Add Participants
       </span>
     </div>
