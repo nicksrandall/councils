@@ -5,41 +5,6 @@ angular.module('councilsApp')
   return function() {}
 }])
 
-.factory("CouncilService", [ function() {
-  var councils = {
-    "stake" : {
-      "0" : "Stake Presidency",
-      "1" : "High Council",
-      "2" : "Patriarch",
-      "3" : "Bishops",
-      "4" : "Relief Society",
-      "5" : "Young Men",
-      "6" : "Young Women",
-      "7" : "Sunday School",
-      "8" : "Primary",
-      "9" : "Missionary",
-      "10" : "Auditinggggg"
-    },
-    "ward" : {
-      "11" : "Bishopric",
-      "12" : "Ward Council",
-      "13" : "Sacrament",
-      "14" : "Interviews",
-      "15" : "PEC",
-      "16" : "High Priest",
-      "17" : "Elders",
-      "18" : "Relief Society",
-      "19" : "Young Men",
-      "20" : "Young Women",
-      "21" : "Sunday School",
-      "22" : "Primary"
-    }
-  }
-  return {
-    councils: councils
-  }
-}])
-
 .factory("HymnService", function( ) {
   var hymns = [
     "The Morning Breaks",

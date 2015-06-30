@@ -4,6 +4,10 @@ angular.module('councilsApp')
 .controller("ApplicationController", ['MODALS', '$scope', '$ionicModal', '$ionicSideMenuDelegate', function(MODALS, $scope, $ionicModal, $ionicSideMenuDelegate) {
   $scope.modal = {};
 
+  $scope.openModal = function( type ) {
+    $scope.$emit('showModal', type);
+  }
+
   $scope.$on("showModal", function(event, type) {
     $ionicModal.fromTemplateUrl(MODALS[type], {
       scope: $scope,
@@ -17,7 +21,7 @@ angular.module('councilsApp')
   $scope.closeModal = function() {
     $scope.modal.hide();
   }
-  // 
+  //
   // $scope.toggleLeft = function() {
   //   $ionicSideMenuDelegate.toggleLeft();
   // };
@@ -81,8 +85,11 @@ angular.module('councilsApp')
 
 }])
 
-.controller("AgendasController", ['$scope', '$stateParams', function($scope, $stateParams) {
+.controller("AgendaController", ['$scope', '$stateParams', 'AGENDAS', function($scope, $stateParams, AGENDAS) {
   $scope.agendaId = $stateParams.agendaId;
+
+  $scope.agendas = AGENDAS;
+  $scope.agendaAccess = {"2":true,"3":true};
 
   $scope.ward = [
     {title:"Bishopric",id:1,access:true},
@@ -99,9 +106,9 @@ angular.module('councilsApp')
   ];
 }])
 
-.controller("CouncilsController",
-  ['CouncilService', '$scope', '$stateParams', '$rootScope',
-  function(CouncilService, $scope, $stateParams, $rootScope) {
+.controller("CouncilController",
+  ['COUNCILS', '$scope', '$stateParams', '$rootScope',
+  function(COUNCILS, $scope, $stateParams, $rootScope) {
   $scope.councilId = $stateParams.id;
 
   $scope.openModal = function( type ) {
@@ -126,7 +133,7 @@ angular.module('councilsApp')
     }
   ];
 
-  $scope.councilList = CouncilService.councils;
+  $scope.councilList = COUNCILS;
   $scope.councilAccess = {
     "1" : {
       assignmentCount: 3,

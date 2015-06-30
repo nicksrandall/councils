@@ -1,14 +1,26 @@
 
-<ion-pane class="councils">
+<ion-pane>
   <ion-header-bar ui-sref="navigation" nav-direction="back">
     <div class="title icon ion-ios-list-outline ">Agendas</div>
   </ion-header-bar>
   <ion-content class="pad20lr pad20t">
 
+  <div ng-repeat="(key,value) in agendas">
+    <hr />
+    <h2>{{key}} Agendas</h2>
+    <hr />
+    <ion-list>
+      <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !agendaAccess[id]}" ui-sref="menu.agenda.details({id:id})" ui-sref-disable="!agendaAccess[id]">
+
+              {{title}}
+      </ion-item>
+    </ion-list>
+  </div>
+  <!--
     <hr />
     <h2>Stake Agendas</h2>
     <hr />
-    <ion-list ng-controller="AgendasController">
+    <ion-list>
       <ion-item ng-repeat="organization in stake" ng-class="{disabled: !organization.access}" ui-sref="{{ organization.access ? 'agendas_detail' : '.'}}">
 
         {{organization.title}}
@@ -23,7 +35,7 @@
     <hr />
     <h2>Ward Agendas</h2>
     <hr />
-    <ion-list ng-controller="AgendasController">
+    <ion-list>
       <ion-item ng-repeat="organization in ward" ng-class="{disabled: !organization.access}" ui-sref="{{ organization.access ? 'agenda_detail({agendaId:organization.id})' : '.'}}">
 
         {{organization.title}}
@@ -34,6 +46,6 @@
 
       </ion-item>
     </ion-list>
-
+-->
   </ion-content>
 </ion-pane>
