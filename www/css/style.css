@@ -986,15 +986,19 @@ ion-pane .list > .item a {
   overflow: visible;
 }
 /* line 42, ../../scss/base/_common.sass */
+ion-pane .list > .item .activated {
+  background-color: #FFF;
+}
+/* line 45, ../../scss/base/_common.sass */
 ion-pane h1, ion-pane h2, ion-pane h3, ion-pane h4, ion-pane h5, ion-pane h6 {
   color: #666;
 }
-/* line 51, ../../scss/base/_common.sass */
+/* line 54, ../../scss/base/_common.sass */
 ion-pane h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-/* line 59, ../../scss/base/_common.sass */
+/* line 62, ../../scss/base/_common.sass */
 ion-pane hr {
   border-top: 4px double #EEE;
   border-right: none;
@@ -1002,18 +1006,18 @@ ion-pane hr {
   height: 2px;
   border-left: none;
 }
-/* line 66, ../../scss/base/_common.sass */
+/* line 69, ../../scss/base/_common.sass */
 ion-pane hr.plain {
   border: none;
   border-top: 1px solid #EEE;
 }
 
-/* line 70, ../../scss/base/_common.sass */
+/* line 73, ../../scss/base/_common.sass */
 .scroll {
   min-height: 100%;
 }
 
-/* line 73, ../../scss/base/_common.sass */
+/* line 76, ../../scss/base/_common.sass */
 [nav-view-direction="forward"], [nav-view-direction="back"] {
   background-color: #FFF !important;
 }

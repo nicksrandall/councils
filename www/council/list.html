@@ -10,26 +10,26 @@
       <h2>{{key}} Councils</h2>
       <hr />
       <ion-list>
-        <ion-item ng-repeat="(id,title) in value" ng-class="{disabled: !organization.access}">
+        <ion-item ng-repeat="(id,title) in value" ng-class="{disabled: !councilAccess[id]}" ui-sref="council.tab.discussion({id:id})" ui-sref-disable="!councilAccess[id]">
 
           {{title}}
 
-          <div ng-show="organization.access && organization.comments.length" class="fr icon" ui-sref="council_detail.discussions({id: organization.id})">
+          <div ng-show="councilAccess[id] && councilAccess[id].commentCount" class="fr icon">
             <i class="icon ion-ios-chatbubble-outline f30"></i>
-            <span class="f12 lh34 sans fr pad10lr">{{organization.comments.length}}</span>
+            <span class="f12 lh34 sans fr pad10lr">{{councilAccess[id].commentCount}}</span>
           </div>
 
-          <div ng-show="organization.access && organization.assignments.length" class="fr pad10r icon" ui-sref="council_detail.assignments({id: organization.id})">
+          <div ng-show="councilAccess[id] && councilAccess[id].commentCount" class="fr pad10r icon">
             <i class="icon ion-ios-list-outline f30"></i>
-            <span class="f12 lh34 sans fr pad10lr">{{organization.assignments.length}}</span>
+            <span class="f12 lh34 sans fr pad10lr">{{councilAccess[id].assignmentCount}}</span>
           </div>
-
-          <div ng-show="organization.access && organization.comments.length && !organization.assignments.length" class="fr pad10r icon">
+<!--
+          <div ng-show="councilAccess[id] && councilAccess[id].commentCount && !councilAccess[id].assignmentCount" class="fr pad10r icon">
             <i class="icon ion-ios-list-outline f30 greyD"></i>
-            <span class="f12 lh34 sans fr pad10lr greyD">{{organization.assignments.length}}</span>
+            <span class="f12 lh34 sans fr pad10lr greyD">{{councilAccess[id].commentCount}}</span>
           </div>
-
-          <div ng-hide="organization.access" class="fr pad10r icon">
+-->
+          <div ng-hide="councilAccess[id]" class="fr pad10r icon">
             <i class="icon ion-ios-locked-outline f30 greyD"></i>
           </div>
 

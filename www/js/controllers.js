@@ -103,12 +103,12 @@ angular.module('councilsApp')
   $scope.councilList = CouncilService.councils;
   $scope.councilAccess = {
     "1" : {
-      assignment_count: 3,
-      comments_count: 4
+      assignmentCount: 3,
+      commentCount: 4
     },
     "2" : {
-      assignments_count: 0,
-      comments_count: 2
+      assignmentCount: 0,
+      commentCount: 2
     }
   }
 
