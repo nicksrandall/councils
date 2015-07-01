@@ -1246,12 +1246,19 @@ textarea {
   border: 2px solid #EEE;
 }
 
-/* line 1, ../../scss/pages/_welcome.sass */
-.welcome {
-  background-color: #2D435E;
+/* line 2, ../../scss/pages/_welcome.sass */
+.setup h1 {
+  border-bottom: 1px solid #FFF;
+  border-top: 1px solid #FFF;
 }
-/* line 4, ../../scss/pages/_welcome.sass */
-.welcome .button {
+
+/* line 6, ../../scss/pages/_welcome.sass */
+.welcome, .setup, .login {
+  background-color: #2D435E;
+  color: #fff;
+}
+/* line 10, ../../scss/pages/_welcome.sass */
+.welcome .button, .setup .button, .login .button {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -1259,23 +1266,23 @@ textarea {
   margin-left: -150px;
   text-transform: uppercase;
 }
-/* line 12, ../../scss/pages/_welcome.sass */
-.welcome .slider {
+/* line 18, ../../scss/pages/_welcome.sass */
+.welcome h1, .setup h1, .login h1 {
+  color: #fff;
+}
+/* line 21, ../../scss/pages/_welcome.sass */
+.welcome .slider, .setup .slider, .login .slider {
   min-height: 200px;
   width: 100%;
   color: #fff;
   text-align: center;
 }
-/* line 18, ../../scss/pages/_welcome.sass */
-.welcome .slider p {
+/* line 27, ../../scss/pages/_welcome.sass */
+.welcome .slider p, .setup .slider p, .login .slider p {
   margin-top: 10px;
   font-size: 16px;
 }
-/* line 22, ../../scss/pages/_welcome.sass */
-.welcome .slider h1 {
-  color: #fff;
-}
-/* line 25, ../../scss/pages/_welcome.sass */
-.welcome .slider .slider-pager .slider-pager-page {
+/* line 31, ../../scss/pages/_welcome.sass */
+.welcome .slider .slider-pager .slider-pager-page, .setup .slider .slider-pager .slider-pager-page, .login .slider .slider-pager .slider-pager-page {
   color: #fff;
 }
