@@ -1,13 +1,48 @@
 
 <ion-pane class="welcome full-height">
   <ion-content scroll="false">
-    <div class=" vac pad50lr">
-      <div class="col mar0tb pad0">
-        <h2 class="tac">Welcome</h2>
-      </div>
-      <div class="col mar0tb pad0">
-        <button class="button button-block button-max mar0a" ui-sref="simple.onboarding" nav-direction="forward">Thanks</button>
-      </div>
+    <div class=" vac ">
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">
+        <ion-slide class="pad50b">
+          <div class="box tac">
+            <i class="icon ion-ios-people f72"></i>
+            <h1 class="mar10b f36">Councils</h1>
+            <p>Stake &amp; Ward productivity
+              <br />on a simple intuitive app
+            </p>
+          </div>
+        </ion-slide>
+        <ion-slide class=" pad50b">
+          <div class="box tac">
+            <i class="icon ion-ios-list-outline f72"></i>
+            <p>Create Stake and Ward agendas for
+              <br />your council meetings in minutes
+              <br />right from your phone.
+            </p>
+          </div>
+        </ion-slide>
+        <ion-slide class=" pad50b">
+          <div class="box tac">
+            <i class="icon ion-ios-chatbubble-outline f72"></i>
+            <p>Start a safe and secure discussion
+              <br />about any topic in each council or
+              <br />with whoever you invite
+            </p>
+          </div>
+        </ion-slide>
+        <ion-slide class=" pad50b">
+          <div class="box tac">
+            <i class="icon ion-ios-list-outline f72"></i>
+            <p>Create and delegate assignments
+              <br />from an agenda, or during the week,
+              <br />with one simple click.
+            </p>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+
     </div>
+      <button class="button button-block button-max" ui-sref="simple.onboarding" nav-direction="forward">Log In</button>
+
   </ion-content>
 </ion-pane>

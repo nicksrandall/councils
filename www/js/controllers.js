@@ -1,8 +1,12 @@
 // Controllers for the CouncilsApp
 angular.module('councilsApp')
 
-.controller("ApplicationController", ['MODALS', '$scope', '$ionicModal', '$ionicSideMenuDelegate', function(MODALS, $scope, $ionicModal, $ionicSideMenuDelegate) {
+.controller("ApplicationController", ['MODALS', '$rootScope', '$ionicHistory', '$scope', '$ionicModal', '$ionicSideMenuDelegate', function(MODALS, $rootScope, $ionicHistory, $scope, $ionicModal, $ionicSideMenuDelegate) {
   $scope.modal = {};
+
+  $rootScope.back = function() {
+    $ionicHistory.goBack();
+  }
 
   $scope.openModal = function( type ) {
     $scope.$emit('showModal', type);
@@ -85,25 +89,14 @@ angular.module('councilsApp')
 
 }])
 
-.controller("AgendaController", ['$scope', '$stateParams', 'AGENDAS', function($scope, $stateParams, AGENDAS) {
+.controller("AgendaController", ['$scope', '$ionicHistory', '$stateParams', 'AGENDAS', function($scope, $ionicHistory, $stateParams, AGENDAS) {
   $scope.agendaId = $stateParams.agendaId;
 
   $scope.agendas = AGENDAS;
   $scope.agendaAccess = {"2":true,"3":true};
 
-  $scope.ward = [
-    {title:"Bishopric",id:1,access:true},
-    {title:"PEC",id:2,access:true},
-    {title:"Ward Council",id:3,access:false}
-  ];
+  //$scope.back = $ionicHistory.goBack();
 
-  $scope.stake = [
-    {title:"Presidency",id:4,access:false},
-    {title:"High Council",id:5,access:false},
-    {title:"Bishops",id:6,access:false},
-    {title:"Stake Council",id:7,access:false},
-    {title:"Bishops Welfare",id:8,access:false}
-  ];
 }])
 
 .controller("CouncilController",

@@ -1041,6 +1041,17 @@ ion-pane hr.plain {
   max-width: 300px;
 }
 
+/* line 82, ../../scss/base/_common.sass */
+.hidden-md {
+  display: none;
+}
+@media (max-width: 767px) {
+  /* line 82, ../../scss/base/_common.sass */
+  .hidden-md {
+    display: block;
+  }
+}
+
 /* line 3, ../../scss/components/_discussions.sass */
 #personal-assignments .item, #discussions .item {
   white-space: normal;
@@ -1233,4 +1244,38 @@ textarea {
   background-position: center center;
   background-size: cover;
   border: 2px solid #EEE;
+}
+
+/* line 1, ../../scss/pages/_welcome.sass */
+.welcome {
+  background-color: #2D435E;
+}
+/* line 4, ../../scss/pages/_welcome.sass */
+.welcome .button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  text-transform: uppercase;
+}
+/* line 12, ../../scss/pages/_welcome.sass */
+.welcome .slider {
+  min-height: 200px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+/* line 18, ../../scss/pages/_welcome.sass */
+.welcome .slider p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+/* line 22, ../../scss/pages/_welcome.sass */
+.welcome .slider h1 {
+  color: #fff;
+}
+/* line 25, ../../scss/pages/_welcome.sass */
+.welcome .slider .slider-pager .slider-pager-page {
+  color: #fff;
 }

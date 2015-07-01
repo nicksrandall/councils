@@ -1,8 +1,11 @@
 
 <ion-pane>
-  <ion-header-bar ui-sref="navigation" nav-direction="back">
+
+  <ion-header-bar>
+    <button class="button button-clear ion-navicon-round pad10lr hidden-md" menu-toggle="left"></button>
     <div class="title icon ion-ios-list-outline ">Agendas</div>
   </ion-header-bar>
+
   <ion-content class="pad20lr pad20t">
 
   <div ng-repeat="(key,value) in agendas">
@@ -11,8 +14,7 @@
     <hr />
     <ion-list>
       <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !agendaAccess[id]}" ui-sref="menu.agenda.details({id:id})" ui-sref-disable="!agendaAccess[id]">
-
-              {{title}}
+        {{title}}
       </ion-item>
     </ion-list>
   </div>
