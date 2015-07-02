@@ -28,14 +28,100 @@ angular.module('councilsApp')
   })
 
   $scope.closeModal = function() {
-    $scope.modal.hide();
+    console.log('destroy')
+    $scope.modal.remove();
   }
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
   //
   // $scope.toggleLeft = function() {
   //   $ionicSideMenuDelegate.toggleLeft();
   // };
 
+
+  $scope.searchTerm = "";
+    $scope.searchResults = {};
+
+  $scope.$watch( function() {return $scope.searchTerm}, setSearchResults );
+
+  function setSearchResults() {
+    console.log("searching " + $scope.searchTerm)
+    $scope.searchResults = $scope.wardMembers.filter(function(m) {return m.name.indexOf($scope.searchTerm) >= 0})
+  }
+
+
+  $scope.wardMembers = [
+    {
+      id: 0,
+      name: "Amanda Tapping",
+      avatar: "headshot.png"
+    },
+    {
+      id: 1,
+      name: "Samantha Carter",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    }
+  ];
+
 }])
+
 
 .controller("HomeController", ['$scope', function($scope) {
   $scope.assignments = [

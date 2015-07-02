@@ -1,0 +1,50 @@
+.modal
+  &.member
+
+    ion-content
+      height: calc(100% - 162px) !important
+      top: 77px !important
+
+    .item
+      padding: 9px 10px 5px
+      border: none
+      border-top: 1px solid #DDD
+
+      span
+        position: relative
+        top: -7px
+        padding-left: 5px
+
+      &:first-child
+        border: none
+
+    img
+      border-radius: 50%
+      width: 30px
+      height: 30px
+      border: 1px solid #DDD
+
+    ion-footer-bar
+      text-align: center
+      padding: 20px
+      height: auto
+
+      button
+        @extend .greyA
+        width: auto
+        padding: 5px 20px
+        text-transform: uppercase
+        letter-spacing: 1px
+        border-radius: 6px
+
+    ion-header-bar
+      background-color: #EEE
+      padding: 20px
+      height: auto
+
+      input
+        @extend .serif
+        background-color: #FFF
+        padding: 0 10px
+        border-radius: 5px
+        border: none

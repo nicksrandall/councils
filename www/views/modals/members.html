@@ -1,11 +1,15 @@
 <div class="member modal">
   <ion-header-bar>
-    Search
+    <input placeholder="Search for ward member" name="memberSearch" id="memberSearch" ng-model="searchTerm"></input>
   </ion-header-bar>
-  <ion-content scroll="false" class="full-height pad20lr">
-    <div class="vac tac">
-      <h3 class="serif f20 grey3">Members</h3>
-      <p class="sans f16 grey9 mar30tb"></p>
+  <ion-content class="full-height pad20lr">
+    <div>
+      <ion-list>
+        <ion-item ng-repeat="member in searchResults">
+          <img ng-src="img/{{member.avatar}}">
+          <span class="serif">{{member.name}}</span>
+        </ion-item>
+      </ion-list>
     </div>
   </ion-content>
   <ion-footer-bar class="tac">

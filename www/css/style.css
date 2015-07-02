@@ -8,7 +8,7 @@
 }
 
 /* line 4, ../../scss/base/_shorthand.sass */
-.serif, ion-pane > ion-header-bar, ion-pane .list > .item, ion-pane h1, textarea, .agenda_detail label select, .agenda_detail label input, .agenda_detail label div.input {
+.serif, ion-pane > ion-header-bar, ion-pane .list > .item, ion-pane h1, textarea, .modal.member ion-header-bar input, .agenda_detail label select, .agenda_detail label input, .agenda_detail label div.input {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
@@ -97,7 +97,7 @@
 }
 
 /* line 36, ../../scss/base/_shorthand.sass */
-.greyA, .agenda_detail label div.input {
+.greyA, .modal.member ion-footer-bar button, .agenda_detail label div.input {
   color: #AAAAAA !important;
 }
 
@@ -1141,6 +1141,62 @@ textarea {
     transform: rotate(360deg);
   }
 }
+/* line 4, ../../scss/components/_modals.sass */
+.modal.member ion-content {
+  height: calc(100% - 162px) !important;
+  top: 77px !important;
+}
+/* line 8, ../../scss/components/_modals.sass */
+.modal.member .item {
+  padding: 9px 10px 5px;
+  border: none;
+  border-top: 1px solid #DDD;
+}
+/* line 13, ../../scss/components/_modals.sass */
+.modal.member .item span {
+  position: relative;
+  top: -7px;
+  padding-left: 5px;
+}
+/* line 18, ../../scss/components/_modals.sass */
+.modal.member .item:first-child {
+  border: none;
+}
+/* line 21, ../../scss/components/_modals.sass */
+.modal.member img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #DDD;
+}
+/* line 27, ../../scss/components/_modals.sass */
+.modal.member ion-footer-bar {
+  text-align: center;
+  padding: 20px;
+  height: auto;
+}
+/* line 32, ../../scss/components/_modals.sass */
+.modal.member ion-footer-bar button {
+  width: auto;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 6px;
+}
+/* line 40, ../../scss/components/_modals.sass */
+.modal.member ion-header-bar {
+  background-color: #EEE;
+  padding: 20px;
+  height: auto;
+}
+/* line 45, ../../scss/components/_modals.sass */
+.modal.member ion-header-bar input {
+  background-color: #FFF;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+}
+
 /* line 9, ../../scss/pages/_navigation.sass */
 .pane.navigation ion-content .row:last-child button {
   border-bottom: none !important;
