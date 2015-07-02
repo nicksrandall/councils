@@ -101,6 +101,9 @@ angular.module('councilsApp')
 
   $stateProvider.state('menu.council.tab.discussion', {
     url: "/discussion",
+    params: {
+      currentCouncilTab: 'discussions'
+    },
     views: {
       'tab' : {
         templateUrl: viewRoot + "/council/discussion_list.html"
@@ -110,9 +113,13 @@ angular.module('councilsApp')
 
   $stateProvider.state('menu.council.tab.assignment', {
     url: "/assignment",
-    templateUrl: viewRoot + "/council/assignment_list.html",
-    controller: function($scope, $stateParams){
-      $scope.councilId = $stateParams.id;
+    params: {
+      currentCouncilTab: 'assignments'
+    },
+    views: {
+      'tab' : {
+        templateUrl: viewRoot + "/council/assignment_list.html"
+      }
     }
   })
 
@@ -156,14 +163,20 @@ angular.module('councilsApp')
     }
   })
 
-  $stateProvider.state('menu.agenda_detail', {
-    url: "/agendas/detail",
+  $stateProvider.state('menu.agenda.detail', {
+    url: "/detail",
     params: {
       agendaId: {
-        value: 0
+        value: -1
+      },
+      agendaGroupId: {
+        value: 'ward'
       }
     },
-    templateUrl: viewRoot + "agendas_detail.html",
-    controller: "AgendaController"
+    views: {
+      'agendaContent' : {
+        templateUrl: viewRoot + "/agenda/detail.html"
+      }
+    }
   })
 })

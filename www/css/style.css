@@ -3,12 +3,12 @@
  * here. There should be no styling in this file.
  */
 /* line 2, ../../scss/base/_shorthand.sass */
-.sans, ion-pane h2 {
+.sans, ion-pane h2, .agenda_detail label span {
   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* line 4, ../../scss/base/_shorthand.sass */
-.serif, ion-pane > ion-header-bar, ion-pane .list > .item, ion-pane h1, textarea {
+.serif, ion-pane > ion-header-bar, ion-pane .list > .item, ion-pane h1, textarea, .agenda_detail label select, .agenda_detail label input, .agenda_detail label div.input {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
@@ -22,7 +22,7 @@
 }
 
 /* line 14, ../../scss/base/_shorthand.sass */
-.db {
+.db, #loadingOverlay i {
   display: block !important;
 }
 
@@ -32,7 +32,7 @@
 }
 
 /* line 18, ../../scss/base/_shorthand.sass */
-.dib, .pane.councils_detail .tab-menu a {
+.dib, .pane.councils_detail .tab-menu a, .agenda_detail h2 div {
   display: inline-block !important;
 }
 
@@ -87,7 +87,7 @@
 }
 
 /* line 36, ../../scss/base/_shorthand.sass */
-.grey9, ion-pane .list > .item.disabled, .pane.councils_detail .tab-menu a {
+.grey9, ion-pane .list > .item.disabled, .pane.councils_detail .tab-menu a, .agenda_detail h2 div.selected {
   color: #999999 !important;
 }
 
@@ -97,7 +97,7 @@
 }
 
 /* line 36, ../../scss/base/_shorthand.sass */
-.greyA {
+.greyA, .agenda_detail label div.input {
   color: #AAAAAA !important;
 }
 
@@ -107,7 +107,7 @@
 }
 
 /* line 36, ../../scss/base/_shorthand.sass */
-.greyC {
+.greyC, .agenda_detail label span {
   color: #CCCCCC !important;
 }
 
@@ -137,7 +137,7 @@
 }
 
 /* line 36, ../../scss/base/_shorthand.sass */
-.cBlue, .pane.councils_detail ion-content button i, .pane.councils_detail ion-content button span {
+.cBlue, .pane.councils_detail ion-content button i, .pane.councils_detail ion-content button span, .agenda_detail h2 div {
   color: #387491 !important;
 }
 
@@ -147,7 +147,7 @@
 }
 
 /* line 42, ../../scss/base/_shorthand.sass */
-.vac {
+.vac, #loadingOverlay i {
   position: relative;
   top: 50%;
   -ms-transform: translate(0px, -50%);
@@ -176,7 +176,7 @@
 }
 
 /* line 55, ../../scss/base/_shorthand.sass */
-.f12, ion-pane h2, .pane.navigation button span, .pane.navigation .bar-footer button, .pane.councils_detail .tab-menu a, .pane.councils_detail ion-content button span, .f12.icon:before, ion-pane h2.icon:before, .pane.navigation button span.icon:before, .pane.navigation .bar-footer button.icon:before, .pane.councils_detail .tab-menu a.icon:before, .pane.councils_detail ion-content button span.icon:before {
+.f12, ion-pane h2, .pane.navigation button span, .pane.navigation .bar-footer button, .pane.councils_detail .tab-menu a, .pane.councils_detail ion-content button span, .agenda_detail label span, .f12.icon:before, ion-pane h2.icon:before, .pane.navigation button span.icon:before, .pane.navigation .bar-footer button.icon:before, .pane.councils_detail .tab-menu a.icon:before, .pane.councils_detail ion-content button span.icon:before, .agenda_detail label span.icon:before {
   font-size: 12px !important;
 }
 
@@ -1093,6 +1093,54 @@ textarea {
   line-height: 24px;
 }
 
+/* line 1, ../../scss/components/_loading.sass */
+#loadingOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #FFF;
+  opacity: 0.7;
+  text-align: center;
+  padding-top: 200px;
+}
+/* line 13, ../../scss/components/_loading.sass */
+#loadingOverlay i {
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+/* line 20, ../../scss/components/_loading.sass */
+#loadingOverlay.hidden {
+  display: none;
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* line 9, ../../scss/pages/_navigation.sass */
 .pane.navigation ion-content .row:last-child button {
   border-bottom: none !important;
@@ -1140,23 +1188,23 @@ textarea {
  *
  *       &:last-child
  *         border-bottom: none */
-/* line 5, ../../scss/pages/_councils.sass */
+/* line 5, ../../scss/pages/_council.sass */
 .pane.new_discussion #participants li, .pane.new_assignment #participants li, .pane.council_edit #participants li {
   margin-right: 5px;
 }
-/* line 7, ../../scss/pages/_councils.sass */
+/* line 7, ../../scss/pages/_council.sass */
 .pane.new_discussion #participants img, .pane.new_assignment #participants img, .pane.council_edit #participants img {
   border-radius: 50%;
   width: 35px;
   height: 35px;
   border: 1px solid #EEE;
 }
-/* line 15, ../../scss/pages/_councils.sass */
+/* line 15, ../../scss/pages/_council.sass */
 .pane.new_discussion ion-content i.icon:before, .pane.new_assignment ion-content i.icon:before, .pane.council_edit ion-content i.icon:before {
   width: 20px;
   text-align: center;
 }
-/* line 20, ../../scss/pages/_councils.sass */
+/* line 20, ../../scss/pages/_council.sass */
 .pane.new_discussion .modal-trigger, .pane.new_assignment .modal-trigger, .pane.council_edit .modal-trigger {
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -1164,13 +1212,13 @@ textarea {
   top: -3px;
   padding-left: 5px;
 }
-/* line 27, ../../scss/pages/_councils.sass */
+/* line 27, ../../scss/pages/_council.sass */
 .pane.new_discussion ion-header-bar, .pane.new_assignment ion-header-bar, .pane.council_edit ion-header-bar {
   padding: 10px;
   height: auto;
   border-bottom: none;
 }
-/* line 32, ../../scss/pages/_councils.sass */
+/* line 32, ../../scss/pages/_council.sass */
 .pane.new_discussion ion-header-bar button, .pane.new_assignment ion-header-bar button, .pane.council_edit ion-header-bar button {
   padding: 5px 15px;
   text-transform: uppercase;
@@ -1178,21 +1226,21 @@ textarea {
   border-radius: 5px;
   max-height: 40px;
 }
-/* line 39, ../../scss/pages/_councils.sass */
+/* line 39, ../../scss/pages/_council.sass */
 .pane.new_discussion ion-header-bar button.button:last-child, .pane.new_assignment ion-header-bar button.button:last-child, .pane.council_edit ion-header-bar button.button:last-child {
   top: 10px;
   right: 10px;
   position: absolute;
 }
-/* line 44, ../../scss/pages/_councils.sass */
+/* line 44, ../../scss/pages/_council.sass */
 .pane.new_discussion ion-header-bar button.button:last-child.activated, .pane.new_assignment ion-header-bar button.button:last-child.activated, .pane.council_edit ion-header-bar button.button:last-child.activated {
   background-color: #BFE1F2;
 }
-/* line 48, ../../scss/pages/_councils.sass */
+/* line 48, ../../scss/pages/_council.sass */
 .pane.councils_detail ion-header-bar {
   border-bottom: none;
 }
-/* line 51, ../../scss/pages/_councils.sass */
+/* line 51, ../../scss/pages/_council.sass */
 .pane.councils_detail .tab-menu {
   padding-top: 44px;
   border-bottom: 1px solid #DDD;
@@ -1200,7 +1248,7 @@ textarea {
   z-index: 5;
   background-color: #FFF;
 }
-/* line 58, ../../scss/pages/_councils.sass */
+/* line 58, ../../scss/pages/_council.sass */
 .pane.councils_detail .tab-menu a {
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1210,27 +1258,56 @@ textarea {
   position: relative;
   top: 1px;
 }
-/* line 70, ../../scss/pages/_councils.sass */
+/* line 70, ../../scss/pages/_council.sass */
 .pane.councils_detail .tab-menu a.selected {
   border-bottom: 1px solid #000;
   color: #000;
 }
-/* line 74, ../../scss/pages/_councils.sass */
+/* line 74, ../../scss/pages/_council.sass */
 .pane.councils_detail ion-content {
   margin-top: 10px;
 }
-/* line 77, ../../scss/pages/_councils.sass */
+/* line 77, ../../scss/pages/_council.sass */
 .pane.councils_detail ion-content button {
   border-radius: 5px;
 }
-/* line 81, ../../scss/pages/_councils.sass */
+/* line 81, ../../scss/pages/_council.sass */
 .pane.councils_detail ion-content button.activated {
   background-color: #BFE1F2;
 }
-/* line 88, ../../scss/pages/_councils.sass */
+/* line 88, ../../scss/pages/_council.sass */
 .pane.councils_detail ion-content button span {
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+/* line 2, ../../scss/pages/_agenda.sass */
+.agenda_detail h2 {
+  max-height: 14px;
+  overflow: hidden;
+}
+/* line 6, ../../scss/pages/_agenda.sass */
+.agenda_detail h2 div {
+  min-width: 100px;
+  padding: 0 20px;
+}
+/* line 17, ../../scss/pages/_agenda.sass */
+.agenda_detail label span {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* line 27, ../../scss/pages/_agenda.sass */
+.agenda_detail label select, .agenda_detail label input, .agenda_detail label div.input {
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  -webkit-appearance: none;
+  padding: 0;
+}
+/* line 36, ../../scss/pages/_agenda.sass */
+.agenda_detail label textarea {
+  margin-top: 0 !important;
 }
 
 /* line 3, ../../scss/pages/_home.sass */

@@ -13,7 +13,7 @@
     <h2>{{key}} Agendas</h2>
     <hr />
     <ion-list>
-      <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !agendaAccess[id]}" ui-sref="menu.agenda.details({id:id})" ui-sref-disable="!agendaAccess[id]">
+      <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !agendaAccess[id]}" ui-sref="menu.agenda.detail({agendaGroupId:key, agendaId:id})" ui-sref-disable="!agendaAccess[id]">
         {{title}}
       </ion-item>
     </ion-list>

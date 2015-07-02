@@ -4,6 +4,11 @@ angular.module('councilsApp')
 .controller("ApplicationController", ['MODALS', '$rootScope', '$ionicHistory', '$scope', '$ionicModal', '$ionicSideMenuDelegate', function(MODALS, $rootScope, $ionicHistory, $scope, $ionicModal, $ionicSideMenuDelegate) {
   $scope.modal = {};
 
+  $rootScope.viewConfig = {
+    currentCouncilId: 0,
+    currentCouncilTab: "discussion"
+  }
+
   $rootScope.back = function() {
     $ionicHistory.goBack();
   }
@@ -89,20 +94,55 @@ angular.module('councilsApp')
 
 }])
 
-.controller("AgendaController", ['$scope', '$ionicHistory', '$stateParams', 'AGENDAS', function($scope, $ionicHistory, $stateParams, AGENDAS) {
-  $scope.agendaId = $stateParams.agendaId;
+.controller("AgendaController",
+  ['$scope', '$ionicHistory', 'HymnService', '$stateParams', 'AGENDAS',
+  function($scope, $ionicHistory, HymnService, $stateParams, AGENDAS) {
+
+  $scope.openModal = function( type ) {
+    $scope.$emit('showModal', type);
+  }
+
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+    if(toState.name == 'menu.agenda.detail') {
+      $scope.agendaId = toParams.agendaId;
+      $scope.agendaGroup = toParams.agendaGroupId;
+    }
+  });
+
+  $scope.data = {
+    date: "",
+    openingHymn: "",
+    openingPrayer: "",
+    spiritualThought: "",
+    highCounselor: "",
+    callings: "",
+    spiritualWelfare: "",
+    temporalWelfare: "",
+    fellowship: "",
+    missionary: "",
+    events: "",
+    closingPrayer: ""
+  }
+
+  $scope.hymns = HymnService.getList();
 
   $scope.agendas = AGENDAS;
   $scope.agendaAccess = {"2":true,"3":true};
 
-  //$scope.back = $ionicHistory.goBack();
+}])
 
+.controller("CouncilDetailController", ['$scope','$stateParams', function($scope, $stateParams) {
+    $scope.tab = $stateParams.currentCouncilTab;
+    $scope.$emit("councilDetailTabChanged",$scope.tab);
 }])
 
 .controller("CouncilController",
   ['COUNCILS', '$scope', '$stateParams', '$rootScope',
   function(COUNCILS, $scope, $stateParams, $rootScope) {
-  $scope.councilId = $stateParams.id;
+
+  $scope.$on('councilDetailTabChanged', function(event, data) {
+    console.log(data);
+  })
 
   $scope.openModal = function( type ) {
     $scope.$emit('showModal', type);

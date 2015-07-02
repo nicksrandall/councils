@@ -53,6 +53,22 @@ Date.prototype.getOrdinalSuffix = function() {
   return suffix;
 };
 
+(function() {
+  HTMLSelectElement.prototype.customPlaceholder = function(placeholderText) {
+    var defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.innerText = placeholderText;
+    defaultOption.setAttribute('disabled',true);
+    defaultOption.setAttribute('selected',true);
+    defaultOption.style.display = "none";
+
+    var first = this.children[0]
+    console.log(first)
+    console.log(this.children)
+    this.insertBefore(defaultOption, first);
+  }
+})();
+
 // Set textareas to shrink/expand with amount of content
 (function() {
   HTMLTextAreaElement.prototype.autoResize = function() {
@@ -87,6 +103,7 @@ Date.prototype.getOrdinalSuffix = function() {
     clone.style.position = "absolute";
     clone.style.zIndex = "-10";
     clone.style.top = "0";
+    clone.style.color = "transparent";
 
     // Add clone to same parent as the textarea
     this.parentNode.appendChild(clone);

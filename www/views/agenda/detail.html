@@ -1,0 +1,106 @@
+
+<ion-pane class="agenda_detail">
+  <ion-header-bar>
+    <button class="icon ion-ios-arrow-thin-left button-clear button" ng-click="back()"></button>
+    <div class="title icon ion-ios-list-outline">{{agendas[agendaGroup][agendaId]}}</div>
+  </ion-header-bar>
+
+  <ion-content class="pad20">
+    <hr />
+    <h2 style="max-height: 14px; overflow: hidden">
+        <ion-scroll direction="x" class="pad20b">
+          <div>May 3</div>
+          <div>May 10</div>
+          <div>May 17</div>
+          <div class="selected">May 24</div>
+        </ion-scroll>
+    </h2>
+    <hr />
+    <ion-list>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Opening Hymn</span>
+          <select ng-model="data.openingHymn">
+            <option value="" default disabled>Select Hymn</option>
+            <option ng-repeat="h in hymns track by $index" value="{{$index}}">{{$index+1}} - {{h}}</option>
+          </select>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Opening Prayer</span>
+          <div class="input">
+            <input ng-model="data.openingPrayer" />
+          </div>
+        </label>
+        <div ng-click="openModal('members')">Select Members</div>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Spiritual Thought</span>
+          <input ng-model="data.spiritualThought" placeholder="Choose Member..."/>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">High Counselor</span>
+          <input ng-model="data.highCounselor" placeholder="Remarks from..."/>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Callings</span>
+          <input ng-model="data.callings" placeholder="Open callings..."/>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Spiritual Welfare</span>
+          <input ng-model="data.spiritualWelfare" placeholder="Choose Members..."/>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Temporal Welfare</span>
+          <input ng-model="data.temporalWelfare" placeholder="Choose Members..."/>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Fellowship</span>
+          <textarea ng-model="data.fellowship" placeholder="Add items of business" auto-resize></textarea>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Missionary</span>
+          <textarea ng-model="data.missionary" placeholder="Add items of business..." auto-resize></textarea>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Events</span>
+          <textarea ng-model="data.events" placeholder="Add Event..." auto-resize></textarea>
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <label>
+          <span class="input-label">Closing Prayer</span>
+          <input ng-model="data.closingPrayer" placeholder="Choose Member..."/>
+        </label>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-pane>

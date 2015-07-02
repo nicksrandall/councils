@@ -7,6 +7,14 @@ angular.module('councilsApp')
   }
 })
 
+.directive("customPlaceholder", function() {
+  return function(scope, element) {
+    var defaultValue = element[0].getAttribute('custom-placeholder')
+    element[0].customPlaceholder( defaultValue );
+  }
+})
+
+
 // This allows you to disable a ui-sref conditionally by adding an attribute
 // on the element e.g. ui-sref-disable='!user.loggedIn()'
 .directive('uiSrefDisable', ['$parse', '$rootScope',
