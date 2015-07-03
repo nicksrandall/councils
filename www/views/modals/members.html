@@ -1,18 +1,22 @@
 <div class="member modal">
+
   <ion-header-bar>
-    <input placeholder="Search for ward member" name="memberSearch" id="memberSearch" ng-model="searchTerm"></input>
+    <input placeholder="Search for ward member" ng-model="search.Term"></input>
   </ion-header-bar>
+
   <ion-content class="full-height pad20lr">
-    <div>
-      <ion-list>
-        <ion-item ng-repeat="member in searchResults">
-          <img ng-src="img/{{member.avatar}}">
-          <span class="serif">{{member.name}}</span>
-        </ion-item>
-      </ion-list>
-    </div>
+    <ion-list>
+      <ion-item ng-class="{selected: selection.users.contains(member.id)}" ng-repeat="member in search.Results" ng-click="selection.toggle(member.id)">
+        <img ng-src="img/{{member.avatar}}">
+        <span class="serif">{{member.name}}</span>
+      </ion-item>
+    </ion-list>
   </ion-content>
+
   <ion-footer-bar class="tac">
-    <button class="button button-block button-max mar0a" ng-click="closeModal()">Cancel</button>
+    <button class="button button-block button-max mar0a" ng-click="closeModal('done')">
+      Done
+    </button>
   </ion-footer-bar>
+
 </div>

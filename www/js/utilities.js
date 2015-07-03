@@ -1,5 +1,20 @@
 // Utilities for CouncilsApp
 
+//
+Array.prototype.contains = function(element) {
+  return this.indexOf(element) != -1
+}
+Array.prototype.pushUnique = function(element) {
+  if( ! this.contains(element) )
+    this.push(element);
+}
+Array.prototype.remove = function(element) {
+  if(this.contains(element)) {
+    var spliceStart = this.indexOf(element);
+    this.splice(spliceStart, 1);
+  }
+}
+
 // Add or subtract (with - numbers) the specified number of days
 // from the current date object
 Date.prototype.addDays = function(days) {

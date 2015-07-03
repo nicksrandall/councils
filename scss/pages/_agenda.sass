@@ -5,13 +5,18 @@
 
     div
       @extend .dib
+      @extend .cBlue
+      white-space: nowrap
       min-width: 100px
       padding: 0 20px
-      @extend .cBlue
 
       &.selected
         @extend .grey9
 
+  .item
+    > div:last-child
+      color: #AAA
+      @extend .f18
 
   label
     span
@@ -20,6 +25,13 @@
       @extend .sans
       text-transform: uppercase
       letter-spacing: 1px
+
+      &.serif
+        @extend .serif
+        @extend .f18
+        @extend .bk
+        text-transform: none
+        letter-spacing: 0
 
     div.input
       @extend .greyA

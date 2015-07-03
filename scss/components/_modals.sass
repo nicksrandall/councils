@@ -6,9 +6,24 @@
       top: 77px !important
 
     .item
+      @extend .grey9
       padding: 9px 10px 5px
       border: none
       border-top: 1px solid #DDD
+
+      &.selected
+        @extend .cBlue
+
+        &:after
+          @extend .dib
+          @extend .f36
+          content: "\f3fd"
+          position: absolute
+          top: 15px
+          right: 5px
+          font-family: "Ionicons"
+          -webkit-font-smoothing: antialiased
+
 
       span
         position: relative

@@ -2,7 +2,7 @@
 angular.module('councilsApp')
 
 .config( function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/menu/home')
+  $urlRouterProvider.otherwise('/simple/welcome')
   var viewRoot = "views/";
 
   $stateProvider.state('menu.home', {

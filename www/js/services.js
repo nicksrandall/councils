@@ -1,6 +1,151 @@
 // Services for CouncilsApp
 angular.module('councilsApp')
 
+.factory("MemberService", [function() {
+
+  var wardMembers = [
+    {
+      id: 0,
+      name: "Amanda Tapping",
+      avatar: "headshot.png"
+    },
+    {
+      id: 1,
+      name: "Samantha Carter",
+      avatar: "headshot.png"
+    },
+    {
+      id: 2,
+      name: "Daniel Jackson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 3,
+      name: "Jack O'Neil",
+      avatar: "headshot.png"
+    },
+    {
+      id: 4,
+      name: "Richard Anderson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 5,
+      name: "David Hewlett",
+      avatar: "headshot.png"
+    },
+    {
+      id: 6,
+      name: "Rodney McKay",
+      avatar: "headshot.png"
+    },
+    {
+      id: 7,
+      name: "Torri Higginson",
+      avatar: "headshot.png"
+    },
+    {
+      id: 8,
+      name: "Elizabeth Weir",
+      avatar: "headshot.png"
+    },
+    {
+      id: 9,
+      name: "Jason Mamoa",
+      avatar: "headshot.png"
+    },
+    {
+      id: 10,
+      name: "Ronon Dex",
+      avatar: "headshot.png"
+    },
+    {
+      id: 11,
+      name: "Rachel Luttrell",
+      avatar: "headshot.png"
+    },
+    {
+      id: 12,
+      name: "Joe Flanigan",
+      avatar: "headshot.png"
+    }
+  ];
+
+  return {
+    getMembers : function() { return wardMembers; }
+  }
+}])
+
+.factory("MembersModal", ['MemberService', '$q', 'MODALS', '$ionicModal', '$rootScope', function(MemberService, $q, MODALS, $ionicModal, $rootScope) {
+
+  $modalScope = $rootScope.$new();
+
+  var type = "members";
+  var userModal;
+  var maxSelected = null;
+  $modalScope.search = {};
+  $modalScope.selection = {};
+  $modalScope.search.Term = "";
+  $modalScope.search.Results = {};
+  $modalScope.selection.users = [];
+
+  var openModal = function( max, selected ) {
+    var deferred = $q.defer();
+
+    if(selected)
+      $modalScope.selection.users = selected;
+
+    maxSelected = max || Number.MAX_VALUE;
+    $ionicModal.fromTemplateUrl(MODALS[type], {
+      animation: 'slide-in-up',
+      scope: $modalScope
+    }).then(function(modal) {
+      $modalScope.search.Term = "";
+      userModal = modal;
+
+      $modalScope.closeModal = function() {
+        deferred.resolve($modalScope.selection.users.slice());
+        $modalScope.selection.users.splice(0,$modalScope.selection.users.length);
+        userModal.remove();
+      }
+
+      userModal.show();
+    })
+
+    return deferred.promise;
+  }
+
+  $modalScope.selection.toggle = function(id) {
+
+    if($modalScope.selection.users.contains(id)) {
+      $modalScope.selection.users.remove(id);
+    }
+
+    else if ($modalScope.selection.users.length <= 1 && maxSelected == 1) {
+      $modalScope.selection.users.splice(0,1);
+      $modalScope.selection.users.pushUnique(id);
+      $modalScope.closeModal()
+    }
+
+    else if ($modalScope.selection.users.length < maxSelected) {
+      $modalScope.selection.users.pushUnique(id);
+    }
+    // Otherwise ignore click, as there'd be too many
+  }
+
+  $modalScope.$watch( 'search.Term', search );
+
+  function search() {
+    $modalScope.search.Results = wardMembers.filter(function(m) {return m.name.toLowerCase().indexOf($modalScope.search.Term.toLowerCase()) >= 0})
+  }
+
+  var wardMembers = MemberService.getMembers();
+
+  return {
+    openModal: openModal
+  }
+}])
+
 .factory("CouncilsService", ['$scope', function() {
   return function() {}
 }])

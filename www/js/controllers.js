@@ -12,7 +12,7 @@ angular.module('councilsApp')
   $rootScope.back = function() {
     $ionicHistory.goBack();
   }
-
+/*
   $scope.openModal = function( type ) {
     $scope.$emit('showModal', type);
   }
@@ -26,99 +26,12 @@ angular.module('councilsApp')
       $scope.modal.show();
     });
   })
-
-  $scope.closeModal = function() {
-    console.log('destroy')
-    $scope.modal.remove();
-  }
-
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
+*/
   //
   // $scope.toggleLeft = function() {
   //   $ionicSideMenuDelegate.toggleLeft();
   // };
 
-
-  $scope.searchTerm = "";
-    $scope.searchResults = {};
-
-  $scope.$watch( function() {return $scope.searchTerm}, setSearchResults );
-
-  function setSearchResults() {
-    console.log("searching " + $scope.searchTerm)
-    $scope.searchResults = $scope.wardMembers.filter(function(m) {return m.name.indexOf($scope.searchTerm) >= 0})
-  }
-
-
-  $scope.wardMembers = [
-    {
-      id: 0,
-      name: "Amanda Tapping",
-      avatar: "headshot.png"
-    },
-    {
-      id: 1,
-      name: "Samantha Carter",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    }
-  ];
 
 }])
 
@@ -181,12 +94,19 @@ angular.module('councilsApp')
 }])
 
 .controller("AgendaController",
-  ['$scope', '$ionicHistory', 'HymnService', '$stateParams', 'AGENDAS',
-  function($scope, $ionicHistory, HymnService, $stateParams, AGENDAS) {
+  ['MemberService', '$scope', '$ionicHistory', 'HymnService', '$stateParams', 'AGENDAS', 'MembersModal',
+  function(MemberService, $scope, $ionicHistory, HymnService, $stateParams, AGENDAS, MembersModal) {
 
-  $scope.openModal = function( type ) {
-    $scope.$emit('showModal', type);
-  }
+  $scope.members = MemberService.getMembers();
+
+  $scope.openMembersModal = function(dataStore, max) {
+    MembersModal.openModal(max, $scope.data[dataStore]).then(function(result) {
+      console.log(result)
+      $scope.data[dataStore] = result;
+    })
+  };
+
+  $scope.searchResults = MembersModal.searchResults;
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams) {
     if(toState.name == 'menu.agenda.detail') {
@@ -213,7 +133,7 @@ angular.module('councilsApp')
   $scope.hymns = HymnService.getList();
 
   $scope.agendas = AGENDAS;
-  $scope.agendaAccess = {"2":true,"3":true};
+  $scope.agendaAccess = { "2":true,"3":true };
 
 }])
 
