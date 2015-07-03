@@ -134,12 +134,20 @@ angular.module('councilsApp')
 
   $stateProvider.state('menu.council.assignment_new', {
     url: "/assignment/new",
-    templateUrl: viewRoot + "/council/assignment_new.html"
+    views: {
+      'councilContent' : {
+        templateUrl: viewRoot + "/council/assignment_new.html"
+      }
+    }
   })
 
   $stateProvider.state('menu.council.edit', {
     url: 'edit',
-    templateUrl: viewRoot + '/council/edit.html'
+    views: {
+      'councilContent' : {
+        templateUrl: viewRoot + '/council/edit.html'
+      }
+    }
   })
 
 

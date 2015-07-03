@@ -2,7 +2,7 @@
 <ion-pane class="new_discussion">
 
   <ion-header-bar>
-    <button class="button button-outline" ui-sref="menu.council.tab.discussion" nav-direction="back">Cancel</button>
+    <button class="button button-outline" ng-click="back()" nav-direction="back">Cancel</button>
     <button class="button button-outline cBlue-border cBlue">Create</button>
   </ion-header-bar>
 
@@ -14,12 +14,23 @@
 
     <hr class="plain" />
 
-    <div class="cBlue">
+    <div class="cBlue" ng-click="openMembersModal('discussionParticipants')">
       <i class="icon ion-ios-people f24"></i>
-      <span class="modal-trigger f12">Add Participants</span>
+      <span class="modal-trigger f12" ng-show="data.discussionParticipants.length > 0">
+        {{data.discussionParticipants.length}} Participant{{(data.discussionParticipants.length == 1) ? "" : "s"}}
+      </span>
+      <span class="modal-trigger f12" ng-show="data.discussionParticipants.length == 0" >
+        Add Participants
+      </span>
     </div>
 
     <hr class="plain" />
+
+    <ul id="participants">
+      <li class="dib" ng-repeat="memberId in data.discussionParticipants">
+        <img ng-src="img/{{members[memberId].avatar}}" ui-sref="menu.profile"/>
+      </li>
+    </ul>
 
   </ion-content>
 

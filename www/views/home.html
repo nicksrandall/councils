@@ -8,19 +8,19 @@
 
   <ion-content class="pad20">
     <div class="row">
-      <div class="col tar">
-        <div class="icon">
-          <i class="icon ion-ios-list-outline f30"></i>
-          <span class="f12 lh34 sans pad10l">3</span>
+      <div class="col-25 tar">
+        <div class="icon pad10lr">
+          <i class="ion-ios-list-outline f30"></i>
+          <span class="f18 lh34 sans pad10l">{{assignments.length}}</span>
         </div>
       </div>
-      <div class="col tac" ui-sref="menu.profile" nav-direction="forward">
+      <div id="avatar-col" class="col-50 tac" ui-sref="menu.profile" nav-direction="forward">
         <div id="user-avatar" class="placeholder round" style="background-image: url('img/headshot.png')"></div>
       </div>
-      <div class="col tal">
-        <div class="icon">
-          <i class="icon ion-ios-chatbubble-outline f30"></i>
-          <span class="f12 lh34 sans pad10l">4</span>
+      <div class="col-25 tal">
+        <div class="icon pad10lr">
+          <i class="ion-ios-chatbubble-outline f30"></i>
+          <span class="f18 lh34 sans pad10l">{{discussions.length}}</span>
         </div>
       </div>
     </div>

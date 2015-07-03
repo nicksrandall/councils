@@ -148,7 +148,7 @@
 }
 
 /* line 36, ../../scss/base/_shorthand.sass */
-.cBlue, .modal.member .item.selected, .pane.councils_detail ion-content button i, .pane.councils_detail ion-content button span, .agenda_detail h2 div {
+.cBlue, .modal.member .item.selected, .pane.councils_detail ion-content button i, .pane.councils_detail ion-content button span, .agenda_detail h2 div, .pane.home .scroll .icon {
   color: #387491 !important;
 }
 
@@ -1400,13 +1400,29 @@ textarea {
 .pane.home #user-avatar {
   border-radius: 50%;
   max-width: 200px;
-  width: 25vw;
   height: 25vw;
+  width: 25vw;
   max-height: 200px;
   margin: 0 auto;
   background-position: center center;
   background-size: cover;
   border: 2px solid #EEE;
+}
+/* line 15, ../../scss/pages/_home.sass */
+.pane.home .scroll .icon {
+  position: relative;
+}
+/* line 19, ../../scss/pages/_home.sass */
+.pane.home .scroll .icon:before {
+  content: " ";
+  height: 10vw;
+  display: block;
+  max-height: 85px;
+}
+/* line 25, ../../scss/pages/_home.sass */
+.pane.home .scroll .icon span {
+  position: relative;
+  top: -4px;
 }
 
 /* line 2, ../../scss/pages/_welcome.sass */
@@ -1414,13 +1430,24 @@ textarea {
   border-bottom: 1px solid #FFF;
   border-top: 1px solid #FFF;
 }
-
 /* line 6, ../../scss/pages/_welcome.sass */
+.setup ion-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* line 11, ../../scss/pages/_welcome.sass */
+.login ion-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* line 15, ../../scss/pages/_welcome.sass */
 .welcome, .setup, .login {
   background-color: #2D435E;
   color: #fff;
 }
-/* line 10, ../../scss/pages/_welcome.sass */
+/* line 19, ../../scss/pages/_welcome.sass */
 .welcome .button, .setup .button, .login .button {
   position: absolute;
   bottom: 10px;
@@ -1429,23 +1456,23 @@ textarea {
   margin-left: -150px;
   text-transform: uppercase;
 }
-/* line 18, ../../scss/pages/_welcome.sass */
+/* line 27, ../../scss/pages/_welcome.sass */
 .welcome h1, .setup h1, .login h1 {
   color: #fff;
 }
-/* line 21, ../../scss/pages/_welcome.sass */
+/* line 30, ../../scss/pages/_welcome.sass */
 .welcome .slider, .setup .slider, .login .slider {
   min-height: 200px;
   width: 100%;
   color: #fff;
   text-align: center;
 }
-/* line 27, ../../scss/pages/_welcome.sass */
+/* line 36, ../../scss/pages/_welcome.sass */
 .welcome .slider p, .setup .slider p, .login .slider p {
   margin-top: 10px;
   font-size: 16px;
 }
-/* line 31, ../../scss/pages/_welcome.sass */
+/* line 40, ../../scss/pages/_welcome.sass */
 .welcome .slider .slider-pager .slider-pager-page, .setup .slider .slider-pager .slider-pager-page, .login .slider .slider-pager .slider-pager-page {
   color: #fff;
 }

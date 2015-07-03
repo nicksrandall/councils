@@ -2,7 +2,7 @@
 <ion-pane class="council_edit">
 
   <ion-header-bar>
-    <button class="button button-outline cBlue-border cBlue" ui-sref="council.tab.discussion">Done</button>
+    <button class="button button-outline cBlue-border cBlue" ng-click="back()">Done</button>
   </ion-header-bar>
 
   <hr class="plain mar60t mar10lr" />
@@ -13,12 +13,12 @@
 
     <hr class="plain" />
 
-    <div class="cBlue" ng-click="openModal('permissionError')">
+    <div class="cBlue" ng-click="openMembersModal('participants')">
       <i class="icon ion-ios-people f24"></i>
-      <span class="modal-trigger f12" ng-show="{{wardMembers.length}}">
-        {{wardMembers.length}} Participant{{(wardMembers.length == 1) ? "" : "s"}}
+      <span class="modal-trigger f12" ng-show="data.participants.length > 0">
+        {{data.participants.length}} Participant{{(data.participants.length == 1) ? "" : "s"}}
       </span>
-      <span class="modal-trigger f12" ng-hide="{{wardMembers.length}}" >
+      <span class="modal-trigger f12" ng-show="data.participants.length == 0" >
         Add Participants
       </span>
     </div>
@@ -26,8 +26,8 @@
     <hr class="plain" />
 
     <ul id="participants">
-      <li class="dib" ng-repeat="member in wardMembers">
-        <img ng-src="img/{{member.avatar}}" />
+      <li class="dib" ng-repeat="memberId in data.participants">
+        <img ng-src="img/{{members[memberId].avatar}}" ui-sref="menu.profile" />
       </li>
     </ul>
 

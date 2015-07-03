@@ -3,10 +3,25 @@
     #user-avatar
       border-radius: 50%
       max-width: 200px
-      width: 25vw
       height: 25vw
+      width: 25vw
       max-height: 200px
       margin: 0 auto
       background-position: center center
       background-size: cover
       border: 2px solid #EEE
+
+    .scroll
+      .icon
+        @extend .cBlue
+        position: relative
+
+        &:before
+          content: " "
+          height: 10vw
+          display: block
+          max-height: 85px
+
+        span
+          position: relative
+          top: -4px

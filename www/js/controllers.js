@@ -12,27 +12,6 @@ angular.module('councilsApp')
   $rootScope.back = function() {
     $ionicHistory.goBack();
   }
-/*
-  $scope.openModal = function( type ) {
-    $scope.$emit('showModal', type);
-  }
-
-  $scope.$on("showModal", function(event, type) {
-    $ionicModal.fromTemplateUrl(MODALS[type], {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-      $scope.modal.show();
-    });
-  })
-*/
-  //
-  // $scope.toggleLeft = function() {
-  //   $ionicSideMenuDelegate.toggleLeft();
-  // };
-
-
 }])
 
 
@@ -101,12 +80,9 @@ angular.module('councilsApp')
 
   $scope.openMembersModal = function(dataStore, max) {
     MembersModal.openModal(max, $scope.data[dataStore]).then(function(result) {
-      console.log(result)
       $scope.data[dataStore] = result;
     })
   };
-
-  $scope.searchResults = MembersModal.searchResults;
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams) {
     if(toState.name == 'menu.agenda.detail') {
@@ -143,34 +119,26 @@ angular.module('councilsApp')
 }])
 
 .controller("CouncilController",
-  ['COUNCILS', '$scope', '$stateParams', '$rootScope',
-  function(COUNCILS, $scope, $stateParams, $rootScope) {
+  ['MemberService', 'MembersModal', 'COUNCILS', '$scope', '$stateParams', '$rootScope',
+  function(MemberService, MembersModal, COUNCILS, $scope, $stateParams, $rootScope) {
+
+  $scope.members = MemberService.getMembers();
+
+  $scope.openMembersModal = function(dataStore, max) {
+    MembersModal.openModal(max, $scope.data[dataStore]).then(function(result) {
+      $scope.data[dataStore] = result;
+    })
+  };
+
+  $scope.data = {
+    participants: [],
+    discussionParticipants: [],
+    assignmentParticipants: []
+  }
 
   $scope.$on('councilDetailTabChanged', function(event, data) {
     console.log(data);
   })
-
-  $scope.openModal = function( type ) {
-    $scope.$emit('showModal', type);
-  }
-
-  $scope.wardMembers = [
-    {
-      id: 0,
-      name: "Franklin Hughes",
-      avatar: "headshot.png"
-    },
-    {
-      id: 1,
-      name: "Franklin Hughes",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Franklin Hughes",
-      avatar: "headshot.png"
-    }
-  ];
 
   $scope.councilList = COUNCILS;
   $scope.councilAccess = {
