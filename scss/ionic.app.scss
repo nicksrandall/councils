@@ -19,4 +19,14 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "../lib/ionic/scss/ionic";
+@import "../www/lib/ionic/scss/ionic";
+
+// Added by Dan
+// Include base sass styling
+@import "base/base";
+
+// Include components
+@import "components/components";
+
+// Include page specific styles
+@import "pages/pages";
