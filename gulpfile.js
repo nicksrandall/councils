@@ -15,6 +15,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 var paths = {
   sass: ['./scss/**/*.scss'],
   js: [
+    'www/js/app.js',
     'www/js/utilities.js',
     'www/js/module.js',
     'www/js/routes.js',
@@ -70,11 +71,11 @@ gulp.task('git-check', function(done) {
   done();
 });
 
-gulp.task('build', function(done) {
+gulp.task('build', ['sass'], function(done) {
   return gulp.src(paths.js)
     .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('./www/js/'))
+    // .pipe(gulp.dest('./www/js/'))
     .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(rename({extname: '.min.js'}))
