@@ -11,9 +11,10 @@ angular.module('councilsApp', ['firebase', 'ionic',  'ngCordova'])
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+  
     if(window.StatusBar) {
-      $cordovaStatusbar.overlaysWebView(false);
-      $cordovaStatusbar.hide(true);
+      console.log('hide!');
+      window.StatusBar.hide();
     }
   });
 

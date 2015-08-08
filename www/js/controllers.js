@@ -14,13 +14,16 @@ angular.module('councilsApp')
   }
 })
 
-.controller('LoginController', function ($scope, Auth, $state) {
-  $scope.credentials = {};
+.controller('LoginController', function ($scope, Auth, $state, $localstorage) {
+  $scope.credentials = {
+    email: $localstorage.get('email')
+  };
   $scope.login = function () {
     Auth.$authWithPassword({
       email: $scope.credentials.email,
       password: $scope.credentials.password
     }).then(function(authData) {
+      $localstorage.set('email', $scope.credentials.email);
       console.log("Logged in as:", authData.uid);
       $state.go('menu.home');
     }).catch(function(error) {
