@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('councilsApp', ['firebase', 'ionic',  'ngCordova'])
 
-.run(function($ionicPlatform, $rootScope, $state, $cordovaStatusbar) {
+.run(function($ionicPlatform, $rootScope, $state, $cordovaStatusbar, $timeout) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -12,10 +12,12 @@ angular.module('councilsApp', ['firebase', 'ionic',  'ngCordova'])
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
   
-    if(window.StatusBar) {
-      console.log('hide!');
-      window.StatusBar.hide();
-    }
+    $timeout(function () {
+      if(window.StatusBar) {
+          window.StatusBar.overlaysWebView();
+          window.StatusBar.hide();
+      }
+    }, 3000);
   });
 
   $rootScope.$on("$stateChangeError", function(event, next, nextP, previous, previousP, error) {
