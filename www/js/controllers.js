@@ -70,8 +70,6 @@ angular.module('councilsApp')
 })
 
 .controller("HomeController", ['$scope', 'User', 'currentAuth', function($scope, User, currentAuth) {
-  console.log(currentAuth);
-  debugger;
   $scope.user = User.set(currentAuth.uid);
   $scope.assignments = [
     {

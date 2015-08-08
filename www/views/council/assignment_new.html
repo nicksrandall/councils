@@ -3,18 +3,18 @@
 
   <ion-header-bar>
     <button class="button button-outline" ng-click="back()">Cancel</button>
-    <button class="button button-outline cBlue-border cBlue">Create</button>
+    <button class="button button-outline cBlue-border cBlue" ng-click="create()">Create</button>
   </ion-header-bar>
 
   <hr class="plain mar60t mar10lr" />
 
   <ion-content class="pad10 pad20t">
 
-    <textarea name="content" placeholder="Create new assignment" auto-resize></textarea>
+    <textarea name="content" placeholder="Create new assignment" auto-resize ng-model="content"></textarea>
 
     <hr class="plain" />
 
-    <div class="cBlue">
+    <div class="cBlue" ng-click="openMembersModal('assignmentAssignee', 1)">
       <i class="icon ion-ios-person f24"></i>
       <span class="modal-trigger f12">Assign</span>
     </div>
@@ -42,7 +42,7 @@
 
     <ul id="participants">
       <li class="dib" ng-repeat="memberId in data.assignmentParticipants">
-        <img ng-src="img/{{members[memberId].avatar}}" ui-sref="menu.profile"/>
+        <img ng-src="{{members[memberId].profileImage}}" ui-sref="menu.profile"/>
       </li>
     </ul>
 

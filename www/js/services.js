@@ -31,8 +31,9 @@ angular.module('councilsApp')
     };
 })
 
-.factory("MemberService", [function() {
-
+.factory("MemberService", function($firebaseArray) {
+  var ref = new Firebase('https://councilsapp.firebaseio.com/users');
+  var users = $firebaseArray(ref);
   var wardMembers = [
     {
       id: 0,
@@ -102,9 +103,9 @@ angular.module('councilsApp')
   ];
 
   return {
-    getMembers : function() { return wardMembers; }
+    getMembers : function() { return $firebaseArray(ref); }
   }
-}])
+})
 
 .factory("MembersModal", ['MemberService', '$q', 'MODALS', '$ionicModal', '$rootScope', function(MemberService, $q, MODALS, $ionicModal, $rootScope) {
 
@@ -166,7 +167,7 @@ angular.module('councilsApp')
   $modalScope.$watch( 'search.Term', search );
 
   function search() {
-    $modalScope.search.Results = wardMembers.filter(function(m) {return m.name.toLowerCase().indexOf($modalScope.search.Term.toLowerCase()) >= 0})
+    $modalScope.search.Results = wardMembers.filter(function(m) { var name = m.fname + ' ' + m.lname; return name.toLowerCase().indexOf($modalScope.search.Term.toLowerCase()) >= 0})
   }
 
   var wardMembers = MemberService.getMembers();
