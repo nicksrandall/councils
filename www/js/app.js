@@ -1,11 +1,10 @@
 // Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('councilsApp', ['ionic'])
+angular.module('councilsApp', ['firebase', 'ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -14,6 +13,12 @@ angular.module('councilsApp', ['ionic'])
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+    }
+  });
+
+  $rootScope.$on("$stateChangeError", function(event, next, nextP, previous, previousP, error) {
+    if (error === "AUTH_REQUIRED") {
+      $state.go("simple.welcome");
     }
   });
 });

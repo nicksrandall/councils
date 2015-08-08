@@ -1,6 +1,36 @@
 // Services for CouncilsApp
 angular.module('councilsApp')
 
+.factory('User', ['$firebaseObject', function ($firebaseObject) {
+    var user = {};
+    return {
+        get: function () { return user; },
+        set: function (uid) { 
+            var ref = new Firebase('https://councilsapp.firebaseio.com/users/' + uid);
+            user = $firebaseObject(ref);
+            return user;
+        }
+    };
+}])
+
+.factory('Auth', ['$firebaseAuth', function ($firebaseAuth) {
+    var ref = new Firebase('https://councilsapp.firebaseio.com');
+    return $firebaseAuth(ref);
+}])
+
+.factory('me', function () {
+    var me = {};
+    return {
+        get: function () { return me; },
+        set: function (_me) { 
+            me = _me;
+            me.fname = _me.fname || _me.preferredName.split(', ')[1];
+            me.lname = _me.lname || _me.surname;
+            me.email = _me.email;
+        }
+    };
+})
+
 .factory("MemberService", [function() {
 
   var wardMembers = [

@@ -17,7 +17,6 @@ var paths = {
   js: [
     'www/js/app.js',
     'www/js/utilities.js',
-    'www/js/module.js',
     'www/js/routes.js',
     'www/js/controllers.js',
     'www/js/services.js',
@@ -91,7 +90,7 @@ gulp.task('build-no-min', function() {
     .pipe(gulp.dest('www/js'))
 });
 
-gulp.task('build:watch', function () {
+gulp.task('build:watch', ['build'], function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.js, ['build']);
 });

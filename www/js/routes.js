@@ -1,8 +1,8 @@
 // Routes for the App
 angular.module('councilsApp')
 
-.config( function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/simple/welcome')
+.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/menu/home');
   var viewRoot = "views/";
 
   $stateProvider.state('menu.home', {
@@ -10,7 +10,12 @@ angular.module('councilsApp')
     views: {
       "menuContent" : {
         templateUrl: viewRoot + "home.html",
-        controller: "HomeController"
+        controller: "HomeController",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$requireAuth();
+          }]
+        }
       }
     }
   })
@@ -47,17 +52,40 @@ angular.module('councilsApp')
 
   $stateProvider.state('simple.setup', {
     url: "/setup",
-    templateUrl: viewRoot + "setup.html"
+    templateUrl: viewRoot + "setup.html",
+    controller: "SetupController",
+    resolve: {
+      "currentAuth": ["Auth", function(Auth) {
+        return Auth.$waitForAuth();
+      }]
+    }
+  })
+
+  $stateProvider.state('simple.create', {
+    url: "/create",
+    templateUrl: viewRoot + "create.html",
+    controller: "CreateController",
+    resolve: {
+      "currentAuth": ["Auth", function(Auth) {
+        return Auth.$waitForAuth();
+      }]
+    }
   })
 
   $stateProvider.state('simple.login', {
     url: "/login",
-    templateUrl: viewRoot + "login.html"
+    templateUrl: viewRoot + "login.html",
+    controller: 'LoginController',
+    resolve: {
+      "currentAuth": ["Auth", function(Auth) {
+        return Auth.$waitForAuth();
+      }]
+    }
   })
 
   $stateProvider.state('navigations', {
     url: "/navigation",
-    templateUrl: viewRoot + "navigation.html",
+    templateUrl: viewRoot + "navigation.html"
   })
 
   $stateProvider.state('menu.profile', {
@@ -75,7 +103,12 @@ angular.module('councilsApp')
     views: {
       'menuContent': {
         templateUrl: viewRoot + "/council/wrapper.html",
-        controller: "CouncilController"
+        controller: "CouncilController",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$requireAuth();
+          }]
+        }
       }
     }
   })

@@ -15,7 +15,7 @@
         </div>
       </div>
       <div id="avatar-col" class="col-50 tac" ui-sref="menu.profile" nav-direction="forward">
-        <div id="user-avatar" class="placeholder round" style="background-image: url('img/headshot.png')"></div>
+        <div id="user-avatar" class="placeholder round" style="background-image: url({{user.profileImage}})"></div>
       </div>
       <div class="col-25 tal">
         <div class="icon pad10lr">
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <h1 class="f22 tac serif mar0" ui-sref="menu.profile" nav-direction="forward">David Ricardo</h1>
+        <h1 class="f22 tac serif mar0" ui-sref="menu.profile" nav-direction="forward">{{user.fname}} {{user.lname}}</h1>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
     <h2>Personal Assignments</h2>
     <hr />
 
-    <ion-list id="personal-assignments" ng-controller="HomeController">
+    <ion-list id="personal-assignments">
 
       <ion-item ng-repeat="assignment in assignments" class="row pad0">
 
@@ -66,7 +66,7 @@
     <h2>Discussions</h2>
     <hr />
 
-    <ion-list id="discussions" ng-controller="HomeController">
+    <ion-list id="discussions">
 
       <ion-item ng-repeat="discussion in discussions" class="row pad0">
 

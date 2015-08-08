@@ -1,0 +1,117 @@
+{
+  "assignments": [
+    {
+      "content": "Visit the Family History Center",
+      "dueAt": "2015-06-20 11:00:00",
+      "createdBy": "0",
+      "assignedTo_id": "1",
+      "participants": {
+        "123": true,
+        "24": true,
+        "22": true
+      },
+      "comments": {
+        "0": true,
+        "1": true
+      }
+    },
+    {
+      "content": "Fill Ward Mission Leader position",
+      "dueAt": "2015-06-23 12:00:00",
+      "createdBy": "123",
+      "participants": {
+        "123": true,
+        "24": true,
+        "23": true
+      },
+      "comments": {
+        "0": true,
+        "1": true
+      }
+    }
+  ],
+  "comments": [
+    {
+      "content": "I can make it.",
+      "createdAt": "2015-06-23 10:34:23",
+      "user_avatar": "avatar3.jpg",
+      "user_name": "Spencer Atkins",
+      "user_id": "23"
+    },
+    {
+      "content": "I work late on Tuesday this week.",
+      "createdAt": "2015-06-23 10:34:23",
+      "user_avatar": "avatar2.jpg",
+      "user_name": "Adelle Smith",
+      "user_id": "24"
+    }
+  ],
+  "discussions": [
+    {
+      "content": "Do we have any volunteers for refreshments?",
+      "createdDate": "2015-06-20 11:00:00",
+      "createdBy": "123",
+      "participants": {
+        "123": true,
+        "24": true,
+        "22": true
+      },
+      "comments": {
+        "0": true,
+        "1": true
+      }
+    },
+    {
+      "content": "Could somebody go on splits with the missionaries on Tuesday?",
+      "createdDate": "2015-06-20 11:00:00",
+      "createdBy": "123",
+      "participants": {
+        "123": true,
+        "24": true,
+        "23": true
+      },
+      "comments": {
+        "0": true,
+        "1": true
+      }
+    }
+  ],
+  "users": [
+    {
+      "login_count": 12,
+      "user_name": "(StkPres) David Ricardo",
+      "user_avatar": "avatar2.jpg",
+      "discussions": {
+        "0": true,
+        "1": true
+      },
+      "assignments": {
+        "0": true
+      }
+    },
+    {
+      "login_count": 8,
+      "user_name": "(StkCoun) Steve Smith",
+      "user_avatar": "avatar2.jpg",
+      "discussions": {
+        "0": true,
+        "1": true
+      },
+      "assignments": {
+        "0": true
+      }
+    },
+    {
+      "login_count": 5,
+      "user_name": "(StkLdr) Adelle Smith",
+      "user_avatar": "avatar2.jpg",
+      "discussions": {
+        "0": true,
+        "1": true
+      },
+      "assignments": {
+        "0": true
+      }
+    }
+  ]
+}

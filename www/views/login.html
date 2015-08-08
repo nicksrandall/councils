@@ -1,6 +1,6 @@
 
 <ion-pane class="login full-height">
-  <form name="loginForm" class="mar0a" ng-submit="login(credentials)" novalidate>
+  <form name="loginForm" class="mar0a" ng-submit="login()" novalidate>
     <ion-content scroll="false">
       <div class="vac tac pad50lr mar0a">
         <div class=" mar0tb pad0 tac">
@@ -9,25 +9,25 @@
         </div>
         <div class=" mar0tb pad0">
           <label class="item item-input">
-            <span class="input-label">Username:</span>
-            <input type="text" placeholder="Username" id="username" ng-model="credentials.username">
+            <span class="input-label">Email:</span>
+            <input type="text" placeholder="Username" id="email" name="email" ng-model="credentials.email">
           </label>
         </div>
         <div class=" mar20tb pad0">
           <label class="item item-input">
             <span class="input-label">Password:</span>
-            <input type="password" id="password" placeholder="Password" ng-model="credentials.password">
+            <input type="password" id="password" placeholder="Password" name="password" ng-model="credentials.password">
           </label>
         </div>
         <!-- Demo link to Welcome screen -->
-        <div class=" mar0tb pad0 tac">
+<!--         <div class=" mar0tb pad0 tac">
           <span ui-sref="simple.welcome">(View Welcome screen)</span>
-        </div>
+        </div> -->
         <!-- End of Demo Link -->
 
       </div>
 
-      <button type="submit" class="button button-block button-max" nav-direction="forward" ui-sref="menu.home">Login</button>
+      <button type="submit" class="button button-block button-max" nav-direction="forward">Login</button>
 
     </ion-content>
   </form>

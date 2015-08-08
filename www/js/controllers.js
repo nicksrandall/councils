@@ -1,7 +1,7 @@
 // Controllers for the CouncilsApp
 angular.module('councilsApp')
 
-.controller("ApplicationController", ['MODALS', '$rootScope', '$ionicHistory', '$scope', '$ionicModal', '$ionicSideMenuDelegate', function(MODALS, $rootScope, $ionicHistory, $scope, $ionicModal, $ionicSideMenuDelegate) {
+.controller("ApplicationController", function(MODALS, $rootScope, $ionicHistory, $scope, $ionicModal, $ionicSideMenuDelegate) {
   $scope.modal = {};
 
   $rootScope.viewConfig = {
@@ -12,10 +12,67 @@ angular.module('councilsApp')
   $rootScope.back = function() {
     $ionicHistory.goBack();
   }
-}])
+})
 
+.controller('LoginController', function ($scope, Auth, $state) {
+  $scope.credentials = {};
+  $scope.login = function () {
+    Auth.$authWithPassword({
+      email: $scope.credentials.email,
+      password: $scope.credentials.password
+    }).then(function(authData) {
+      console.log("Logged in as:", authData.uid);
+      $state.go('menu.home');
+    }).catch(function(error) {
+      console.error("Authentication failed:", error);
+    });
+  };
+})
 
-.controller("HomeController", ['$scope', function($scope) {
+.controller('SetupController', function($scope, $http, me, $state, $q) {
+  $scope.credentials = {};
+  $scope.ldsLogin = function () {
+    $http.post('http://councils-app.herokuapp.com/api/me', $scope.credentials)
+      .then(function (response) {
+        me.set(response.data);
+        $state.go('simple.create');
+      });
+  };
+})
+
+.controller('CreateController', function ($scope, me, Auth, $firebaseObject, $state) {
+  var ref = new Firebase('https://councilsapp.firebaseio.com/users');
+  var users = $firebaseObject(ref);
+  $scope.me = me.get();
+  $scope.createAccount = function () {
+    Auth.$createUser({
+        email: $scope.me.email,
+        password: $scope.me.pass
+      })
+      .then(function(userData) {
+        users[userData.uid] = me.get();
+        return users.$save();
+      })
+      .then(function () {
+        return Auth.$authWithPassword({
+          email: $scope.me.email,
+          password: $scope.me.pass
+        });
+      })
+      .then(function (authData) {
+        console.log(authData);
+        $state.go('menu.home');
+      })
+      .catch(function(error) {
+        console.warn(error);
+      });
+  };
+})
+
+.controller("HomeController", ['$scope', 'User', 'currentAuth', function($scope, User, currentAuth) {
+  console.log(currentAuth);
+  debugger;
+  $scope.user = User.set(currentAuth.uid);
   $scope.assignments = [
     {
       id: 1,

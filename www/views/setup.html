@@ -1,6 +1,6 @@
 
 <ion-pane class="setup">
-  <form name="loginForm" novalidate>
+  <form name="loginForm" novalidate ng-submit="ldsLogin()">
     <ion-content scroll="false">
       <div class="row responsive-sm pad50lr">
         <div class="col mar0tb pad0">
@@ -10,29 +10,19 @@
             <div class="col mar0tb pad0">
               <label class="item item-input">
                 <span class="input-label">Username:</span>
-                <input type="text" placeholder="Username" id="username" ng-model="credentials.username">
+                <input type="text" placeholder="Username" name="name" id="username" ng-model="credentials.name">
               </label>
             </div>
             <div class="col mar0tb pad0">
               <label class="item item-input">
                 <span class="input-label">Password:</span>
-                <input type="password" id="password" placeholder="Password" ng-model="credentials.password">
+                <input type="password" id="password" name="pass" placeholder="Password" ng-model="credentials.pass">
               </label>
             </div>
-
-            <h1 class="tac mar30t">Pin</h1>
-            <p>Your pin will be used as an added security measure when you log in on another device.</p>
-            <div class="col mar0tb pad0">
-              <label class="item item-input">
-                <span class="input-label">Security Pin:</span>
-                <input type="number" placeholder="PIN" id="pin" ng-model="credentials.pin">
-              </label>
-            </div>
-
         </div>
       </div>
 
-      <button class="button button-block button-max mar10t" ui-sref="menu.home" nav-direction="forward">Log in</button>
+      <button type="submit" class="button button-block button-max mar10t" nav-direction="forward">Log in</button>
 
     </ion-content>
   </form>
