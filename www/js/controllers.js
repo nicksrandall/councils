@@ -79,6 +79,44 @@ angular.module('councilsApp')
   };
 })
 
+.controller('ProfileController', function ($scope, $ionicPush, $cordovaPush) {
+  $scope.register = function () {
+    console.log('registering!');
+    $ionicPush.register({
+      canShowAlert: true, //Can pushes show an alert on your screen?
+      canSetBadge: true, //Can pushes update app icon badges?
+      canPlaySound: true, //Can notifications play a sound?
+      canRunActionsOnWake: true, //Can run actions outside the app,
+      onNotification: function(notification) {
+        // Handle new push notifications here
+        console.log(notification);
+        if (notification.alert) {
+          if(navigator.notification) {
+            navigator.notification.alert(notification.alert);
+          } else {
+            alert(notification.alert);
+          }
+        }
+
+        if (notification.sound) {
+          var snd = new Media(event.sound);
+          snd.play();
+        }
+
+        if (notification.badge) {
+          $cordovaPush.setBadgeNumber(notification.badge).then(function(result) {
+            // Success!
+            console.log('badge success!');
+          }, function(err) {
+            // An error occurred. Show a message to the user
+          });
+        }
+        return true;
+      }
+    });
+  };
+})
+
 .controller("HomeController", function($scope, User, currentAuth, $firebaseObject) {
   $scope.assignments = [];
   $scope.discussions = [];

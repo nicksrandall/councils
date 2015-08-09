@@ -92,6 +92,7 @@ angular.module('councilsApp')
     url: "/profile",
     views: {
       'menuContent': {
+        controller: "ProfileController",
         templateUrl: viewRoot + "/profile.html"
       }
     }

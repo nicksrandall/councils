@@ -8522,10 +8522,9 @@ textarea {
       .pane.new_discussion ion-header-bar button.button:last-child.activated, .pane.new_assignment ion-header-bar button.button:last-child.activated, .pane.council_edit ion-header-bar button.button:last-child.activated {
         background-color: #BFE1F2; }
 .pane.councils_detail ion-header-bar {
-  border-bottom: none;
-  margin-top: 20px; }
+  border-bottom: none; }
 .pane.councils_detail .tab-menu {
-  padding-top: 64px;
+  padding-top: 44px;
   border-bottom: 1px solid #DDD;
   position: relative;
   z-index: 5;

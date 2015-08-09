@@ -20,24 +20,17 @@ angular.module('councilsApp', [
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-  
-    $timeout(function () {
-      if(window.StatusBar) {
-          window.StatusBar.overlaysWebView(true);
-          window.StatusBar.hide();
-      }
-    }, 3000);
+
+    ionic.Platform.fullScreen(true, false);
 
     Auth.$onAuth(function(authData) {
       if (authData) {
         console.log("Logged in as:", authData.uid);
         User.set(authData.uid)
           .then(function (me) {
-            alert('Ionic User: Identifying with Ionic User service');
 
             var user = $ionicUser.get();
             if(!user.user_id) {
-              // Set your user_id here, or generate a random one.
               user.user_id = me.$id
             };
 
@@ -54,20 +47,7 @@ angular.module('councilsApp', [
             $ionicUser
               .identify(user)
               .then(function(){
-                alert('Identified user ' + user.name + '\n ID ' + user.user_id);
-                if (window.plugins) {
-                  $ionicPush.register({
-                    canShowAlert: true, //Can pushes show an alert on your screen?
-                    canSetBadge: true, //Can pushes update app icon badges?
-                    canPlaySound: true, //Can notifications play a sound?
-                    canRunActionsOnWake: true, //Can run actions outside the app,
-                    onNotification: function(notification) {
-                      // Handle new push notifications here
-                      alert(notification);
-                      return true;
-                    }
-                  });
-                }
+                console.log('Identified user ' + user.fname + '\n ID ' + user.user_id);
               });
           });
       } else {
