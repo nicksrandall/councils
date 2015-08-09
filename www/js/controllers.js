@@ -7,11 +7,11 @@ angular.module('councilsApp')
   $rootScope.viewConfig = {
     currentCouncilId: 0,
     currentCouncilTab: "discussion"
-  }
+  };
 
   $rootScope.back = function() {
     $ionicHistory.goBack();
-  }
+  };
 })
 
 .controller('LoginController', function ($scope, Auth, $state, $localstorage) {
@@ -48,13 +48,21 @@ angular.module('councilsApp')
   var users = $firebaseObject(ref);
   $scope.me = me.get();
   $scope.createAccount = function () {
+    var home, uid;
     Auth.$createUser({
         email: $scope.me.email,
         password: $scope.me.pass
       })
       .then(function(userData) {
-        users[userData.uid] = me.get();
+        uid = userData.uid;
+        users[uid] = home = me.get().homeUnitNbr;
         return users.$save();
+      })
+      .then(function () {
+        var ref = new Firebase('https://councilsapp.firebaseio.com/'+home+'/users');
+        var members = $firebaseObject(ref);
+        members[uid] = me.get();
+        return members.$save();
       })
       .then(function () {
         return Auth.$authWithPassword({
@@ -63,7 +71,6 @@ angular.module('councilsApp')
         });
       })
       .then(function (authData) {
-        console.log(authData);
         $state.go('menu.home');
       })
       .catch(function(error) {
@@ -72,63 +79,28 @@ angular.module('councilsApp')
   };
 })
 
-.controller("HomeController", ['$scope', 'User', 'currentAuth', function($scope, User, currentAuth) {
-  $scope.user = User.set(currentAuth.uid);
-  $scope.assignments = [
-    {
-      id: 1,
-      content: "Visit Juliet Schumpeter who just moved into the ward.",
-      comments: [],
-      dueDate: '2015-06-18T11:30:00',
-      completed: false
-    },
-    {
-      id: 2,
-      content: "Fiona Hayek just had a baby. Assign sister to bring Dinner.",
-      comments: [],
-      dueDate: '2015-06-17T11:30:00',
-      completed: false
-    },
-    {
-      id: 3,
-      content: "Fill the Family History Consultant calling.",
-      comments: [{},{}],
-      dueDate: '2015-06-16T11:30:00',
-      completed: false
-    }
-  ]
+.controller("HomeController", function($scope, User, currentAuth, $firebaseObject) {
+  $scope.assignments = [];
+  $scope.discussions = [];
 
-  $scope.discussions = [
-    {
-      id: 1,
-      userAvatar: "headshot.png",
-      userName: "David Ricardo",
-      content: "Do we have any volunteers to provide refreshments for the Jack Welch fireside?",
-      comments: [{},{},{},{}],
-      createdDate: '2015-06-18T11:30:00'
-    },
-    {
-      id: 2,
-      userAvatar: "headshot.png",
-      userName: "David Ricardo",
-      content: "Do we have any volunteers to provide refreshments for the Jack Welch fireside?",
-      comments: [],
-      createdDate: '2015-06-17T11:30:00'
-    },
-    {
-      id: 3,
-      userAvatar: "headshot.png",
-      userName: "David Ricardo",
-      content: "Do we have any volunteers to provide refreshments for the Jack Welch fireside?",
-      comments: [],
-      createdDate: '2015-06-16T11:30:00'
-    }
-  ]
-}])
-
-.controller("LandingController", [ function() {
-
-}])
+  User.set(currentAuth.uid)
+    .then(function (user) {
+      return user.$bindTo($scope, 'user');
+    })
+    .then(function () {
+      var assignments = new Firebase('https://councilsapp.firebaseio.com/'+$scope.user.homeUnitNbr+'/assignments');
+      var discussions = new Firebase('https://councilsapp.firebaseio.com/'+$scope.user.homeUnitNbr+'/discussions');
+      console.log($scope.user);
+      _.forEach($scope.user.assignments, function (key) {
+        var child = assignments.child(key);
+        $scope.assignments.push($firebaseObject(child));
+      });
+      _.forEach($scope.user.discussions, function (key) {
+        var child = discussions.child(key);
+        $scope.discussions.push($firebaseObject(child));
+      });
+    });
+})
 
 .controller("AgendaController",
   ['MemberService', '$scope', '$ionicHistory', 'HymnService', '$stateParams', 'AGENDAS', 'MembersModal',
@@ -176,23 +148,69 @@ angular.module('councilsApp')
     $scope.$emit("councilDetailTabChanged",$scope.tab);
 }])
 
-.controller("CouncilController",
-  ['MemberService', 'MembersModal', 'COUNCILS', '$scope', '$stateParams', '$rootScope',
-  function(MemberService, MembersModal, COUNCILS, $scope, $stateParams, $rootScope) {
+.controller("CouncilController", function(MemberService, MembersModal, COUNCILS, $scope, $stateParams, $rootScope, User, $firebaseArray) {
 
-  $scope.members = MemberService.getMembers();
+  MemberService.getMembers().then(function (members) {
+    $scope.members = members;
+  });
+
+  $scope.currentDate = new Date();
+  $scope.title = "Custom Title";
+
+  $scope.datePickerCallback = function (val) {
+    if(typeof(val)==='undefined'){      
+      console.log('Date not selected');
+    }else{
+      console.log('Selected date is : ', val);
+    }
+  };
 
   $scope.openMembersModal = function(dataStore, max) {
     MembersModal.openModal(max, $scope.data[dataStore]).then(function(result) {
-      $scope.data[dataStore] = result;
+      $scope.data[dataStore] = max ===1 ? result[0] : result;
+      console.log('result', result, dataStore);
     })
+  };
+
+  $scope.createAssignment = function () {
+    console.log('assignments');
+    var creator, assignment;
+    User.get()
+      .then(function (me) {
+        creator = me;
+        var ref = new Firebase('https://councilsapp.firebaseio.com/'+me.homeUnitNbr+'/assignments');
+        var assignments = $firebaseArray(ref);
+        assignment = {
+          createdBy: me.$id,
+          assignedTo: $scope.data.assignmentAssignee,
+          dueDate: $scope.currentDate.toISOString(),
+          content: $scope.data.content,
+          completed: false,
+          participants: $scope.data.assignmentParticipants
+        };
+        return assignments.$add(assignment);
+      })
+      .then(function (ref) {
+        var id = ref.key();
+        var users = new Firebase('https://councilsapp.firebaseio.com/'+creator.homeUnitNbr+'/users/');
+        users.child(creator.$id+'/assignments').push(id);
+        assignment.participants.forEach(function (id) {
+          users.child(id+'/assignments').push(id);
+        });
+      })
+      .then(function () {
+        $scope.back();
+      })
+
   };
 
   $scope.data = {
     participants: [],
     discussionParticipants: [],
-    assignmentParticipants: []
-  }
+    assignmentParticipants: [],
+    assignmentAssignee: null,
+    content: ''
+  };
 
   $scope.$on('councilDetailTabChanged', function(event, data) {
     console.log(data);
@@ -263,4 +281,4 @@ angular.module('councilsApp')
       completed: false
     }
   ]
-}])
+})

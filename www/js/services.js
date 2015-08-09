@@ -1,26 +1,43 @@
 // Services for CouncilsApp
 angular.module('councilsApp')
 
-.factory('User', ['$firebaseObject', function ($firebaseObject) {
+.factory('User', function ($firebaseObject, $q) {
     var user = {};
+    var deferred = $q.defer();
     return {
-        get: function () { return user; },
+        get: function () { 
+            return deferred.promise
+                .then(function () {
+                    return user;
+                });
+        },
         set: function (uid) { 
             var ref = new Firebase('https://councilsapp.firebaseio.com/users/' + uid);
-            user = $firebaseObject(ref);
-            return user;
+            return $firebaseObject(ref).$loaded()
+                .then(function (home) {
+                    unit = home.$value;
+                    home.$destroy();
+                    var ref2 = new Firebase('https://councilsapp.firebaseio.com/'+unit+'/users/' + uid);
+                    return $firebaseObject(ref2).$loaded();
+                })
+                .then(function (ref) {
+                    user = ref;
+                    deferred.resolve(user);
+                    return user;
+                });
         }
     };
-}])
+})
 
-.factory('Auth', ['$firebaseAuth', function ($firebaseAuth) {
+.factory('Auth', function ($firebaseAuth) {
     var ref = new Firebase('https://councilsapp.firebaseio.com');
     return $firebaseAuth(ref);
-}])
+})
 
 .factory('me', function () {
     var me = {};
     return {
+        getUnit: function () { return me.homeUnitNbr; },
         get: function () { return me; },
         set: function (_me) { 
             me = _me;
@@ -31,79 +48,20 @@ angular.module('councilsApp')
     };
 })
 
-.factory("MemberService", function($firebaseArray) {
-  var ref = new Firebase('https://councilsapp.firebaseio.com/users');
-  var users = $firebaseArray(ref);
-  var wardMembers = [
-    {
-      id: 0,
-      name: "Amanda Tapping",
-      avatar: "headshot.png"
-    },
-    {
-      id: 1,
-      name: "Samantha Carter",
-      avatar: "headshot.png"
-    },
-    {
-      id: 2,
-      name: "Daniel Jackson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 3,
-      name: "Jack O'Neil",
-      avatar: "headshot.png"
-    },
-    {
-      id: 4,
-      name: "Richard Anderson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 5,
-      name: "David Hewlett",
-      avatar: "headshot.png"
-    },
-    {
-      id: 6,
-      name: "Rodney McKay",
-      avatar: "headshot.png"
-    },
-    {
-      id: 7,
-      name: "Torri Higginson",
-      avatar: "headshot.png"
-    },
-    {
-      id: 8,
-      name: "Elizabeth Weir",
-      avatar: "headshot.png"
-    },
-    {
-      id: 9,
-      name: "Jason Mamoa",
-      avatar: "headshot.png"
-    },
-    {
-      id: 10,
-      name: "Ronon Dex",
-      avatar: "headshot.png"
-    },
-    {
-      id: 11,
-      name: "Rachel Luttrell",
-      avatar: "headshot.png"
-    },
-    {
-      id: 12,
-      name: "Joe Flanigan",
-      avatar: "headshot.png"
-    }
-  ];
+.factory("MemberService", function($firebaseArray, User) {
 
   return {
-    getMembers : function() { return $firebaseArray(ref); }
+    getMembers : function() { 
+        return User.get()
+            .then(function (user) {
+                return user.homeUnitNbr;
+            })
+            .then(function (unit) {
+                var ref = new Firebase('https://councilsapp.firebaseio.com/'+unit+'/users');
+                var users = $firebaseArray(ref);
+                return $firebaseArray(ref).$loaded(); 
+            });
+    }
   }
 })
 
@@ -123,14 +81,16 @@ angular.module('councilsApp')
   var openModal = function( max, selected ) {
     var deferred = $q.defer();
 
-    if(selected)
-      $modalScope.selection.users = selected;
+    if (selected) {
+      $modalScope.selection.users = max === 1 ? [selected] : selected;
+    }
 
     maxSelected = max || Number.MAX_VALUE;
     $ionicModal.fromTemplateUrl(MODALS[type], {
       animation: 'slide-in-up',
       scope: $modalScope
-    }).then(function(modal) {
+    })
+    .then(function(modal) {
       $modalScope.search.Term = "";
       userModal = modal;
 
@@ -146,31 +106,39 @@ angular.module('councilsApp')
     return deferred.promise;
   }
 
-  $modalScope.selection.toggle = function(id) {
+  $modalScope.selection.toggle = function(mem) {
 
-    if($modalScope.selection.users.contains(id)) {
-      $modalScope.selection.users.remove(id);
+    if($modalScope.selection.users.contains(mem)) {
+      $modalScope.selection.users.remove(mem);
     }
 
-    else if ($modalScope.selection.users.length <= 1 && maxSelected == 1) {
+    else if ($modalScope.selection.users.length <= 1 && maxSelected === 1) {
       $modalScope.selection.users.splice(0,1);
-      $modalScope.selection.users.pushUnique(id);
+      $modalScope.selection.users.pushUnique(mem);
       $modalScope.closeModal()
     }
 
     else if ($modalScope.selection.users.length < maxSelected) {
-      $modalScope.selection.users.pushUnique(id);
+      $modalScope.selection.users.pushUnique(mem);
     }
     // Otherwise ignore click, as there'd be too many
   }
 
   $modalScope.$watch( 'search.Term', search );
 
-  function search() {
-    $modalScope.search.Results = wardMembers.filter(function(m) { var name = m.fname + ' ' + m.lname; return name.toLowerCase().indexOf($modalScope.search.Term.toLowerCase()) >= 0})
+  function search(_new) {
+    if (_new.length) {
+        $modalScope.search.Results = wardMembers.filter(function(m) { var name = m.fname + ' ' + m.lname; return name.toLowerCase().indexOf($modalScope.search.Term.toLowerCase()) >= 0})
+    } else {
+        $modalScope.search.Results = wardMembers;
+    }
   }
 
-  var wardMembers = MemberService.getMembers();
+  var wardMembers = [];
+  MemberService.getMembers()    
+    .then(function (members) {
+        $modalScope.search.Results = wardMembers = members;
+    });
 
   return {
     openModal: openModal

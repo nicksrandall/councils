@@ -18,8 +18,7 @@
     "src",
     "config",
     "demo",
-    "CONTRIBUTING.md",
-    "CODE_OF_CONDUCT.md"
+    "CONTRIBUTING.md"
   ],
   "dependencies": {
     "angular": ">= 1.2.23"

@@ -30,3 +30,12 @@ angular.module('councilsApp')
     return output;
   }
 })
+
+.filter('fullName', function () {
+  return function (input, other) {
+    if (input && input.fname && input.lname) {
+      return input.fname + ' ' + input.lname;
+    }
+    return other;
+  } 
+})

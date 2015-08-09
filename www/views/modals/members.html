@@ -6,7 +6,7 @@
 
   <ion-content class="full-height pad20lr">
     <ion-list>
-      <ion-item ng-class="{selected: selection.users.contains(member.id)}" ng-repeat="member in search.Results" ng-click="selection.toggle(member.id)">
+      <ion-item ng-class="{selected: selection.users.contains(member.id)}" ng-repeat="member in search.Results" ng-click="selection.toggle(member)">
         <img ng-src="{{member.profileImage}}">
         <span class="serif">{{member.fname}} {{member.lname}}</span>
       </ion-item>

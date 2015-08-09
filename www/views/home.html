@@ -36,7 +36,7 @@
 
     <ion-list id="personal-assignments">
 
-      <ion-item ng-repeat="assignment in user.assignments" class="row pad0">
+      <ion-item ng-repeat="assignment in assignments" class="row pad0">
 
         <div class="col pad0">
           <div class="row pad0">
@@ -68,12 +68,12 @@
 
     <ion-list id="discussions">
 
-      <ion-item ng-repeat="discussion in user.discussions" class="row pad0">
+      <ion-item ng-repeat="discussion in discussions" class="row pad0">
 
         <div class="col pad0">
           <div class="row pad0">
             <div class="col col-10 pad0lr">
-              <img ng-src="img/{{discussion.userAvatar}}" />
+              <img ng-src="{{discussion.userAvatar}}" />
             </div>
             <div class="col">
               <div class="date fr greyC sans f12">{{discussion.createdDate | wordOrDate}}</div>

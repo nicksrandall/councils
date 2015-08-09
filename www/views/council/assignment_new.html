@@ -3,27 +3,29 @@
 
   <ion-header-bar>
     <button class="button button-outline" ng-click="back()">Cancel</button>
-    <button class="button button-outline cBlue-border cBlue" ng-click="create()">Create</button>
+    <button class="button button-outline cBlue-border cBlue" ng-click="createAssignment()">Create</button>
   </ion-header-bar>
 
   <hr class="plain mar60t mar10lr" />
 
   <ion-content class="pad10 pad20t">
 
-    <textarea name="content" placeholder="Create new assignment" auto-resize ng-model="content"></textarea>
+    <textarea ng-model="data.content" name="content" placeholder="Create new assignment" auto-resize></textarea>
 
     <hr class="plain" />
 
     <div class="cBlue" ng-click="openMembersModal('assignmentAssignee', 1)">
       <i class="icon ion-ios-person f24"></i>
-      <span class="modal-trigger f12">Assign</span>
+      <span class="modal-trigger f12">{{ data.assignmentAssignee | fullName:'Assign' }}</span>
     </div>
 
     <hr class="plain" />
 
     <div class="cBlue">
-      <i class="icon ion-ios-calendar-outline f24"></i>
-      <span class="modal-trigger f12">Add Date</span>
+      <ionic-datepicker idate="currentDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback">
+        <i class="icon ion-ios-calendar-outline f24"></i>
+        <span class="modal-trigger f12">{{ currentDate | date:'dd - MMMM - yyyy' }}</span>
+      </ionic-datepicker>
     </div>
 
     <hr class="plain" />
