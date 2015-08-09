@@ -90,7 +90,6 @@ angular.module('councilsApp')
     .then(function () {
       var assignments = new Firebase('https://councilsapp.firebaseio.com/'+$scope.user.homeUnitNbr+'/assignments');
       var discussions = new Firebase('https://councilsapp.firebaseio.com/'+$scope.user.homeUnitNbr+'/discussions');
-      console.log($scope.user);
       _.forEach($scope.user.assignments, function (key) {
         var child = assignments.child(key);
         $scope.assignments.push($firebaseObject(child));
