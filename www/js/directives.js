@@ -3,7 +3,7 @@ angular.module('councilsApp')
 
 .directive("autoResize", function() {
   return function(scope, element) {
-    element[0].autoResize();
+    autosize(element);
   }
 })
 

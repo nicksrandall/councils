@@ -13,11 +13,11 @@
       <h2>{{key}} Councils</h2>
       <hr />
       <ion-list>
-        <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !councilAccess[id]}" ui-sref="menu.council.tab.discussion({id:id})" ui-sref-disable="!councilAccess[id]">
+        <ion-item ng-repeat="(id,title) in value" nav-direction="forward" ng-class="{disabled: !councilAccess[id]}" ui-sref="menu.council.tab.discussion({id:id, council: title})" ng-click="setCouncil(title)" ui-sref-disable="!councilAccess[id]">
 
-          {{title}}
+          <span>{{title}}</span>
 
-          <div ng-show="councilAccess[id] && councilAccess[id].commentCount" class="fr icon">
+          <!-- <div ng-show="councilAccess[id] && councilAccess[id].commentCount" class="fr icon">
             <i class="icon ion-ios-chatbubble-outline f30"></i>
             <span class="f12 lh34 sans fr pad10lr">{{councilAccess[id].commentCount}}</span>
           </div>
@@ -25,15 +25,16 @@
           <div ng-show="councilAccess[id] && councilAccess[id].commentCount" class="fr pad10r icon">
             <i class="icon ion-ios-list-outline f30"></i>
             <span class="f12 lh34 sans fr pad10lr">{{councilAccess[id].assignmentCount}}</span>
-          </div>
+          </div> -->
 <!--
           <div ng-show="councilAccess[id] && councilAccess[id].commentCount && !councilAccess[id].assignmentCount" class="fr pad10r icon">
             <i class="icon ion-ios-list-outline f30 greyD"></i>
             <span class="f12 lh34 sans fr pad10lr greyD">{{councilAccess[id].commentCount}}</span>
           </div>
 -->
-          <div ng-hide="councilAccess[id]" class="fr pad10r icon">
-            <i class="icon ion-ios-locked-outline f30 greyD"></i>
+          <div class="fr pad10r icon">
+            <i  ng-hide="councilAccess[id]" class="icon ion-ios-locked-outline f30 greyD"></i>
+            <i  ng-show="councilAccess[id]" class="icon ion-ios-unlocked-outline f30"></i>
           </div>
 
         </ion-item>

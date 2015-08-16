@@ -1,40 +1,43 @@
-
-<div class="mar0 pad20lr" ng-controller="CouncilDetailController">
-  <button class="button button-block button-outline mar0 mar20tb" ui-sref="menu.council.assignment_new">
-    <i class="icon ion-ios-list-outline"></i>
-    <span>Create New Assignment</span>
-  </button>
-
-  <hr class="plain" />
+<ion-content>
+  <div class="button-container">
+    <button class="button button-block button-outline button-positive" ng-click="openModal()">
+      <i class="icon ion-ios-list-outline"></i>
+      <span>Create New Assignment</span>
+    </button>
+  </div>
 
   <ion-list id="personal-assignments">
 
     <ion-item ng-repeat="assignment in assignments" class="row pad0">
 
       <div class="col pad0">
-        <div class="row pad0">
-          <div class="col col-10 pad0lr">
-            <label class="checkbox pad0">
-              <input type="checkbox">
-            </label>
-          </div>
-          <div class="col">
-            <div class="username f12 sans cBlue">{{assignment.userName}}</div>
-            <div class="content">{{assignment.content}}</div>
-          </div>
-        </div>
-        <div class="row pad0lr">
-          <div class="col col-10"></div>
-          <div class="col tar pad0">
-            <div class="fl ion-ios-chatbubble-outline pad10r cBlue f16">
-              <span class="pad10l f12 cBlue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+          <div class="row">
+            <div class="col col-10">
+              <label class="checkbox">
+                <input ng-model="assignment._completed" ng-change="update(assignment)" type="checkbox">
+              </label>
             </div>
-            <span class="greyA sans f12">{{assignment.dueDate | wordOrDate}}</span>
+            <div class="col serif lighter pad20lr">
+              <div class="assignee">
+                <span class="greyA">To </span>
+                <span>{{assignment.assignedToName}}</span>
+                <span class="greyA"> from </span>
+                <span>{{assignment.assignedByName}}</span>
+              </div>
+              <div>{{assignment.content}}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-10"></div>
+            <div class="col tar">
+              <div class="fl ion-ios-chatbubble-outline pad10lr greyA f16">
+                <span class="f12 greyA sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+              </div>
+              <span class="greyA sans f12" am-time-ago="assignment.dueDate"></span>
+            </div>
           </div>
         </div>
-      </div>
-
 
     </ion-item>
   </ion-list>
-</div>
+</ion-content>

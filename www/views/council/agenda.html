@@ -1,0 +1,436 @@
+<ion-content>
+  <div class="section-header space-around">
+    <div ui-sref="menu.agenda.detail({week: currentWeek - 1})" ng-class="{selected: week == currentWeek - 1}">{{currentWeek - 1 | weekDate}}</div>
+    <div ui-sref="menu.agenda.detail({week: currentWeek})" ng-class="{selected: week == currentWeek}">{{currentWeek | weekDate}}</div>
+    <div ui-sref="menu.agenda.detail({week: currentWeek + 1})" ng-class="{selected: week == currentWeek + 1}">{{currentWeek + 1 | weekDate}}</div>
+  </div>
+  <ion-list>
+
+    <ion-item>
+      <div class="input-label">Opening Hymn</div>
+            <!-- huge ugly hymn selector - only used on this view.
+                 Tried it as a service, but had terrible performance -->
+        <select class="agenda-content mobile-select" ng-model="data.openingHymn">
+          <option value="" default="" disabled="">Select Hymn</option>
+          <option value="0">1 - The Morning Breaks</option>
+          <option value="1">2 - The Spirit of God</option>
+          <option value="2">3 - Now Let Us Rejoice</option>
+          <option value="3">4 - Truth Eternal</option>
+          <option value="4">5 - High on the Mountain Top</option>
+          <option value="5">6 - Redeemer of Israel</option>
+          <option value="6">7 - Israel, Israel, God Is Calling</option>
+          <option value="7">8 - Awake and Arise</option>
+          <option value="8">9 - Come, Rejoice</option>
+          <option value="9">10 - Come, Sing to the Lord</option>
+          <option value="10">11 - What Was Witnessed in the Heavens?</option>
+          <option value="11">12 - 'Twas Witnessed in the Morning Sky</option>
+          <option value="12">13 - An Angel from on High</option>
+          <option value="13">14 - Sweet Is the Peace the Gospel Brings</option>
+          <option value="14">15 - I Saw a Mighty Angel Fly</option>
+          <option value="15">16 - What Glorious Scenes Mine Eyes Behold</option>
+          <option value="16">17 - Awake, Ye Saints of God, Awake!</option>
+          <option value="17">18 - The Voice of God Again Is Heard</option>
+          <option value="18">19 - We Thank Thee, O God, for a Prophet</option>
+          <option value="19">20 - God of Power, God of Right</option>
+          <option value="20">21 - Come, Listen to a Prophet's Voice</option>
+          <option value="21">22 - We Listen to a Prophet's Voice</option>
+          <option value="22">23 - We Ever Pray for Thee</option>
+          <option value="23">24 - God Bless Our Prophet Dear</option>
+          <option value="24">25 - Now We'll Sing with One Accord</option>
+          <option value="25">26 - Joseph Smith's First Prayer</option>
+          <option value="26">27 - Praise to the Man</option>
+          <option value="27">28 - Saints, Behold How Great Jehovah</option>
+          <option value="28">29 - A Poor Wayfaring Man of Grief</option>
+          <option value="29">30 - Come, Come, Ye Saints</option>
+          <option value="30">31 - O God, Our Help in Ages Past</option>
+          <option value="31">32 - The Happy Day at Last Has Come</option>
+          <option value="32">33 - Our Mountain Home So Dear</option>
+          <option value="33">34 - O Ye Mountains High</option>
+          <option value="34">35 - For the Strength of the Hills</option>
+          <option value="35">36 - They, the Builders of the Nation</option>
+          <option value="36">37 - The Wintry Day, Descending to Its Close</option>
+          <option value="37">38 - Come, All Ye Saints of Zion</option>
+          <option value="38">39 - O Saints of Zion</option>
+          <option value="39">40 - Arise, O Glorious Zion</option>
+          <option value="40">41 - Let Zion in Her Beauty Rise</option>
+          <option value="41">42 - Hail to the Brightness of Zion's Glad Morning!</option>
+          <option value="42">43 - Zion Stands with Hills Surrounded</option>
+          <option value="43">44 - Beautiful Zion, Built Above</option>
+          <option value="44">45 - Lead Me into Life Eternal</option>
+          <option value="45">46 - Glorious Things of Thee Are Spoken</option>
+          <option value="46">47 - We Will Sing of Zion</option>
+          <option value="47">48 - Glorious Things Are Sung of Zion</option>
+          <option value="48">49 - Adam-ondi-Ahman</option>
+          <option value="49">50 - Come, Thou Glorious Day of Promise</option>
+          <option value="50">51 - Sons of Michael, He Approaches</option>
+          <option value="51">52 - The Day Dawn Is Breaking</option>
+          <option value="52">53 - Let Earth's Inhabitants Rejoice</option>
+          <option value="53">54 - Behold, the Mountain of the Lord</option>
+          <option value="54">55 - Lo, the Mighty God Appearing!</option>
+          <option value="55">56 - Softly Beams the Sacred Dawning</option>
+          <option value="56">57 - We're Not Ashamed to Own Our Lord</option>
+          <option value="57">58 - Come, Ye Children of the Lord</option>
+          <option value="58">59 - Come, O Thou King of Kings</option>
+          <option value="59">60 - Battle Hymn of the Republic</option>
+          <option value="60">61 - Raise Your Voices to the Lord</option>
+          <option value="61">62 - All Creatures of Our God and King</option>
+          <option value="62">63 - Great King of Heaven</option>
+          <option value="63">64 - On This Day of Joy and Gladness</option>
+          <option value="64">65 - Come, All Ye Saints Who Dwell on Earth</option>
+          <option value="65">66 - Rejoice, the Lord Is King!</option>
+          <option value="66">67 - Glory to God on High</option>
+          <option value="67">68 - A Mighty Fortress Is Our God</option>
+          <option value="68">69 - All Glory, Laud, and Honor</option>
+          <option value="69">70 - Sing Praise to Him</option>
+          <option value="70">71 - With Songs of Praise</option>
+          <option value="71">72 - Praise to the Lord, the Almighty</option>
+          <option value="72">73 - Praise the Lord with Heart and Voice</option>
+          <option value="73">74 - Praise Ye the Lord</option>
+          <option value="74">75 - In Hymns of Praise</option>
+          <option value="75">76 - God of Our Fathers, We Come unto Thee</option>
+          <option value="76">77 - Great Is the Lord</option>
+          <option value="77">78 - God of Our Fathers, Whose Almighty Hand</option>
+          <option value="78">79 - With All the Power of Heart and Tongue</option>
+          <option value="79">80 - God of Our Fathers, Known of Old</option>
+          <option value="80">81 - Press Forward, Saints</option>
+          <option value="81">82 - For All the Saints</option>
+          <option value="82">83 - Guide Us, O Thou Great Jehovah</option>
+          <option value="83">84 - Faith of Our Fathers</option>
+          <option value="84">85 - How Firm a Foundation</option>
+          <option value="85">86 - How Great Thou Art</option>
+          <option value="86">87 - God Is Love</option>
+          <option value="87">88 - Great God, Attend While Zion Sings</option>
+          <option value="88">89 - The Lord Is My Light</option>
+          <option value="89">90 - From All That Dwell below the Skies</option>
+          <option value="90">91 - Father, Thy Children to Thee Now Raise</option>
+          <option value="91">92 - For the Beauty of the Earth</option>
+          <option value="92">93 - Prayer of Thanksgiving</option>
+          <option value="93">94 - Come, Ye Thankful People</option>
+          <option value="94">95 - Now Thank We All Our God</option>
+          <option value="95">96 - Dearest Children, God Is Near You</option>
+          <option value="96">97 - Lead, Kindly Light</option>
+          <option value="97">98 - I Need Thee Every Hour</option>
+          <option value="98">99 - Nearer, Dear Savior, to Thee</option>
+          <option value="99">100 - Nearer, My God, to Thee</option>
+          <option value="100">101 - Guide Me to Thee</option>
+          <option value="101">102 - Jesus, Lover of My Soul</option>
+          <option value="102">103 - Precious Savior, Dear Redeemer</option>
+          <option value="103">104 - Jesus, Savior, Pilot Me</option>
+          <option value="104">105 - Master, the Tempest Is Raging</option>
+          <option value="105">106 - God Speed the Right</option>
+          <option value="106">107 - Lord, Accept Our True Devotion</option>
+          <option value="107">108 - The Lord Is My Shepherd</option>
+          <option value="108">109 - The Lord My Pasture Will Prepare</option>
+          <option value="109">110 - Cast Thy Burden upon the Lord</option>
+          <option value="110">111 - Rock of Ages</option>
+          <option value="111">112 - Savior, Redeemer of My Soul</option>
+          <option value="112">113 - Our Savior's Love</option>
+          <option value="113">114 - Come unto Him</option>
+          <option value="114">115 - Come, Ye Disconsolate</option>
+          <option value="115">116 - Come, Follow Me</option>
+          <option value="116">117 - Come unto Jesus</option>
+          <option value="117">118 - Ye Simple Souls Who Stray</option>
+          <option value="118">119 - Come, We That Love the Lord</option>
+          <option value="119">120 - Lean on My Ample Arm</option>
+          <option value="120">121 - I'm a Pilgrim, I'm a Stranger</option>
+          <option value="121">122 - Though Deepening Trials</option>
+          <option value="122">123 - Oh, May My Soul Commune with Thee</option>
+          <option value="123">124 - Be Still, My Soul</option>
+          <option value="124">125 - How Gentle God's Commands</option>
+          <option value="125">126 - How Long, O Lord Most Holy and True</option>
+          <option value="126">127 - Does the Journey Seem Long?</option>
+          <option value="127">128 - When Faith Endures</option>
+          <option value="128">129 - Where Can I Turn for Peace?</option>
+          <option value="129">130 - Be Thou Humble</option>
+          <option value="130">131 - More Holiness Give Me</option>
+          <option value="131">132 - God Is in His Holy Temple</option>
+          <option value="132">133 - Father in Heaven</option>
+          <option value="133">134 - I Believe in Christ</option>
+          <option value="134">135 - My Redeemer Lives</option>
+          <option value="135">136 - I Know That My Redeemer Lives</option>
+          <option value="136">137 - Testimony</option>
+          <option value="137">138 - Bless Our Fast, We Pray</option>
+          <option value="138">139 - In Fasting We Approach Thee</option>
+          <option value="139">140 - Did You Think to Pray?</option>
+          <option value="140">141 - Jesus, the Very Thought of Thee</option>
+          <option value="141">142 - Sweet Hour of Prayer</option>
+          <option value="142">143 - Let the Holy Spirit Guide</option>
+          <option value="143">144 - Secret Prayer</option>
+          <option value="144">145 - Prayer Is the Soul's Sincere Desire</option>
+          <option value="145">146 - Gently Raise the Sacred Strain</option>
+          <option value="146">147 - Sweet Is the Work</option>
+          <option value="147">148 - Sabbath Day</option>
+          <option value="148">149 - As the Dew from Heaven Distilling</option>
+          <option value="149">150 - O Thou Kind and Gracious Father</option>
+          <option value="150">151 - We Meet, Dear Lord</option>
+          <option value="151">152 - God Be with You Till We Meet Again</option>
+          <option value="152">153 - Lord, We Ask Thee Ere We Part</option>
+          <option value="153">154 - Father, This Hour Has Been One of Joy</option>
+          <option value="154">155 - We Have Partaken of Thy Love</option>
+          <option value="155">156 - Sing We Now at Parting</option>
+          <option value="156">157 - Thy Spirit, Lord, Has Stirred Our Souls</option>
+          <option value="157">158 - Before Thee, Lord, I Bow My Head</option>
+          <option value="158">159 - Now the Day Is Over</option>
+          <option value="159">160 - Softly Now the Light of Day</option>
+          <option value="160">161 - The Lord Be with Us</option>
+          <option value="161">162 - Lord, We Come before Thee Now</option>
+          <option value="162">163 - Lord, Dismiss Us with Thy Blessing</option>
+          <option value="163">164 - Great God, to Thee My Evening Song</option>
+          <option value="164">165 - Abide with Me; 'Tis Eventide</option>
+          <option value="165">166 - Abide with Me!</option>
+          <option value="166">167 - Come, Let Us Sing an Evening Hymn</option>
+          <option value="167">168 - As the Shadows Fall</option>
+          <option value="168">169 - As Now We Take the Sacrament</option>
+          <option value="169">170 - God, Our Father, Hear Us Pray</option>
+          <option value="170">171 - With Humble Heart</option>
+          <option value="171">172 - In Humility, Our Savior</option>
+          <option value="172">173 - While of These Emblems We Partake</option>
+          <option value="173">174 - While of These Emblems We Partake</option>
+          <option value="174">175 - O God, the Eternal Father</option>
+          <option value="175">176 - 'Tis Sweet to Sing the Matchless Love</option>
+          <option value="176">177 - 'Tis Sweet To Sing the Matchless Love</option>
+          <option value="177">178 - O Lord of Hosts</option>
+          <option value="178">179 - Again, Our Dear Redeeming Lord</option>
+          <option value="179">180 - Father in Heaven, We Do Believe</option>
+          <option value="180">181 - Jesus of Nazareth, Savior and King</option>
+          <option value="181">182 - We'll Sing All Hail to Jesus' Name</option>
+          <option value="182">183 - In Remembrance of Thy Suffering</option>
+          <option value="183">184 - Upon the Cross of Calvary</option>
+          <option value="184">185 - Reverently and Meekly Now</option>
+          <option value="185">186 - Again We Meet around the Board</option>
+          <option value="186">187 - God Loved Us, So He Sent His Son</option>
+          <option value="187">188 - Thy Will, O Lord, Be Done</option>
+          <option value="188">189 - O Thou, Before the World Began</option>
+          <option value="189">190 - In Memory of the Crucified</option>
+          <option value="190">191 - Behold the Great Redeemer Die</option>
+          <option value="191">192 - He Died! The Great Redeemer Died</option>
+          <option value="192">193 - I Stand All Amazed</option>
+          <option value="193">194 - There Is a Green Hill Far Away</option>
+          <option value="194">195 - How Great the Wisdom and the Love</option>
+          <option value="195">196 - Jesus, Once of Humble Birth</option>
+          <option value="196">197 - O Savior, Thou Who Wearest a Crown</option>
+          <option value="197">198 - That Easter Morn</option>
+          <option value="198">199 - He Is Risen!</option>
+          <option value="199">200 - Christ the Lord Is Risen Today</option>
+          <option value="200">201 - Joy to the World</option>
+          <option value="201">202 - Oh, Come, All Ye Faithful</option>
+          <option value="202">203 - Angels We Have Heard on High</option>
+          <option value="203">204 - Silent Night</option>
+          <option value="204">205 - Once in Royal David's City</option>
+          <option value="205">206 - Away in a Manger</option>
+          <option value="206">207 - It Came upon the Midnight Clear</option>
+          <option value="207">208 - O Little Town of Bethlehem</option>
+          <option value="208">209 - Hark! The Herald Angels Sing</option>
+          <option value="209">210 - With Wondering Awe</option>
+          <option value="210">211 - While Shepherds Watched Their Flocks</option>
+          <option value="211">212 - Far, Far Away on Judea's Plains</option>
+          <option value="212">213 - The First Noel</option>
+          <option value="213">214 - I Heard the Bells on Christmas Day</option>
+          <option value="214">215 - Ring Out, Wild Bells</option>
+          <option value="215">216 - We Are Sowing</option>
+          <option value="216">217 - Come, Let Us Anew</option>
+          <option value="217">218 - We Give Thee But Thine Own</option>
+          <option value="218">219 - Because I Have Been Given Much</option>
+          <option value="219">220 - Lord, I Would Follow Thee</option>
+          <option value="220">221 - Dear to the Heart of the Shepherd</option>
+          <option value="221">222 - Hear Thou Our Hymn, O Lord</option>
+          <option value="222">223 - Have I Done Any Good?</option>
+          <option value="223">224 - I Have Work Enough to Do</option>
+          <option value="224">225 - We Are Marching On to Glory</option>
+          <option value="225">226 - Improve the Shining Moments</option>
+          <option value="226">227 - There Is Sunshine in My Soul Today</option>
+          <option value="227">228 - You Can Make the Pathway Bright</option>
+          <option value="228">229 - Today, While the Sun Shines</option>
+          <option value="229">230 - Scatter Sunshine</option>
+          <option value="230">231 - Father, Cheer Our Souls Tonight</option>
+          <option value="231">232 - Let Us Oft Speak Kind Words</option>
+          <option value="232">233 - Nay, Speak No Ill</option>
+          <option value="233">234 - Jesus, Mighty King in Zion</option>
+          <option value="234">235 - Should You Feel Inclined to Censure</option>
+          <option value="235">236 - Lord, Accept into Thy Kingdom</option>
+          <option value="236">237 - Do What Is Right</option>
+          <option value="237">238 - Behold Thy Sons and Daughters, Lord</option>
+          <option value="238">239 - Choose the Right</option>
+          <option value="239">240 - Know This, That Every Soul Is Free</option>
+          <option value="240">241 - Count Your Blessings</option>
+          <option value="241">242 - Praise God, from Whom All Blessings Flow</option>
+          <option value="242">243 - Let Us All Press On</option>
+          <option value="243">244 - Come Along, Come Along</option>
+          <option value="244">245 - This House We Dedicate to Thee</option>
+          <option value="245">246 - Onward, Christian Soldiers</option>
+          <option value="246">247 - We Love Thy House, O God</option>
+          <option value="247">248 - Up, Awake, Ye Defenders of Zion</option>
+          <option value="248">249 - Called to Serve</option>
+          <option value="249">250 - We Are All Enlisted</option>
+          <option value="250">251 - Behold! A Royal Army</option>
+          <option value="251">252 - Put Your Shoulder to the Wheel</option>
+          <option value="252">253 - Like Ten Thousand Legions Marching</option>
+          <option value="253">254 - True to the Faith</option>
+          <option value="254">255 - Carry On</option>
+          <option value="255">256 - As Zion's Youth in Latter Days</option>
+          <option value="256">257 - Rejoice! A Glorious Sound Is Heard</option>
+          <option value="257">258 - O Thou Rock of Our Salvation</option>
+          <option value="258">259 - Hope of Israel</option>
+          <option value="259">260 - Who's on the Lord's Side?</option>
+          <option value="260">261 - Thy Servants Are Prepared</option>
+          <option value="261">262 - Go, Ye Messengers of Glory</option>
+          <option value="262">263 - Go Forth with Faith</option>
+          <option value="263">264 - Hark, All Ye Nations!</option>
+          <option value="264">265 - Arise, O God, and Shine</option>
+          <option value="265">266 - The Time Is Far Spent</option>
+          <option value="266">267 - How Wondrous and Great</option>
+          <option value="267">268 - Come, All Whose Souls Are Lighted</option>
+          <option value="268">269 - Jehovah, Lord of Heaven and Earth</option>
+          <option value="269">270 - I'll Go Where You Want Me to Go</option>
+          <option value="270">271 - Oh, Holy Words of Truth and Love</option>
+          <option value="271">272 - Oh Say, What Is Truth?</option>
+          <option value="272">273 - Truth Reflects upon Our Senses</option>
+          <option value="273">274 - The Iron Rod</option>
+          <option value="274">275 - Men Are That They Might Have Joy</option>
+          <option value="275">276 - Come Away to the Sunday School</option>
+          <option value="276">277 - As I Search the Holy Scriptures</option>
+          <option value="277">278 - Thanks for the Sabbath School</option>
+          <option value="278">279 - Thy Holy Word</option>
+          <option value="279">280 - Welcome, Welcome, Sabbath Morning</option>
+          <option value="280">281 - Help Me Teach with Inspiration</option>
+          <option value="281">282 - We Meet Again in Sabbath School</option>
+          <option value="282">283 - The Glorious Gospel Light Has Shone</option>
+          <option value="283">284 - If You Could Hie to Kolob</option>
+          <option value="284">285 - God Moves in a Mysterious Way</option>
+          <option value="285">286 - Oh, What Songs of the Heart</option>
+          <option value="286">287 - Rise, Ye Saints, and Temples Enter</option>
+          <option value="287">288 - How Beautiful Thy Temples, Lord</option>
+          <option value="288">289 - Holy Temples on Mount Zion</option>
+          <option value="289">290 - Rejoice, Ye Saints of Latter Days</option>
+          <option value="290">291 - Turn Your Hearts</option>
+          <option value="291">292 - O My Father</option>
+          <option value="292">293 - Each Life That Touches Ours for Good</option>
+          <option value="293">294 - Love at Home</option>
+          <option value="294">295 - O Love That Glorifies the Son</option>
+          <option value="295">296 - Our Father, by Whose Name</option>
+          <option value="296">297 - From Homes of Saints Glad Songs Arise</option>
+          <option value="297">298 - Home Can Be a Heaven on Earth</option>
+          <option value="298">299 - Children of Our Heavenly Father</option>
+          <option value="299">300 - Families Can Be Together Forever</option>
+          <option value="300">301 - I Am a Child of God</option>
+          <option value="301">302 - I Know My Father Lives</option>
+          <option value="302">303 - Keep the Commandments</option>
+          <option value="303">304 - Teach Me to Walk in the Light</option>
+          <option value="304">305 - The Light Divine</option>
+          <option value="305">306 - God's Daily Care</option>
+          <option value="306">307 - In Our Lovely Deseret</option>
+          <option value="307">308 - Love One Another</option>
+          <option value="308">309 - As Sisters in Zion (Women)</option>
+          <option value="309">310 - A Key Was Turned in Latter Days (Women)</option>
+          <option value="310">311 - We Meet Again as Sisters (Women)</option>
+          <option value="311">312 - We Ever Pray for Thee (Women)</option>
+          <option value="312">313 - God Is Love (Women)</option>
+          <option value="313">314 - How Gentle God's Commands (Women)</option>
+          <option value="314">315 - Jesus, the Very Thought of Thee (Women)</option>
+          <option value="315">316 - The Lord Is My Shepherd (Women)</option>
+          <option value="316">317 - Sweet Is the Work (Women)</option>
+          <option value="317">318 - Love at Home (Women)</option>
+          <option value="318">319 - Ye Elders of Israel (Men)</option>
+          <option value="319">320 - The Priesthood of Our Lord (Men)</option>
+          <option value="320">321 - Ye Who Are Called to Labor (Men)</option>
+          <option value="321">322 - Come, All Ye Sons of God (Men)</option>
+          <option value="322">323 - Rise Up, O Men of God (Men's Choir)</option>
+          <option value="323">324 - Rise Up, O Men of God (Men)</option>
+          <option value="324">325 - See the Mighty Priesthood Gathered (Men's Choir)</option>
+          <option value="325">326 - Come, Come, Ye Saints (Men's Choir)</option>
+          <option value="326">327 - Go, Ye Messengers of Heaven (Men's Choir)</option>
+          <option value="327">328 - An Angel from on High</option>
+          <option value="328">329 - Thy Servants Are Prepared (Men's Choir)</option>
+          <option value="329">330 - See, the Mighty Angel Flying (Men's Choir)</option>
+          <option value="330">331 - Oh Say, What Is Truth? (Men's Choir)</option>
+          <option value="331">332 - Come, O Thou King of Kings (Men's Choir)</option>
+          <option value="332">333 - High on the Mountain Top (Men's Choir)</option>
+          <option value="333">334 - I Need Thee Every Hour (Men's Choir)</option>
+          <option value="334">335 - Brightly Beams Our Father's Mercy (Men's Choir)</option>
+          <option value="335">336 - School Thy Feelings (Men's Choir)</option>
+          <option value="336">337 - O Home Beloved (Men's Choir)</option>
+          <option value="337">338 - America the Beautiful</option>
+          <option value="338">339 - My Country, 'Tis of Thee</option>
+          <option value="339">340 - The Star-Spangled Banner</option>
+          <option value="340">341 - God Save the King</option>
+      </select>
+    </ion-item>
+
+    <ion-item ng-click="openMembersModal('openingPrayer',1)">
+      <label>
+        <span class="input-label">Opening Prayer</span>
+        <span class="agenda-content" ng-class="{mute: data.openingPrayer.length < 1 }" class="serif">{{data.openingPrayer | fullName:'Select Memeber'}}</span>
+      </label>
+    </ion-item>
+
+    <ion-item ng-click="openMembersModal('spiritualThought',1)">
+      <label>
+        <span class="input-label">Spiritual Thought</span>
+        <span class="agenda-content" ng-class="{mute: data.spiritualThought.length < 1 }" class="serif">{{data.spiritualThought | fullName:'Select Memeber'}}</span>
+      </label>
+    </ion-item>
+
+    <ion-item>
+      <label>
+        <span class="input-label">High Counselor</span>
+        <textarea class="agenda-content" ng-model="data.highCounselor" placeholder="Remarks from..." auto-resize></textarea>
+      </label>
+    </ion-item>
+
+    <ion-item>
+      <label>
+        <span class="input-label">Callings</span>
+        <textarea class="agenda-content" ng-model="data.callings" placeholder="Open callings..." auto-resize></textarea>
+      </label>
+    </ion-item>
+
+    <ion-item ng-click="openMembersModal('spiritualWelfare')">
+      <label>
+        <span class="input-label">Spiritual Welfare</span>
+        <div class="agenda-content" ng-repeat="member in data.spiritualWelfare">
+          <span class="serif">{{member | fullName}}</span>
+        </div>
+      </label>
+      <div ng-hide="data.spiritualWelfare.length">Select Members</div>
+    </ion-item>
+
+    <ion-item ng-click="openMembersModal('temporalWelfare')">
+      <label>
+        <span class="input-label">Temporal Welfare</span>
+        <div class="agenda-content" ng-repeat="member in data.temporalWelfare">
+          <span class="serif">{{member | fullName}}</span>
+        </div>
+      </label>
+      <div ng-hide="data.temporalWelfare.length">Select Members</div>
+    </ion-item>
+
+    <ion-item>
+      <label>
+        <span class="input-label">Fellowship</span>
+        <textarea class="agenda-content" ng-model="data.fellowship" placeholder="Add items of business" auto-resize></textarea>
+      </label>
+    </ion-item>
+
+    <ion-item>
+      <label>
+        <span class="input-label">Missionary</span>
+        <textarea class="agenda-content" ng-model="data.missionary" placeholder="Add items of business..." auto-resize></textarea>
+      </label>
+    </ion-item>
+
+    <ion-item>
+      <label>
+        <span class="input-label">Events</span>
+        <textarea class="agenda-content" ng-model="data.events" placeholder="Add Event..." auto-resize></textarea>
+      </label>
+    </ion-item>
+
+    <ion-item ng-click="openMembersModal('closingPrayer',1)">
+      <label>
+        <span class="input-label">Closing Prayer</span>
+        <span class="agenda-content" ng-class="{mute: data.closingPrayer.length < 1 }">{{data.closingPrayer | fullName:'Select Memeber'}}</span>
+      </label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

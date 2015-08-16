@@ -1,0 +1,24 @@
+
+<ion-pane class="directory">
+
+  <ion-header-bar>
+    <button class="button button-clear ion-navicon-round pad10lr hidden-md" menu-toggle="left"></button>
+    <div class="title icon ion-ios-telephone-outline ">Directory</div>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-list can-swipe="true">
+      <ion-item ng-repeat="member in members" class="item-avatar" ng-click="call(member)">
+        <h2>{{member.surname}}</h2>
+        <p>{{member.givenName1}}</p>
+        <ion-option-button class="button-positive" ng-click="message(member)">
+          Message
+        </ion-option-button>
+        <ion-option-button class="button-info" ng-click="email(member)">
+          Email
+        </ion-option-button>
+      </ion-item>
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="25%"></ion-infinite-scroll>
+    </ion-list>
+  </ion-content>
+</ion-pane>

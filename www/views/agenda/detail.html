@@ -1,19 +1,17 @@
 
 <ion-pane class="agenda_detail">
   <ion-header-bar>
-    <button class="icon ion-ios-arrow-thin-left button-clear button" ng-click="back()"></button>
-    <div class="title icon ion-ios-list-outline">{{agendas[agendaGroup][agendaId]}}</div>
+    <button class="icon ion-ios-arrow-thin-left button-clear button" ui-sref="menu.council.list"></button>
+    <div class="title icon ion-ios-list-outline">{{council}}</div>
   </ion-header-bar>
 
   <ion-content class="pad20">
     <hr />
     <h2 style="max-height: 14px; overflow: hidden">
         <ion-scroll direction="x" class="pad20b">
-          <div>May 3</div>
-          <div>May 10</div>
-          <div>May 17</div>
-          <div class="selected">May 24</div>
-          <div>Add Agenda</div>
+          <div ui-sref="menu.agenda.detail({week: currentWeek - 1})" ng-class="{selected: week == currentWeek - 1}">{{currentWeek - 1 | weekDate}}</div>
+          <div ui-sref="menu.agenda.detail({week: currentWeek})" ng-class="{selected: week == currentWeek}">{{currentWeek | weekDate}}</div>
+          <div ui-sref="menu.agenda.detail({week: currentWeek + 1})" ng-class="{selected: week == currentWeek + 1}">{{currentWeek + 1 | weekDate}}</div>
         </ion-scroll>
     </h2>
     <hr />
@@ -374,21 +372,15 @@
       <ion-item ng-click="openMembersModal('openingPrayer',1)">
         <label>
           <span class="input-label">Opening Prayer</span>
-          <div ng-repeat="memberId in data.openingPrayer">
-            <span class="serif">{{members[memberId].name}}</span>
-          </div>
+          <span ng-class="{mute: data.openingPrayer.length < 1 }" class="serif">{{data.openingPrayer | fullName:'Select Memeber'}}</span>
         </label>
-        <div ng-hide="data.openingPrayer.length">Select Member</div>
       </ion-item>
 
       <ion-item ng-click="openMembersModal('spiritualThought',1)">
         <label>
           <span class="input-label">Spiritual Thought</span>
-          <div ng-repeat="memberId in data.spiritualThought">
-            <span class="serif">{{members[memberId].name}}</span>
-          </div>
+          <span ng-class="{mute: data.spiritualThought.length < 1 }" class="serif">{{data.spiritualThought | fullName:'Select Memeber'}}</span>
         </label>
-        <div ng-hide="data.spiritualThought.length">Select Member</div>
       </ion-item>
 
       <ion-item>
@@ -408,8 +400,8 @@
       <ion-item ng-click="openMembersModal('spiritualWelfare')">
         <label>
           <span class="input-label">Spiritual Welfare</span>
-          <div ng-repeat="memberId in data.spiritualWelfare">
-            <span class="serif">{{members[memberId].name}}</span>
+          <div ng-repeat="member in data.spiritualWelfare">
+            <span class="serif">{{member | fullName}}</span>
           </div>
         </label>
         <div ng-hide="data.spiritualWelfare.length">Select Members</div>
@@ -418,8 +410,8 @@
       <ion-item ng-click="openMembersModal('temporalWelfare')">
         <label>
           <span class="input-label">Temporal Welfare</span>
-          <div ng-repeat="memberId in data.temporalWelfare">
-            <span class="serif">{{members[memberId].name}}</span>
+          <div ng-repeat="member in data.temporalWelfare">
+            <span class="serif">{{member | fullName}}</span>
           </div>
         </label>
         <div ng-hide="data.temporalWelfare.length">Select Members</div>
@@ -449,11 +441,8 @@
       <ion-item ng-click="openMembersModal('closingPrayer',1)">
         <label>
           <span class="input-label">Closing Prayer</span>
-          <div ng-repeat="memberId in data.closingPrayer">
-            <span class="serif">{{members[memberId].name}}</span>
-          </div>
+          <span ng-class="{mute: data.closingPrayer.length < 1 }" class="serif">{{data.closingPrayer | fullName:'Select Memeber'}}</span>
         </label>
-        <div ng-hide="data.closingPrayer.length">Select Member</div>
       </ion-item>
 
     </ion-list>

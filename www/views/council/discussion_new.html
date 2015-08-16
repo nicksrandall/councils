@@ -1,16 +1,16 @@
 
-<ion-pane class="new_discussion">
+<ion-modal-view class="new_discussion">
 
   <ion-header-bar>
     <button class="button button-outline" ng-click="back()" nav-direction="back">Cancel</button>
-    <button class="button button-outline cBlue-border cBlue">Create</button>
+    <button class="button button-outline cBlue-border cBlue" ng-click="createDiscussion()">Create</button>
   </ion-header-bar>
 
   <hr class="plain mar60t mar10lr" />
 
   <ion-content class="pad10 pad20t">
 
-    <textarea name="content" placeholder="Start new discussion" auto-resize></textarea>
+    <textarea ng-model="data.content" name="content" placeholder="Start new discussion" auto-resize></textarea>
 
     <hr class="plain" />
 
@@ -27,11 +27,11 @@
     <hr class="plain" />
 
     <ul id="participants">
-      <li class="dib" ng-repeat="memberId in data.discussionParticipants">
-        <img ng-src="img/{{members[memberId].avatar}}" ui-sref="menu.profile"/>
+      <li class="dib" ng-repeat="member in data.discussionParticipants">
+        <img ng-src="{{member.profileImage}}" ui-sref="menu.profile"/>
       </li>
     </ul>
 
   </ion-content>
 
-</ion-pane>
+</ion-modal-view>

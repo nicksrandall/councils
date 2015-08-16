@@ -2,17 +2,20 @@
 <ion-pane class="councils_detail">
 
   <ion-header-bar>
-    <button class="icon ion-ios-arrow-thin-left button-clear button" ng-click="back()"></button>
-    <div class="title icon ion-ios-people ">Council: {{$root.currentItemId}}</div>
+    <button class="icon ion-ios-arrow-thin-left button-clear button" ui-sref="menu.home"></button>
+    <div class="title icon ion-ios-people ">Council: {{council}}</div>
     <button class="button button-clear icon ion-edit f20" ui-sref="menu.council.edit"></button>
   </ion-header-bar>
 
-  <div class="tab-menu tac">
-    <a ui-sref="menu.council.tab.discussion" nav-direction="back" ng-class={'selected':($root.currentTab=='discussions')}>Discussions</a>
-    <a ui-sref="menu.council.tab.assignment" nav-direction="forward" ng-class={'selected':($root.currentTab=='assignments')}>Assignments</a>
+  <div class="tabs-striped tabs-top">
+    <div class="tabs">
+      <a class="tab-item" ui-sref="menu.council.agenda({council: council})" nav-direction="back" ui-sref-active="active" >Agendas</a>
+      <a class="tab-item" ui-sref="menu.council.assignment({council: council})" nav-direction="{{acitve === 'menu.council.agenda' ? 'forward' : back}}" ui-sref-active="active" >Assignments</a>
+      <a class="tab-item" ui-sref="menu.council.discussion({council: council})" nav-direction="forward" ui-sref-active="active" >Conversations</a>
+    </div>
   </div>
 
-  <ion-content class="mar40t">
+  <ion-content class="under-tabs">
     <ion-nav-view name="tab" class="pad20" animation="no-animation">
       <!-- Tab content will be loaded here -->
     </ion-nav-view>

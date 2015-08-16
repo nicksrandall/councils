@@ -6,54 +6,71 @@
     <div class="title icon ion-ios-home-outline ">Home</div>
   </ion-header-bar>
 
-  <ion-content class="pad20">
+  <ion-content class="pad20t">
     <div class="row">
       <div class="col-25 tar">
-        <div class="icon pad10lr">
+        <!-- <div class="icon pad10lr">
           <i class="ion-ios-list-outline f30"></i>
           <span class="f18 lh34 sans pad10l">{{assignments.length}}</span>
-        </div>
+        </div> -->
       </div>
       <div id="avatar-col" class="col-50 tac" ui-sref="menu.profile" nav-direction="forward">
         <div id="user-avatar" class="placeholder round" style="background-image: url({{user.profileImage}})"></div>
       </div>
       <div class="col-25 tal">
-        <div class="icon pad10lr">
+        <!-- <div class="icon pad10lr">
           <i class="ion-ios-chatbubble-outline f30"></i>
           <span class="f18 lh34 sans pad10l">{{discussions.length}}</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <h1 class="f22 tac serif mar0" ui-sref="menu.profile" nav-direction="forward">{{user.fname}} {{user.lname}}</h1>
+        <h1 class="f22 tac serif mar0 book" ui-sref="menu.profile" nav-direction="forward">{{user.fname}} {{user.lname}}</h1>
       </div>
     </div>
 
-    <hr />
-    <h2>Personal Assignments</h2>
-    <hr />
+    <div class="section-header border-top">
+      <div class="title">My Councils</div>
+    </div>
+
+    <ion-list class="my-councils">
+        <ion-item ng-repeat="council in councils">
+          <div class="df">
+            <span class="align-left serif">{{council}}</span>
+            <span class="align-right">
+              <i class="icon ion-ios-list-outline" nav-direction="forward" ui-sref="menu.council.agenda({council: council})"></i>
+              <i class="icon ion-ios-checkmark-outline" nav-direction="forward" ui-sref="menu.council.assignment({council: council})"></i>
+              <i class="icon ion-ios-chatboxes-outline" nav-direction="forward" ui-sref="menu.council.discussion({council: council})"></i>
+            </span>
+          </div>
+        </ion-item>
+      </ion-list>
+
+    <div class="section-header">
+      <div class="title">My Assignments</div>
+    </div>
 
     <ion-list id="personal-assignments">
 
-      <ion-item ng-repeat="assignment in assignments" class="row pad0">
+      <ion-item ng-repeat="assignment in myAssignments | filter:{completed:false}" class="row pad0">
 
         <div class="col pad0">
-          <div class="row pad0">
-            <div class="col col-10 pad0lr">
-              <label class="checkbox pad0">
-                <input type="checkbox">
+          <div class="row">
+            <div class="col col-10">
+              <label class="checkbox">
+                <input ng-model="assignment._completed" ng-change="update(assignment)" type="checkbox">
               </label>
             </div>
-            <div class="col">{{assignment.content}}</div>
+            <div class="col serif lighter pad20lr">{{assignment.content}}</div>
           </div>
-          <div class="row pad0lr">
+          <div class="row">
             <div class="col col-10"></div>
-            <div class="col tar pad0">
-              <div class="fl ion-ios-chatbubble-outline pad10r cBlue f16">
-                <span class="pad10l f12 cBlue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+            <div class="col tar">
+              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
+                <span class="f12 cBlue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
               </div>
-              <span class="cBlue sans f12">{{assignment.dueDate | wordOrDate}}</span>
+              <span class="cBlue sans f12" am-time-ago="assignment.dueDate"></span>
             </div>
           </div>
         </div>
@@ -62,30 +79,62 @@
       </ion-item>
     </ion-list>
 
-    <hr />
-    <h2>Discussions</h2>
-    <hr />
+    <div class="section-header">
+      <div class="title">Delegated Assignments</div>
+    </div>
+
+    <ion-list id="personal-assignments">
+
+      <ion-item ng-repeat="assignment in delegatedAssignments | filter:{completed:false}" class="row pad0">
+
+        <div class="col pad0">
+          <div class="row">
+            <div class="col col-10">
+              <label class="checkbox">
+                <input ng-model="assignment._completed" ng-change="update(assignment)" type="checkbox">
+              </label>
+            </div>
+            <div class="col serif lighter pad20lr">{{assignment.content}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-10"></div>
+            <div class="col tar">
+              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
+                <span class="f12 cBlue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+              </div>
+              <span class="cBlue sans f12" am-time-ago="assignment.dueDate"></span>
+            </div>
+          </div>
+        </div>
+
+
+      </ion-item>
+    </ion-list>
+
+    <div class="section-header">
+      <div class="title">Discussions</div>
+    </div>
 
     <ion-list id="discussions">
 
-      <ion-item ng-repeat="discussion in discussions" class="row pad0">
+      <ion-item ng-repeat="discussion in discussions" class="row">
 
-        <div class="col pad0">
-          <div class="row pad0">
-            <div class="col col-10 pad0lr">
+        <div class="col">
+          <div class="row">
+            <div class="col col-10">
               <img ng-src="{{discussion.userAvatar}}" />
             </div>
-            <div class="col">
-              <div class="date fr greyC sans f12">{{discussion.createdDate | wordOrDate}}</div>
+            <div class="col pad20l">
+              <div class="date fr greyC sans f12" am-time-ago="discussion.createdDate"></div>
               <div class="username f12 sans greyC">{{discussion.userName}}</div>
-              <div>{{discussion.content}}</div>
+              <div class="serif lighter">{{discussion.content}}</div>
             </div>
           </div>
-          <div class="row pad0lr">
+          <div class="row">
             <div class="col col-10"></div>
-            <div class="col tar pad0">
-              <div class="fl ion-ios-chatbubble-outline pad10r cBlue f16">
-                <span class="pad10l f12 cBlue sans" ng-show="discussion.comments.length">{{assignment.comments.length}}</span>
+            <div class="col tar">
+              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
+                <span class="pad10l f12 cBlue sans" ng-show="discussion.comments.length">{{discussion.comments.length}}</span>
               </div>
             </div>
           </div>

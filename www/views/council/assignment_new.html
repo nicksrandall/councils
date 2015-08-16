@@ -1,5 +1,5 @@
 
-<ion-pane class="new_assignment">
+<ion-modal-view class="new_assignment">
 
   <ion-header-bar>
     <button class="button button-outline" ng-click="back()">Cancel</button>
@@ -22,9 +22,9 @@
     <hr class="plain" />
 
     <div class="cBlue">
-      <ionic-datepicker idate="currentDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback">
+      <ionic-datepicker idate="data.dueDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback">
         <i class="icon ion-ios-calendar-outline f24"></i>
-        <span class="modal-trigger f12">{{ currentDate | date:'dd - MMMM - yyyy' }}</span>
+        <span class="modal-trigger f12">{{ data.dueDate | date:'MMMM-dd-yyyy' }}</span>
       </ionic-datepicker>
     </div>
 
@@ -43,8 +43,8 @@
     <hr class="plain" />
 
     <ul id="participants">
-      <li class="dib" ng-repeat="memberId in data.assignmentParticipants">
-        <img ng-src="{{members[memberId].profileImage}}" ui-sref="menu.profile"/>
+      <li class="dib" ng-repeat="member in data.assignmentParticipants">
+        <img ng-src="{{member.profileImage}}" ui-sref="menu.profile"/>
       </li>
     </ul>
 
@@ -52,4 +52,4 @@
 
   </ion-content>
 
-</ion-pane>
+</ion-modal-view>

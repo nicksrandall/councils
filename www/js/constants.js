@@ -5,7 +5,9 @@ angular.module('councilsApp')
   connectionError: "views/modals/no_internet.html",
   permissionError: "views/modals/no_permission.html",
   feedback: "views/modals/feedback.html",
-  members: "views/modals/members.html"
+  members: "views/modals/members.html",
+  createDiscussion: 'views/council/discussion_new.html',
+  createAssignment: 'views/council/assignment_new.html'
 })
 
 .constant('AGENDAS', {

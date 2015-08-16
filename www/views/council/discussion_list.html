@@ -1,32 +1,32 @@
 
-<div class="mar0 pad20lr" ng-controller="CouncilDetailController">
-  <button class="button button-block button-outline mar0 mar20tb" ui-sref="menu.council.discussion_new" nav-direction="forward">
-    <i class="icon ion-ios-chatbubble-outline"></i>
-    <span>Create New Discussion</span>
-  </button>
-
-  <hr class="plain" />
+<ion-content>
+  <div class="button-container">
+    <button class="button button-block button-outline button-positive" ng-click="openModal()">
+      <i class="icon ion-ios-chatboxes-outline"></i>
+      <span>Create New Conversation</span>
+    </button>
+  </div>
 
   <ion-list id="discussions">
 
     <ion-item ng-repeat="discussion in discussions" class="row pad0">
 
-      <div class="col pad0">
-        <div class="row pad0">
-          <div class="col col-10 pad0lr">
-            <img ng-src="img/{{discussion.userAvatar}}" />
+      <div class="col">
+        <div class="row">
+          <div class="col col-10">
+            <img ng-src="{{discussion.userAvatar}}" />
           </div>
-          <div class="col">
-            <div class="date fr greyC sans f12">{{discussion.createdDate | wordOrDate}}</div>
+          <div class="col pad20l">
+            <div class="date fr greyC sans f12" am-time-ago="discussion.createdDate"></div>
             <div class="username f12 sans greyC">{{discussion.userName}}</div>
-            <div class="content">{{discussion.content}}</div>
+            <div class="serif lighter">{{discussion.content}}</div>
           </div>
         </div>
-        <div class="row pad0lr">
+        <div class="row">
           <div class="col col-10"></div>
-          <div class="col tar pad0">
-            <div class="fl ion-ios-chatbubble-outline pad10r cBlue f16">
-              <span class="pad10l f12 cBlue sans" ng-show="discussion.comments.length">{{assignment.comments.length}}</span>
+          <div class="col tar">
+            <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
+              <span class="pad10l f12 cBlue sans" ng-show="discussion.comments.length">{{discussion.comments.length}}</span>
             </div>
           </div>
         </div>
@@ -34,4 +34,4 @@
 
     </ion-item>
   </ion-list>
-</div>
+</ion-content>

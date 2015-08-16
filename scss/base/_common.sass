@@ -16,59 +16,8 @@ ion-pane
       top: 2px
       padding-right: 6px
 
-  // Default List View styling
-  .list
-    >.item
-      @extend .pad0lr
-      @extend .pad10tb
-      @extend .f16
-      @extend .serif
-      border: none
-      border-top: 1px solid #EEE
-
-      &:first-child
-        border: none
-
-      .icon
-        margin: -7px 0
-
-      a
-        padding: 0
-        overflow: visible
-
-      &.disabled
-        @extend .grey9
-
-      .activated
-        background-color: #FFF
-
-  h1, h2, h3, h4, h5, h6
-    color: #666
-
-  h1
-    @extend .serif
-    @extend .f24
-    @extend .lh36
-    @extend .mar10t
-
-  h2
-    @extend .sans
-    @extend .f12
-    @extend .tac
-    @extend .mar10
-    text-transform: uppercase
-    letter-spacing: 2px
-
-  hr
-    border-top: 4px double #EEE
-    border-right: none
-    border-bottom: 1px solid #EEE
-    height: 2px
-    border-left: none
-
-    &.plain
-      border: none
-      border-top: 1px solid #EEE
+.mute 
+  color: #CCC;
 
 .scroll
   min-height: 100%
@@ -83,3 +32,10 @@ ion-pane
   display: none
   @include md
     display: block
+
+.align-left
+  align-self: flex-start;
+
+.align-right
+  align-self: flex-end;
+

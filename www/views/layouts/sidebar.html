@@ -33,6 +33,12 @@
               <span>Agendas</span>
             </button>
           </div>
+          <div class="row mar0tb pad0">
+            <button class="button button-clear button-dark button-block" ui-sref="menu.directory" nav-clear menu-close>
+              <i class="icon ion-ios-telephone-outline db f36"></i>
+              <span>Directory</span>
+            </button>
+          </div>
         </div>
       </ion-content>
 
@@ -40,7 +46,7 @@
         <button class="button button-clear pad20lr pad10tb" ng-click="openModal('feedback')">
           Feedback
         </button>
-        <button class="button button-clear pad20lr pad10tb" nav-direction="back" ui-sref="simple.login">
+        <button class="button button-clear pad20lr pad10tb" nav-direction="back" ng-click="logout()">
           Log Out
         </button>
       </div>

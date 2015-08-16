@@ -1,8 +1,20 @@
 // Services for CouncilsApp
 angular.module('councilsApp')
 
+.factory('Notify', function ($http) {
+    return {
+        send: function (message, tokens) {
+            return $http.post('http://councils-app.herokuapp.com/api/push', {
+                message: message,
+                tokens: tokens
+            });
+        }
+    };
+})
+
 .factory('User', function ($firebaseObject, $q) {
     var user = {};
+    var unit = null;
     var deferred = $q.defer();
     return {
         get: function () { 
@@ -16,6 +28,7 @@ angular.module('councilsApp')
             return $firebaseObject(ref).$loaded()
                 .then(function (home) {
                     unit = home.$value;
+                    angular.module('councilsApp').value('UNITNUMBER', unit);
                     home.$destroy();
                     var ref2 = new Firebase('https://councilsapp.firebaseio.com/'+unit+'/users/' + uid);
                     return $firebaseObject(ref2).$loaded();
@@ -25,6 +38,9 @@ angular.module('councilsApp')
                     deferred.resolve(user);
                     return user;
                 });
+        },
+        getUnit: function () {
+            return unit;
         }
     };
 })

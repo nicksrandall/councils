@@ -1,11 +1,13 @@
 // Routes for the App
 angular.module('councilsApp')
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0);
   $urlRouterProvider.otherwise('/menu/home');
   var viewRoot = "views/";
 
   $stateProvider.state('menu.home', {
+    cache: false,
     url: "/home",
     views: {
       "menuContent" : {
@@ -88,12 +90,17 @@ angular.module('councilsApp')
     templateUrl: viewRoot + "navigation.html"
   })
 
-  $stateProvider.state('menu.profile', {
-    url: "/profile",
+  $stateProvider.state('menu.directory', {
+    url: "/directory",
     views: {
       'menuContent': {
-        controller: "ProfileController",
-        templateUrl: viewRoot + "/profile.html"
+        templateUrl: viewRoot + "/directory.html",
+        controller: "DirectoryController",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$waitForAuth(Auth.$requireAuth);
+          }]
+        }
       }
     }
   })
@@ -101,76 +108,101 @@ angular.module('councilsApp')
   $stateProvider.state('menu.council', {
     abstract: true,
     url: "/council",
+    params: {
+      council: null
+    },
     views: {
-      'menuContent': {
-        templateUrl: viewRoot + "/council/wrapper.html",
+      'menuContent' : {
+        templateUrl: viewRoot + "/council/tabbed_layout.html",
         controller: "CouncilController",
         resolve: {
           "currentAuth": ["Auth", function(Auth) {
-            return Auth.$requireAuth();
+            Auth.$waitForAuth(Auth.$requireAuth);
           }]
         }
       }
     }
   })
 
-  $stateProvider.state('menu.council.list', {
-    url: "/list",
-    views: {
-      'councilContent' : {
-        templateUrl: viewRoot + "/council/list.html"
-      }
-    }
-  })
+  // $stateProvider.state('menu.council.list', {
+  //   url: "/list",
+  //   views: {
+  //     'councilContent' : {
+  //       templateUrl: viewRoot + "/council/list.html"
+  //     }
+  //   }
+  // })
 
-  $stateProvider.state('menu.council.tab', {
-    abstract: true,
-    url: "/tab",
-    views: {
-      'councilContent' : {
-        templateUrl: viewRoot + "/council/tabbed_layout.html"
-      }
-    }
-  })
+  // $stateProvider.state('menu.council.tab', {
+  //   abstract: true,
+  //   url: "/tab",
+  //   params: {
+  //     council: null
+  //   },
+  //   views: {
+  //     'councilContent' : {
+  //       templateUrl: viewRoot + "/council/tabbed_layout.html",
+  //       controller: "CouncilController"
+  //     }
+  //   }
+  // })
 
-  $stateProvider.state('menu.council.tab.discussion', {
+  $stateProvider.state('menu.council.discussion', {
     url: "/discussion",
     params: {
       currentCouncilTab: 'discussions'
     },
     views: {
       'tab' : {
-        templateUrl: viewRoot + "/council/discussion_list.html"
+        templateUrl: viewRoot + "/council/discussion_list.html",
+        controller: 'CouncilDiscussionController'
       }
     }
   })
 
-  $stateProvider.state('menu.council.tab.assignment', {
+  $stateProvider.state('menu.council.assignment', {
     url: "/assignment",
     params: {
       currentCouncilTab: 'assignments'
     },
     views: {
       'tab' : {
-        templateUrl: viewRoot + "/council/assignment_list.html"
+        templateUrl: viewRoot + "/council/assignment_list.html",
+        controller: 'CouncilAssignmentController'
       }
     }
   })
 
-  $stateProvider.state('menu.council.discussion_new', {
-    url: "/discussion/new",
+  $stateProvider.state('menu.council.agenda', {
+    url: "/agenda",
+    params: {
+      currentCouncilTab: 'agendas',
+      week: {
+        value: moment().isoWeek()
+      }
+    },
     views: {
-      'councilContent' : {
-        templateUrl: viewRoot + "/council/discussion_new.html"
+      'tab' : {
+        templateUrl: viewRoot + "/council/agenda.html",
+        controller: "AgendaDetailController"
       }
     }
   })
 
-  $stateProvider.state('menu.council.assignment_new', {
-    url: "/assignment/new",
+  $stateProvider.state('menu.council.discussion.new', {
+    url: "/new",
     views: {
-      'councilContent' : {
-        templateUrl: viewRoot + "/council/assignment_new.html"
+      'modal' : {
+        templateUrl: viewRoot + "/council/discussion_new.html",
+      }
+    }
+  })
+
+  $stateProvider.state('menu.council.assignment.new', {
+    url: "/new",
+    views: {
+      'modal' : {
+        templateUrl: viewRoot + "/council/assignment_new.html",
       }
     }
   })
@@ -200,24 +232,7 @@ angular.module('councilsApp')
     url: "/list",
     views: {
       'agendaContent' : {
-        templateUrl: viewRoot + "/agenda/list.html"
-      }
-    }
-  })
-
-  $stateProvider.state('menu.agenda.detail', {
-    url: "/detail",
-    params: {
-      agendaId: {
-        value: -1
-      },
-      agendaGroupId: {
-        value: 'ward'
-      }
-    },
-    views: {
-      'agendaContent' : {
-        templateUrl: viewRoot + "/agenda/detail.html"
+        templateUrl: viewRoot + "/agenda/list.html",
       }
     }
   })
