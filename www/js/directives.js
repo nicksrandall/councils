@@ -1,17 +1,28 @@
 // Directives for CouncilsApp
 angular.module('councilsApp')
 
-.directive("autoResize", function() {
-  return function(scope, element) {
-    autosize(element);
-  }
-})
-
 .directive("customPlaceholder", function() {
   return function(scope, element) {
     var defaultValue = element[0].getAttribute('custom-placeholder')
     element[0].customPlaceholder( defaultValue );
   }
+})
+
+.directive('commentCount', function ($firebaseObject, User) {
+  var promise = User.get();
+  return {
+    restrict: 'A',
+    template: '{{count.$value || 0}}',
+    scope: {
+      commentCount: '='
+    },
+    link: function (scope, element, attrs) {
+      promise.then(function (me) {
+        var _ref = new Firebase('https://councilsapp.firebaseio.com').child(me.homeUnitNbr + '/commentCount').child(scope.commentCount);
+        scope.count = $firebaseObject(_ref);
+      });
+    }
+  };
 })
 
 

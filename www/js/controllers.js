@@ -8,13 +8,27 @@ angular.module('councilsApp')
     currentCouncilTab: "discussion"
   };
 
+  $scope.template = null;
+  $scope.slider = function (template) {
+    $scope.template = template;
+    angular.element('.login-slider').toggleClass('open');
+    angular.element('.make-small').toggleClass('small');
+  };
+
+  var unbind = $scope.$on('template:change', function ($event, template) {
+    $scope.template = template;
+  });
+
+  $scope.$on('$destroy', unbind);
+
   $scope.logout = function () {
     Auth.$unauth();
     return $state.go('simple.welcome');
   };
 
   $scope.back = function() {
-    $ionicHistory.goBack();
+    console.log($ionicHistory.viewHistory());
+    $ionicHistory.goBack(-1);
   };
 })
 
@@ -35,14 +49,22 @@ angular.module('councilsApp')
   };
 })
 
-.controller('SetupController', function($scope, $http, me, $state, $q) {
+.controller('SetupController', function($scope, $http, me, $state, $cordovaInAppBrowser) {
   $scope.credentials = {};
+  $scope.loading = false;
   $scope.ldsLogin = function () {
-    $http.post('http://councils-app.herokuapp.com/api/me', $scope.credentials)
+    $scope.loading = true;
+    $http.post('https://councils-app.herokuapp.com/api/me', $scope.credentials)
       .then(function (response) {
         me.set(response.data);
-        $state.go('simple.create');
+        $scope.$emit('template:change', 'create');
+        $scope.loading = false;
       });
+  };
+
+  $scope.createLDSAccount = function () {
+    console.log('opening browser!');
+    return $cordovaInAppBrowser.open('https://ldsaccount.lds.org/register', '_blank')
   };
 })
 
@@ -65,6 +87,7 @@ angular.module('councilsApp')
         var ref = new Firebase('https://councilsapp.firebaseio.com/'+home+'/users');
         var members = $firebaseObject(ref);
         members[uid] = me.get();
+        delete members[uid].pass;
         return members.$save();
       })
       .then(function () {
@@ -88,10 +111,15 @@ angular.module('councilsApp')
   };
 })
 
-.controller("HomeController", function($scope, User, currentAuth, $firebaseObject, $firebaseArray) {
+.controller("HomeController", function($scope, Auth, $state, User, currentAuth, $firebaseObject, $firebaseArray, $cordovaImagePicker, $ionicActionSheet, $cordovaCamera, $cordovaFileTransfer) {
   $scope.myAssignments = [];
   $scope.delegatedAssignments = [];
   $scope.discussions = [];
+
+  $scope.logout = function () {
+    Auth.$unauth();
+    $state.go('simple.welcome');
+  };
 
   $scope.update = function (val) {
     if (val._completed) {
@@ -103,6 +131,88 @@ angular.module('councilsApp')
       clearTimeout(val._cancel)
     }
   };
+
+  $scope.imagePicker = function () {
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+       { text: 'Photo Library' },
+       { text: 'Take Photo' }
+      ],
+      titleText: 'Pick a new profile picture',
+      cancelText: 'Cancel',
+      cancel: function() {
+        // add cancel code.. 
+      },
+      buttonClicked: function(index) {
+       console.log(index);
+       if (index === 0) {
+        //picker
+        pickPhoto();
+       } else {
+        // camera
+        takePhoto();
+       }
+       return true;
+      }
+    });
+
+    function pickPhoto() {
+      var options = {
+        maximumImagesCount: 1,
+        width: 250,
+        height: 250,
+        quality: 80
+      };
+
+      $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        for (var i = 0; i < results.length; i++) {
+          console.log('Image URI: ' + results[i]);
+          uploadPhoto(results[i]);
+        }
+      }, function(error) {
+        // error getting photos
+        console.warn(error);
+      });
+    }
+
+    function takePhoto() {
+      var options = {
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        allowEdit: true,
+        targetWidth: 250,
+        targetHeight: 250,
+        saveToPhotoAlbum: true
+      };
+
+      $cordovaCamera.getPicture(options)
+        .then(function(imageURI) {
+          console.log(imageURI);
+          uploadPhoto(imageURI);
+        }, function(err) {
+          // error
+          console.warn(err);
+        });
+    }
+
+  };
+
+  function uploadPhoto(imageURI) {
+    $cordovaFileTransfer.upload('https://councils-app.herokuapp.com/api/upload/3744678537', imageURI, {}, true)
+      .then(function(result) {
+        console.log('result', result);
+        // Success!
+      }, function(err) {
+        console.warn(err);
+        // Error
+      }, function (progress) {
+        console.log('progress', progress);
+        // constant progress updates
+      });
+  }
 
   $scope.councils = ["Bishopric", "Ward Council"];
 
@@ -133,48 +243,48 @@ angular.module('councilsApp')
     });
 })
 
-.controller('DirectoryController', function ($scope, $firebaseArray, $cordovaSms, $cordovaEmailComposer) {
-  var ref = new Firebase('https://councilsapp.firebaseio.com/538469/members');
-  var scrollRef = new Firebase.util.Scroll(ref, 'surname');
-  $scope.members = $firebaseArray(scrollRef);
-  scrollRef.scroll.next(25);
+// .controller('DirectoryController', function ($scope, $firebaseArray, $cordovaSms, $cordovaEmailComposer) {
+//   var ref = new Firebase('https://councilsapp.firebaseio.com/538469/members');
+//   var scrollRef = new Firebase.util.Scroll(ref, 'surname');
+//   $scope.members = $firebaseArray(scrollRef);
+//   scrollRef.scroll.next(25);
 
-  $scope.loadMore = function() {
-    // load the next contact
-    scrollRef.scroll.next(25);
-    $scope.$broadcast('scroll.infiniteScrollComplete');
-  };
+//   $scope.loadMore = function() {
+//     // load the next contact
+//     scrollRef.scroll.next(25);
+//     $scope.$broadcast('scroll.infiniteScrollComplete');
+//   };
   
-  $scope.email = function (item) {
-    $cordovaEmailComposer.isAvailable().then(function() {
-       // is available
-       var email = {
-          to: item.email,
-        };
+//   $scope.email = function (item) {
+//     $cordovaEmailComposer.isAvailable().then(function() {
+//        // is available
+//        var email = {
+//           to: item.email,
+//         };
 
-       $cordovaEmailComposer.open(email).then(null, function () {
-         // user cancelled email
-       });
+//        $cordovaEmailComposer.open(email).then(null, function () {
+//          // user cancelled email
+//        });
 
-     }, function () {
-       // not available
-     });
-  };
+//      }, function () {
+//        // not available
+//      });
+//   };
 
-  $scope.call = function (item) {
-    window.location.href='tel:'+item.phone.replace(/\W/, '');
-  };
+//   $scope.call = function (item) {
+//     window.location.href='tel:'+item.phone.replace(/\W/, '');
+//   };
   
-  $scope.message = function (item) {
-    $cordovaSms
-      .send(item.phone.replace(/\W/, ''), '', {})
-      .then(function() {
-        // Success! SMS was sent
-      }, function(error) {
-        // An error occurred
-      });
-  };
-})
+//   $scope.message = function (item) {
+//     $cordovaSms
+//       .send(item.phone.replace(/\W/, ''), '', {})
+//       .then(function() {
+//         // Success! SMS was sent
+//       }, function(error) {
+//         // An error occurred
+//       });
+//   };
+// })
 
 .controller("AgendaDetailController", function ($scope, $firebaseObject, $firebaseArray, $stateParams, $timeout, AGENDAS, $state, MembersModal) {
   $scope.council = $stateParams.council || 'Bishopric';
@@ -249,14 +359,14 @@ angular.module('councilsApp')
 
       var promise = User.get()
         .then(function (me) {
-          var ref = new Firebase('https://councilsapp.firebaseio.com/').child(me.homeUnitNbr).child('discussions').orderByChild('council').equalTo($scope.council);;
+          var ref = new Firebase('https://councilsapp.firebaseio.com/').child(me.homeUnitNbr).child('discussions').orderByChild('council').equalTo($scope.council);
           $scope.discussions = $firebaseArray(ref);
           return me;
         });
 
       $scope.data = {
         content: '',
-        discussionParticipants: []
+        // discussionParticipants: []
       };
 
       $scope.createDiscussion = function () {
@@ -265,9 +375,10 @@ angular.module('councilsApp')
           .then(function (me) {
             creator = me;
             discussion = {
+              council: $scope.council,
               content: $scope.data.content,
               createdBy: me.$id,
-              createdDate: new Date().toISOString(),
+              createdDate: new Date().getTime(),
               userAvatar: me.profileImage,
               userName: me.fname + ' ' + me.lname
             };
@@ -276,21 +387,18 @@ angular.module('councilsApp')
           .then(function (ref) {
             var id = ref.key();
             var users = new Firebase('https://councilsapp.firebaseio.com/'+creator.homeUnitNbr+'/users/');
-            users.child(creator.$id+'/discussions').push({
-              council: $scope.council,
-              key: id
-            });
-            _.forEach($scope.data.discussionParticipants, function (user) {
-              if (user.tokens) {
-                _.forEach(user.tokens, function (token) {
-                  tokens.push(token.token);
-                });
-              }
-              users.child(user.$id+'/discussions').push({
-                council: $scope.council,
-                key: id
-              });
-            });
+            users.child(creator.$id+'/discussions').push(id);
+            // _.forEach($scope.data.discussionParticipants, function (user) {
+            //   if (user.tokens) {
+            //     _.forEach(user.tokens, function (token) {
+            //       tokens.push(token.token);
+            //     });
+            //   }
+            //   users.child(user.$id+'/discussions').push({
+            //     council: $scope.council,
+            //     key: id
+            //   });
+            // });
             $scope.modal.hide();
           })
           .then(function () {
@@ -321,7 +429,7 @@ angular.module('councilsApp')
       $scope.openModal = function() {
         $scope.modal.show();
       };
-      console.log($scope.openModal);
+      
       $scope.closeModal = function() {
         $scope.modal.hide();
       };
@@ -334,13 +442,13 @@ angular.module('councilsApp')
 
       $scope.openMembersModal = function(dataStore, max) {
         MembersModal.openModal(max, $scope.data[dataStore]).then(function(result) {
-          $scope.data[dataStore] = max ===1 ? _.pick(result[0], ['fname', 'lname', 'profileImage', '$id', 'tokens']) : result.map(function (item) { return _.pick(item, ['fname', 'lname', 'profileImage', '$id', 'tokens']); });
+          $scope.data[dataStore] = max ===1 ? _.pick(result[0], ['fname', 'lname', '$id', 'tokens']) : result.map(function (item) { return _.pick(item, ['fname', 'lname', '$id', 'tokens']); });
         });
       };
 
       $scope.data = {
         dueDate: new Date(),
-        assignmentParticipants: [],
+        // assignmentParticipants: [],
         assignmentAssignee: null,
         content: ''
       };
@@ -360,12 +468,15 @@ angular.module('councilsApp')
             creator = me;
 
             assignment = {
-              createdBy: creator.$id,
-              assignedTo: $scope.data.assignmentAssignee,
-              dueDate: $scope.data.dueDate.toISOString(),
+              assignedBy: creator.$id,
+              assignedByName: me.fname + ' ' + me.lname,
+              assignedTo: $scope.data.assignmentAssignee.$id,
+              assignedToName: $scope.data.assignmentAssignee.fname + ' ' + $scope.data.assignmentAssignee.lname,
+              council: $scope.council,
+              dueDate: $scope.data.dueDate.getTime(),
               content: $scope.data.content,
-              completed: false,
-              participants: $scope.data.assignmentParticipants
+              completed: false
+              // participants: $scope.data.assignmentParticipants
             };
 
             return $scope.assignments.$add(assignment);
@@ -373,10 +484,6 @@ angular.module('councilsApp')
           .then(function (ref) {
             var id = ref.key();
             var users = new Firebase('https://councilsapp.firebaseio.com/'+creator.homeUnitNbr+'/users/');
-            users.child(creator.$id+'/assignments').push({
-              council: $scope.council,
-              key: id
-            });
             users.child($scope.data.assignmentAssignee.$id+'/assignments').push({
               council: $scope.council,
               key: id
@@ -386,17 +493,17 @@ angular.module('councilsApp')
                 tokens.push(token.token);
               });
             }
-            _.forEach(assignment.participants, function (user) {
-              if (user.tokens) {
-                _.forEach(user.tokens, function (token) {
-                  tokens.push(token.token);
-                });
-              }
-              users.child(user.$id+'/assignments').push({
-                council: $scope.council,
-                key: id
-              });
-            });
+            // _.forEach(assignment.participants, function (user) {
+            //   if (user.tokens) {
+            //     _.forEach(user.tokens, function (token) {
+            //       tokens.push(token.token);
+            //     });
+            //   }
+            //   users.child(user.$id+'/assignments').push({
+            //     council: $scope.council,
+            //     key: id
+            //   });
+            // });
           })
           .then(function () {
             $scope.modal.hide();
@@ -432,4 +539,58 @@ angular.module('councilsApp')
       commentCount: 2
     }
   };
+})
+
+.controller('CommentController', function ($scope, $firebaseArray, User, $ionicScrollDelegate, $firebaseObject, $stateParams, $timeout, $state) {
+  var promise = User.get();
+  var delegate = $ionicScrollDelegate.$getByHandle('thread');
+  $scope.input = {};
+  $scope.title = $stateParams.title;
+
+  if (!$stateParams.topic) {
+    $state.go('menu.home');
+  }
+  promise.then(function (me) {
+    var ref = new Firebase('https://councilsapp.firebaseio.com')
+      .child(me.homeUnitNbr + '/comments')
+      .child($stateParams.topic)
+      .orderByChild('date');
+    
+    $scope.comments = $firebaseArray(ref);
+  });
+
+  $scope.$watch('comments.length', function (_new, _old) {
+    if (_new !== _old) {
+      console.log('scoll to bottom!');
+      $timeout(function () {
+        delegate.resize();
+        delegate.scrollBottom(true);
+      }, 100);
+    }
+  });
+
+  $scope.sendComment = function (form) {
+    var user;
+    return promise.then(function (me) {
+      user = me;
+      var comment = {
+        author: me.fname + ' ' + me.lname,
+        profileImage: me.profileImage,
+        message: $scope.input.message,
+        date: new Date().getTime()
+      };
+      return $scope.comments.$add(comment);
+    })
+    .then(function () {
+      var _ref = new Firebase('https://councilsapp.firebaseio.com')
+        .child(user.homeUnitNbr + '/commentCount')
+        .child($stateParams.topic)
+        .transaction(function(currentCount) {
+          console.log('current', currentCount);
+          return (currentCount || 0) + 1;
+        });
+      $scope.input.message = null;
+    });
+  };
+  
 })

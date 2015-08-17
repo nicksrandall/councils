@@ -1,0 +1,31 @@
+<ion-pane class="comments">
+
+  <ion-header-bar>
+    <button class="icon ion-ios-arrow-thin-left button-clear button" ng-click="back()"></button>
+    <div class="title icon ion-ios-chatboxes-outline">Comments</div>
+  </ion-header-bar>
+
+  <ion-content delegate-handle="thread">
+    <div ng-hide="comments.length" class="nothing-message vac tac">Nothing yet. Be the first to add a comment to this topic.</div>
+    <ion-list>
+      <ion-item ng-repeat="comment in comments" class="item-avatar">
+        <img ng-src="{{comment.profileImage}}">
+        <h2 class="lh14">
+          <span class="fl serif">{{comment.author}}</span>
+          <span class="fr comment-date" am-time-ago="comment.date"></span>
+        </h2>
+        <p class="no-truncate"><pre class="f12 sans">{{comment.message}}</pre></p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <form name="sendCommentForm" ng-submit="sendComment(sendCommentForm)" novalidate>
+    <ion-footer-bar align-title="left" class="item-input-inset message-footer">
+      <label class="item-input-wrapper">
+        <textarea class="msd-elastic" ng-model="input.message" value="" placeholder="Add a comment..." ></textarea>
+      </label>
+      <div class="footer-btn-wrap">
+        <button class="button button-clear button-positive footer-btn" type="submit" ng-disabled="!input.message || input.message === ''">SEND</button>
+      </div>
+    </ion-footer-bar>
+  </form>
+</ion-pane>

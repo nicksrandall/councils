@@ -16,8 +16,8 @@
     "lodash": "~3.10.1",
     "moment": "~2.10.6",
     "jquery": "~2.1.4",
-    "autosize": "~3.0.8",
     "firebase-util": "~0.2.4",
-    "angular-moment": "~0.10.2"
+    "angular-moment": "~0.10.2",
+    "angular-elastic": "~2.5.0"
   }
 }

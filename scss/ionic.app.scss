@@ -15,6 +15,10 @@ $dark:                            #444 !default;
 */
 
 $positive: #3c7a99 !default;
+$font-family-sans-serif:          "Gotham", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-light-sans-serif:    "Gotham-Light", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+$font-family-serif:               "Surveyor", serif !default;
+$font-family-monospace:           monospace !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -31,3 +35,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include page specific styles
 @import "pages/pages";
+
+html, body {
+  font-family: $font-family-sans-serif;
+}

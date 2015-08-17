@@ -20,75 +20,95 @@ angular.module('councilsApp')
         }
       }
     }
-  })
+  });
 
   $stateProvider.state('simple', {
     abstract: true,
     url: "/simple",
     views: {
-      "mainContent" : {
+      'mainContent': {
         templateUrl: viewRoot + "/layouts/no_sidebar.html"
       }
     }
-  })
+  });
 
   $stateProvider.state('menu', {
     abstract: true,
     url: "/menu",
     views: {
       'mainContent': {
-        templateUrl: viewRoot + "/layouts/sidebar.html"
+        templateUrl: viewRoot + "/layouts/no_sidebar.html"
       }
     }
-  })
+  });
 
   $stateProvider.state('simple.welcome', {
     url: "/welcome",
-    templateUrl: viewRoot + "welcome.html"
-  })
+    views: {
+      'menuContent': {
+        templateUrl: viewRoot + "welcome.html"
+      }
+    }
+  });
 
   $stateProvider.state('simple.onboarding', {
     url: "/onboarding",
-    templateUrl: viewRoot + "onboarding.html"
-  })
+    views: {
+      'menuContent': {
+        templateUrl: viewRoot + "onboarding.html"
+      }
+    }
+  });
 
   $stateProvider.state('simple.setup', {
     url: "/setup",
-    templateUrl: viewRoot + "setup.html",
-    controller: "SetupController",
-    resolve: {
-      "currentAuth": ["Auth", function(Auth) {
-        return Auth.$waitForAuth();
-      }]
+    views: {
+      'menuContent': {
+        templateUrl: viewRoot + "setup.html",
+        controller: "SetupController",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$waitForAuth();
+          }]
+        }
+      }
     }
-  })
+  });
 
   $stateProvider.state('simple.create', {
     url: "/create",
-    templateUrl: viewRoot + "create.html",
-    controller: "CreateController",
-    resolve: {
-      "currentAuth": ["Auth", function(Auth) {
-        return Auth.$waitForAuth();
-      }]
+    views: {
+      'menuContent': {
+        templateUrl: viewRoot + "create.html",
+        controller: "CreateController",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$waitForAuth();
+          }]
+        }
+      }
     }
-  })
+  });
 
   $stateProvider.state('simple.login', {
     url: "/login",
-    templateUrl: viewRoot + "login.html",
-    controller: 'LoginController',
-    resolve: {
-      "currentAuth": ["Auth", function(Auth) {
-        return Auth.$waitForAuth();
-      }]
+    views: {
+      'menuContent': {
+        templateUrl: viewRoot + "login.html",
+        controller: 'LoginController',
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$waitForAuth();
+          }]
+        }
+      }
     }
-  })
+  });
 
-  $stateProvider.state('navigations', {
-    url: "/navigation",
-    templateUrl: viewRoot + "navigation.html"
-  })
+  // $stateProvider.state('navigations', {
+  //   url: "/navigation",
+  //   templateUrl: viewRoot + "navigation.html"
+  // });
 
   $stateProvider.state('menu.directory', {
     url: "/directory",
@@ -103,7 +123,7 @@ angular.module('councilsApp')
         }
       }
     }
-  })
+  });
 
   $stateProvider.state('menu.council', {
     abstract: true,
@@ -122,7 +142,7 @@ angular.module('councilsApp')
         }
       }
     }
-  })
+  });
 
   // $stateProvider.state('menu.council.list', {
   //   url: "/list",
@@ -131,7 +151,7 @@ angular.module('councilsApp')
   //       templateUrl: viewRoot + "/council/list.html"
   //     }
   //   }
-  // })
+  // });
 
   // $stateProvider.state('menu.council.tab', {
   //   abstract: true,
@@ -145,7 +165,7 @@ angular.module('councilsApp')
   //       controller: "CouncilController"
   //     }
   //   }
-  // })
+  // });
 
   $stateProvider.state('menu.council.discussion', {
     url: "/discussion",
@@ -158,7 +178,7 @@ angular.module('councilsApp')
         controller: 'CouncilDiscussionController'
       }
     }
-  })
+  });
 
   $stateProvider.state('menu.council.assignment', {
     url: "/assignment",
@@ -171,7 +191,7 @@ angular.module('councilsApp')
         controller: 'CouncilAssignmentController'
       }
     }
-  })
+  });
 
   $stateProvider.state('menu.council.agenda', {
     url: "/agenda",
@@ -187,7 +207,7 @@ angular.module('councilsApp')
         controller: "AgendaDetailController"
       }
     }
-  })
+  });
 
   $stateProvider.state('menu.council.discussion.new', {
     url: "/new",
@@ -196,7 +216,7 @@ angular.module('councilsApp')
         templateUrl: viewRoot + "/council/discussion_new.html",
       }
     }
-  })
+  });
 
   $stateProvider.state('menu.council.assignment.new', {
     url: "/new",
@@ -205,35 +225,54 @@ angular.module('councilsApp')
         templateUrl: viewRoot + "/council/assignment_new.html",
       }
     }
-  })
+  });
 
   $stateProvider.state('menu.council.edit', {
-    url: 'edit',
+    url: '/edit',
     views: {
       'councilContent' : {
         templateUrl: viewRoot + '/council/edit.html'
       }
     }
-  })
+  });
 
-
-  $stateProvider.state('menu.agenda', {
-    abstract: true,
-    url: "/agenda",
+  $stateProvider.state('menu.comments', {
+    url: '/comments/:topic',
+    params: {
+      title: null
+    },
     views: {
-      'menuContent': {
-        templateUrl: viewRoot + "/agenda/wrapper.html",
-        controller: "AgendaController"
+      "menuContent" : {
+        templateUrl: viewRoot + "comments.html",
+        controller: "CommentController",
+        resolve: {
+          "currentAuth": ["Auth", function(Auth) {
+            return Auth.$requireAuth();
+          }]
+        }
       }
     }
-  })
+  });
 
-  $stateProvider.state('menu.agenda.list', {
-    url: "/list",
-    views: {
-      'agendaContent' : {
-        templateUrl: viewRoot + "/agenda/list.html",
-      }
-    }
-  })
-})
+
+
+  // $stateProvider.state('menu.agenda', {
+  //   abstract: true,
+  //   url: "/agenda",
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: viewRoot + "/agenda/wrapper.html",
+  //       controller: "AgendaController"
+  //     }
+  //   }
+  // });
+
+  // $stateProvider.state('menu.agenda.list', {
+  //   url: "/list",
+  //   views: {
+  //     'agendaContent' : {
+  //       templateUrl: viewRoot + "/agenda/list.html",
+  //     }
+  //   }
+  // });
+});

@@ -1,22 +1,27 @@
 <div class="member modal">
 
-  <ion-header-bar>
-    <input placeholder="Search for ward member" ng-model="search.Term"></input>
+  <ion-header-bar class="item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" placeholder="Search for ward member" ng-model="search.Term">
+    </label>
+    <button class="button button-clear">
+      Cancel
+    </button>
   </ion-header-bar>
 
-  <ion-content class="full-height pad20lr">
+  <ion-content class="full-height">
     <ion-list>
-      <ion-item ng-class="{selected: selection.users.contains(member)}" ng-repeat="member in search.Results" ng-click="selection.toggle(member)">
+      <ion-item class="item-avatar" ng-class="{selected: selection.users.contains(member)}" ng-repeat="member in search.Results" ng-click="selection.toggle(member)">
         <img ng-src="{{member.profileImage}}">
-        <span class="serif">{{member.fname}} {{member.lname}}</span>
+        <h2 class="serif">{{member.fname}} {{member.lname}}</h2>
+        <p>{{member.groupName}}</p>
       </ion-item>
     </ion-list>
   </ion-content>
 
-  <ion-footer-bar class="tac">
-    <button class="button button-block button-max mar0a" ng-click="closeModal('done')">
-      Done
-    </button>
+  <ion-footer-bar>
+    <button class="button button-block button-outline button-positive" ng-click="closeModal('done')">Done</button>
   </ion-footer-bar>
 
 </div>

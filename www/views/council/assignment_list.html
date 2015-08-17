@@ -8,7 +8,7 @@
 
   <ion-list id="personal-assignments">
 
-    <ion-item ng-repeat="assignment in assignments" class="row pad0">
+    <ion-item ng-repeat="assignment in assignments | orderBy:'dueDate'" class="row pad0">
 
       <div class="col pad0">
           <div class="row">

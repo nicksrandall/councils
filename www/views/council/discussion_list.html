@@ -9,7 +9,7 @@
 
   <ion-list id="discussions">
 
-    <ion-item ng-repeat="discussion in discussions" class="row pad0">
+    <ion-item ng-repeat="discussion in discussions | orderBy:'-createdDate'" class="row pad0">
 
       <div class="col">
         <div class="row">

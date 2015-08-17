@@ -3,20 +3,31 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('councilsApp', [
+  'ngAnimate',
+  'monospaced.elastic',
   'firebase',
   'ionic', 
   'ionic.service.core','ionic.service.deploy',
-  // 'ionic.service.analytics',
+  'ionic.service.analytics',
   'angularMoment',
   'ionic.service.push',
   'ngCordova',
   'ionic-datepicker'
 ])
 
-.run(function($ionicPlatform, $rootScope, $state, $cordovaStatusbar, $timeout, Auth, User, $ionicUser, $ionicPush, $ionicDeploy) {
+.config(function ($cordovaInAppBrowserProvider) {
+  var defaultOptions = {
+    location: 'no',
+    clearcache: 'no',
+    toolbar: 'yes'
+  };
+  $cordovaInAppBrowserProvider.setDefaultOptions(defaultOptions);
+})
+
+.run(function($ionicPlatform, $rootScope, $state, $cordovaStatusbar, $timeout, Auth, User, $ionicUser, $ionicPush, $ionicDeploy, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
     var deviceInformation = ionic.Platform.device();
-    // $ionicAnalytics.register();
+    $ionicAnalytics.register();
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -111,7 +122,6 @@ angular.module('councilsApp', [
         return me.$ref().child('tokens').child(ionic.Platform.device().uuid).set(data);
       });
   });
-
 
   $rootScope.$on("$stateChangeError", function(event, next, nextP, previous, previousP, error) {
     if (error === "AUTH_REQUIRED") {

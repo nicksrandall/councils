@@ -2565,7 +2565,7 @@ body, .ionic-body {
   color: #000;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Gotham", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
@@ -2795,7 +2795,7 @@ cite {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #000;
   font-weight: 500;
-  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Gotham", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
     font-weight: normal;
@@ -4146,7 +4146,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   white-space: nowrap;
   font-weight: 400;
   font-size: 14px;
-  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Gotham", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   opacity: 0.7; }
   .tab-item:hover {
     cursor: pointer; }
@@ -5658,7 +5658,7 @@ label, input, button, select, textarea {
   line-height: 1.42857; }
 
 input, button, select, textarea {
-  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
+  font-family: "Gotham", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
 
 .item-input {
   display: -webkit-box;
@@ -7711,10 +7711,40 @@ a.button {
   font-weight: 700;
   src: url('../fonts/SurveyorDisplay-Bold.otf') format("opentype"); }
 
-.sans, .agenda_detail label span {
-  font-family: Arial, Helvetica, sans-serif; }
+@font-face {
+  font-family: 'Gotham';
+  src: font-url('../fonts/gotham-book-webfont.eot');
+  src: font-url('../fonts/gotham-book-webfont.eot?#iefix') format('embedded-opentype'), font-url('../fonts/gotham-book-webfont.woff') format('woff'), font-url('../fonts/gotham-book-webfont.ttf') format('truetype'), font-url('../fonts/gotham-book-webfont.svg#gotham_bookregular') format('svg');
+  font-weight: 600; }
 
-.serif, ion-pane > ion-header-bar, textarea, .modal.member ion-header-bar input, .pane.councils_detail .item .agenda-content, .modal.councils_detail .item .agenda-content, .agenda_detail label span.serif, .agenda_detail label select, .agenda_detail label input, .agenda_detail label div.input, .pane.directory > ion-header-bar {
+@font-face {
+  font-family: 'Gotham';
+  src: font-url('../fonts/gotham-light-webfont.eot');
+  src: font-url('../fonts/gotham-light-webfont.eot?#iefix') format('embedded-opentype'), font-url('../fonts/gotham-light-webfont.woff') format('woff'), font-url('../fonts/gotham-light-webfont.ttf') format('truetype'), font-url('../fonts/gotham-light-webfont.svg#gotham_lightregular') format('svg');
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'Gotham-Light';
+  src: font-url('../fonts/gotham-light-webfont.eot');
+  src: font-url('../fonts/gotham-light-webfont.eot?#iefix') format('embedded-opentype'), font-url('../fonts/gotham-light-webfont.woff') format('woff'), font-url('../fonts/gotham-light-webfont.ttf') format('truetype'), font-url('../fonts/gotham-light-webfont.svg#gotham_lightregular') format('svg');
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'Gotham';
+  src: font-url('../fonts/gotham-medium-webfont.eot');
+  src: font-url('../fonts/gotham-medium-webfont.eot?#iefix') format('embedded-opentype'), font-url('../fonts/gotham-medium-webfont.woff') format('woff'), font-url('../fonts/gotham-medium-webfont.ttf') format('truetype'), font-url('../fonts/gotham-medium-webfont.svg#gotham_mediumregular') format('svg');
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'Gotham';
+  src: font-url('../fonts/gotham-thin-webfont.eot');
+  src: font-url('../fonts/gotham-thin-webfont.eot?#iefix') format('embedded-opentype'), font-url('../fonts/gotham-thin-webfont.woff') format('woff'), font-url('../fonts/gotham-thin-webfont.ttf') format('truetype'), font-url('../fonts/gotham-thin-webfont.svg#gotham_thinregular') format('svg');
+  font-weight: 300; }
+
+.sans, .agenda_detail label span, .pane.comments .message-footer textarea {
+  font-family: "Gotham", Arial, Helvetica, sans-serif; }
+
+.serif, ion-pane > ion-header-bar, textarea, .pane.councils_detail .item .agenda-content, .modal.councils_detail .item .agenda-content, .agenda_detail label span.serif, .agenda_detail label select, .agenda_detail label input, .agenda_detail label div.input, .pane.directory > ion-header-bar {
   font-family: Surveyor, "Palatino Linotype", "Book Antiqua", Palatino, serif; }
 
 .lighter {
@@ -7748,6 +7778,12 @@ a.button {
   flex-direction: row;
   align-items: center;
   justify-content: space-between; }
+
+.dfc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
 
 .fl {
   float: left; }
@@ -7785,13 +7821,13 @@ a.button {
 .grey6-border {
   border-color: #666666 !important; }
 
-.grey9, .modal.member .item, .agenda_detail h2 div.selected {
+.grey9, .agenda_detail h2 div.selected {
   color: #999999 !important; }
 
 .grey9-border {
   border-color: #999999 !important; }
 
-.greyA, .modal.member ion-footer-bar button, .agenda_detail label div.input {
+.greyA, .agenda_detail label div.input {
   color: #AAAAAA !important; }
 
 .greyA-border {
@@ -7820,6 +7856,12 @@ a.button {
 
 .cBlue-border {
   border-color: #3c7a99 !important; }
+
+.white {
+  color: #FFFFFF !important; }
+
+.white-border {
+  border-color: #FFFFFF !important; }
 
 .vac, #loadingOverlay i {
   position: relative;
@@ -8154,7 +8196,7 @@ a.button {
 .mar10b {
   margin-bottom: 10px !important; }
 
-.mar10tb, textarea {
+.mar10tb {
   margin-bottom: 10px !important;
   margin-top: 10px !important; }
 
@@ -8348,9 +8390,6 @@ ion-pane > ion-header-bar {
 [nav-view-direction="forward"], [nav-view-direction="back"] {
   background-color: #FFF !important; }
 
-.button-max {
-  max-width: 300px; }
-
 .hidden-md {
   display: none; }
   @media (max-width: 767px) {
@@ -8387,7 +8426,7 @@ textarea, input {
 
 textarea {
   resize: none;
-  min-height: 36px;
+  min-height: 24px;
   line-height: 24px; }
 
 #loadingOverlay {
@@ -8429,51 +8468,17 @@ textarea {
   to {
     transform: rotate(360deg); } }
 
-.modal.member ion-content {
-  height: calc(100% - 162px) !important;
-  top: 77px !important; }
-.modal.member .item {
-  border: none;
-  border-top: 1px solid #DDD; }
-  .modal.member .item.selected:after {
-    content: "\f3fd";
-    position: absolute;
-    top: 15px;
-    right: 5px;
-    font-family: "Ionicons";
-    -webkit-font-smoothing: antialiased; }
-  .modal.member .item span {
-    position: relative;
-    top: -7px;
-    padding-left: 5px; }
-  .modal.member .item:first-child {
-    border: none; }
-.modal.member img {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #DDD; }
-.modal.member ion-footer-bar {
-  text-align: center;
-  padding: 20px;
+.modal.member .item.selected:after {
+  content: "\f3fd";
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  font-family: "Ionicons";
+  -webkit-font-smoothing: antialiased; }
+.modal.member .bar-footer {
   height: auto; }
-  .modal.member ion-footer-bar button {
-    width: auto;
-    padding: 5px 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 6px; }
-.modal.member ion-header-bar {
-  background-color: #EEE;
-  padding: 20px;
-  height: auto; }
-  .modal.member ion-header-bar input {
-    background-color: #FFF;
-    padding: 0 10px;
-    border-radius: 5px;
-    border: none; }
 
-ion-header-bar {
+.bar.bar-header {
   border-bottom: 1px solid #dddad7; }
 
 .section-header {
@@ -8621,41 +8626,33 @@ option {
   font-size: 24px;
   padding: 5px 10px; }
 
-.setup h1 {
-  border-bottom: 1px solid #FFF;
-  border-top: 1px solid #FFF; }
-.setup ion-content {
-  max-width: 500px;
-  margin: 0 auto; }
+.animate-switch-container {
+  max-width: 500px; }
+  .animate-switch-container .animate-switch {
+    position: fixed;
+    width: 100%;
+    padding: 0 30px;
+    left: 0;
+    right: 0;
+    transition: 0.25s transform; }
+    .animate-switch-container .animate-switch.ng-enter {
+      transform: translate3d(500px, 0, 0); }
+      .animate-switch-container .animate-switch.ng-enter.ng-enter-active {
+        transform: translate3d(0, 0, 0); }
+    .animate-switch-container .animate-switch.ng-leave {
+      transform: translate3d(0, 0, 0); }
+      .animate-switch-container .animate-switch.ng-leave.ng-leave-active {
+        transform: translate3d(-500px, 0, 0); }
 
-.login ion-content {
-  max-width: 500px;
-  margin: 0 auto; }
+.full-height, .pane.full-height ion-content {
+  height: 100vh;
+  transition: height 0.25s; }
+  .full-height.small, .pane.full-height ion-content.small {
+    height: 50vh !important; }
 
 .welcome, .setup, .login {
   background-color: #2D435E;
   color: #fff; }
-  .welcome .button, .setup .button, .login .button {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    width: 300px;
-    margin-left: -150px;
-    text-transform: uppercase; }
-  .welcome .button-container, .setup .button-container, .login .button-container {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    width: 300px;
-    margin-left: -150px;
-    text-transform: uppercase; }
-    .welcome .button-container .button, .setup .button-container .button, .login .button-container .button {
-      position: relative;
-      bottom: auto;
-      left: auto;
-      margin: 20px auto 10px; }
-  .welcome h1, .setup h1, .login h1 {
-    color: #fff; }
   .welcome .slider, .setup .slider, .login .slider {
     min-height: 200px;
     width: 100%;
@@ -8664,8 +8661,63 @@ option {
     .welcome .slider p, .setup .slider p, .login .slider p {
       margin-top: 10px;
       font-size: 16px; }
-    .welcome .slider .slider-pager .slider-pager-page, .setup .slider .slider-pager .slider-pager-page, .login .slider .slider-pager .slider-pager-page {
+    .welcome .slider .slider-pager-page, .setup .slider .slider-pager-page, .login .slider .slider-pager-page {
       color: #fff; }
+    .welcome .slider .slider-pager, .setup .slider .slider-pager, .login .slider .slider-pager {
+      color: #fff;
+      width: 100vw; }
+  .welcome .button-container, .setup .button-container, .login .button-container {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    position: absolute;
+    bottom: 0; }
+    .welcome .button-container button.button, .setup .button-container button.button, .login .button-container button.button {
+      display: inline-block;
+      width: 45%;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px; }
+    .welcome .button-container button.negative, .setup .button-container button.negative, .login .button-container button.negative {
+      color: #3c7a99; }
+  .welcome .login-slider, .setup .login-slider, .login .login-slider {
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    height: 375px;
+    width: 100%;
+    bottom: 0;
+    padding: 30px;
+    color: #444;
+    transform: translate3d(0, 375px, 0);
+    transition: transform 0.25s; }
+    .welcome .login-slider.open, .setup .login-slider.open, .login .login-slider.open {
+      transform: translate3d(0, 0, 0); }
+    .welcome .login-slider .title, .setup .login-slider .title, .login .login-slider .title {
+      color: #444;
+      text-align: center;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px; }
+  .welcome .login-input, .setup .login-input, .login .login-input {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 1px; }
+  .welcome .button-clear, .setup .button-clear, .login .button-clear {
+    min-height: 24px;
+    max-height: 32px;
+    margin: 10; }
+  .welcome .button-round, .setup .button-round, .login .button-round {
+    font-size: 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
 
 .pane.directory *[ui-sref] {
   cursor: pointer; }
@@ -8680,4 +8732,40 @@ option {
   padding: 0 !important; }
 .pane.directory .item-avatar .item-content {
   padding-left: 16px; }
+
+.pane.comments .has-footer {
+  bottom: 0; }
+.pane.comments .no-truncate {
+  overflow: auto;
+  white-space: normal; }
+.pane.comments .nothing-message {
+  padding-top: 60px;
+  width: 100%;
+  color: #AAA; }
+.pane.comments .comment-date {
+  font-size: 12px;
+  color: #AAA; }
+.pane.comments .message-footer {
+  overflow: visible !important;
+  height: auto !important; }
+  .pane.comments .message-footer textarea {
+    resize: none;
+    min-height: 25px;
+    max-height: 200px;
+    margin: 0 !important;
+    background: #eee;
+    font-size: 14px !important; }
+.pane.comments .footer-btn-wrap {
+  height: 100%;
+  width: 60px; }
+.pane.comments .footer-btn {
+  text-align: center;
+  width: 70px;
+  position: absolute !important;
+  bottom: 7px; }
+.pane.comments .bar.item-input-inset .item-input-wrapper input {
+  width: 100% !important; }
+
+html, body {
+  font-family: "Gotham", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
 

@@ -4,7 +4,7 @@ angular.module('councilsApp')
 .factory('Notify', function ($http) {
     return {
         send: function (message, tokens) {
-            return $http.post('http://councils-app.herokuapp.com/api/push', {
+            return $http.post('https://councils-app.herokuapp.com/api/push', {
                 message: message,
                 tokens: tokens
             });

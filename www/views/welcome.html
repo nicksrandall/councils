@@ -1,12 +1,11 @@
-
 <ion-pane class="welcome full-height">
-  <ion-content scroll="false">
-    <div class="vac">
+  <ion-content scroll="false" class="df full-height make-small">
+    <div class="vertical-align">
       <ion-slide-box on-slide-changed="slideHasChanged($index)">
         <ion-slide class="pad50b">
           <div class="box tac">
             <i class="icon ion-ios-people f72"></i>
-            <h1 class="mar10b f36 mar0t">Councils</h1>
+            <h1 class="mar10b f36 mar0t serif white">Councils</h1>
             <p>Stake &amp; Ward productivity
               <br />on a simple intuitive app
             </p>
@@ -40,12 +39,59 @@
           </div>
         </ion-slide>
       </ion-slide-box>
-
     </div>
-    <div class="button-container">
-      <button class="button button-block button-max" ui-sref="simple.login" nav-direction="forward">Login</button>
-      <button class="button button-block button-max" ui-sref="simple.setup" nav-direction="forward">Create Account</button>
-    </div>
-
+    
   </ion-content>
+
+  <div class="button-container">
+    <button class="button button-block button-max button-light negative" ng-click="slider('login')">Login</button>
+    <button class="button button-block button-max button-positive" ng-click="slider('signup')">Sign Up</button>
+  </div>
+  
+  <div class="login-slider" ng-class="{open: state}">
+    <div ng-switch="template" class="animate-switch-container">
+      <div ng-switch-when="signup">
+        <div class="title">
+          Create new account by signin into your LDS.org account
+        </div>
+        <form name="singupForm" ng-controller="SetupController">
+          <input class="login-input" type="text" placeholder="LDS.ORG USERNAME" ng-model="credentials.name">
+          <input class="login-input" type="password" placeholder="LDS.ORG PASSWORD" ng-model="credentials.pass">
+          <button type="submit" ng-click="ldsLogin()" class="button button-block button-positive button-round">
+            <ion-spinner  class="spinner-light dfc" ng-if="loading" icon="ripple"></ion-spinner>
+            <span ng-if="!loading">Sign In</span>
+          </button>
+          <button class="button button-block button-clear button-positive button-round" 
+              ng-click="createLDSAccount()">Don’t have an LDS account</button>
+          <button class="button button-block button-clear button-positive button-round">Forgot username or password</button>
+        </form>
+      </div>
+      <div class="animate-switch" ng-switch-when="create">
+        <div class="title">
+          Create Councils account
+        </div>
+        <form name="createForm" ng-controller="CreateController">
+          <input class="login-input" type="text" placeholder="EMAIL ADDRESS" ng-model="me.email">
+          <input class="login-input" type="password" placeholder="NEW PASSWORD" ng-model="me.pass">
+          <button type="submit" ng-click="createAccount()" class="button button-block button-positive button-round">Create Account</button>
+          <button class="button button-block button-clear button-positive button-round">Terms and Conditions</button>
+          <button class="button button-block button-clear button-positive button-round">Forgot username or password</button>
+        </form>
+      </div>
+      <div ng-switch-when="login">
+        <div class="title">
+          Login to Councils
+        </div>
+        <form name="loginForm" ng-controller="LoginController">
+          <input class="login-input" type="text" placeholder="EMAIL ADDRESS" ng-model="credentials.email">
+          <input class="login-input" type="password" placeholder="PASSWORD" ng-model="credentials.password">
+          <button type="submit" ng-click="login()" class="button button-block button-positive button-round">Login</button>
+          <button class="button button-block button-positive button-outline button-round" ng-click="back()">Cancel</button>
+          <button class="button button-block button-clear button-positive button-round">Forgot username or password</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
 </ion-pane>

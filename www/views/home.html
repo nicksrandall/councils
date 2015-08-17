@@ -2,7 +2,7 @@
 <ion-pane class="home">
 
   <ion-header-bar>
-    <button class="button button-clear ion-navicon-round pad10lr hidden-md" menu-toggle="left"></button>
+    <button class="button button-clear ion-ios-arrow-thin-left hidden-md" ng-click="logout()"></button>
     <div class="title icon ion-ios-home-outline ">Home</div>
   </ion-header-bar>
 
@@ -14,7 +14,7 @@
           <span class="f18 lh34 sans pad10l">{{assignments.length}}</span>
         </div> -->
       </div>
-      <div id="avatar-col" class="col-50 tac" ui-sref="menu.profile" nav-direction="forward">
+      <div id="avatar-col" class="col-50 tac" ng-click="imagePicker()" nav-direction="forward">
         <div id="user-avatar" class="placeholder round" style="background-image: url({{user.profileImage}})"></div>
       </div>
       <div class="col-25 tal">
@@ -67,10 +67,10 @@
           <div class="row">
             <div class="col col-10"></div>
             <div class="col tar">
-              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
-                <span class="f12 cBlue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16" ui-sref="menu.comments({topic: assignment.$id, title: assignment.content})">
+                <span class="f12 cBlue vac sans" comment-count="assignment.$id"></span>
               </div>
-              <span class="cBlue sans f12" am-time-ago="assignment.dueDate"></span>
+              <span class="greyC sans f12" am-time-ago="assignment.dueDate"></span>
             </div>
           </div>
         </div>
@@ -99,10 +99,10 @@
           <div class="row">
             <div class="col col-10"></div>
             <div class="col tar">
-              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
-                <span class="f12 cBlue sans" ng-show="assignment.comments.length">{{assignment.comments.length}}</span>
+              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16" ui-sref="menu.comments({topic: assignment.$id, title: assignment.content})">
+                <span class="f12 cBlue vac sans" comment-count="assignment.$id"></span>
               </div>
-              <span class="cBlue sans f12" am-time-ago="assignment.dueDate"></span>
+              <span class="greyC sans f12" am-time-ago="assignment.dueDate"></span>
             </div>
           </div>
         </div>
@@ -133,8 +133,8 @@
           <div class="row">
             <div class="col col-10"></div>
             <div class="col tar">
-              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16">
-                <span class="pad10l f12 cBlue sans" ng-show="discussion.comments.length">{{discussion.comments.length}}</span>
+              <div class="fl ion-ios-chatbubble-outline pad10lr cBlue f16" ui-sref="menu.comments({topic: discussion.$id, title: discussion.content})">
+                <span class="f12 vac cBlue sans" comment-count="discussion.$id"></span>
               </div>
             </div>
           </div>
