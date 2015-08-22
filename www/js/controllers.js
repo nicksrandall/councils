@@ -3,11 +3,6 @@ angular.module('councilsApp')
 
 .controller("ApplicationController", function(MODALS, $ionicHistory, $scope, $ionicModal, $ionicSideMenuDelegate, Auth, $state) {
 
-  $scope.viewConfig = {
-    currentCouncilId: 0,
-    currentCouncilTab: "discussion"
-  };
-
   $scope.template = null;
   $scope.slider = function (template) {
     $scope.template = template;
@@ -87,7 +82,7 @@ angular.module('councilsApp')
         var ref = new Firebase('https://councilsapp.firebaseio.com/'+home+'/users');
         var members = $firebaseObject(ref);
         members[uid] = me.get();
-        delete members[uid].pass;
+        members[uid].pass = null;
         return members.$save();
       })
       .then(function () {
